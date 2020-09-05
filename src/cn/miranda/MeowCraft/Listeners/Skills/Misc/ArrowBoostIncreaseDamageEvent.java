@@ -1,0 +1,29 @@
+package cn.miranda.MeowCraft.Listeners.Skills.Misc;
+
+import cn.miranda.MeowCraft.Listeners.Skills.Active.ArrowBoostEvent;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+
+public class ArrowBoostIncreaseDamageEvent implements Listener {
+    @EventHandler(priority = EventPriority.NORMAL)
+    private void ArrowBoostIncreaseDamageEvent(EntityDamageByEntityEvent event) {
+        if (ArrowBoostEvent.arrowIDs == null) {
+            return;
+        }
+        Entity entity = event.getDamager();
+        if (entity.getType() != EntityType.ARROW) {
+            return;
+        }
+        if (!ArrowBoostEvent.arrowIDs.contains(entity.getEntityId())) {
+            return;
+        }
+        int damage = config.getInt("OccSkillConfig.Ranger_ArrowBoost.damage", 2);
+        event.setDamage(damage);
+    }
+}
