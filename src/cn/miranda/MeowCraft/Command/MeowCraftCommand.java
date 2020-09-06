@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
@@ -33,6 +34,7 @@ public final class MeowCraftCommand implements TabExecutor {
         if (Objects.equals(args[0], "reload")) {
             ConfigMaganer.loadConfigs();
             TempleManager.refreshTempleLists();
+            EggCatcher.flushAvailable();
             MessageManager.Messager(sender, "§e成功重载配置文件");
             return true;
         }

@@ -6,7 +6,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="" />
+    <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/EggCatcherEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ListenersManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ListenersManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,14 +42,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1gaJwq31EAELFLX7emIt45qOY5h" />
@@ -51,11 +68,12 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/commons-lang-2.6.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -63,6 +81,7 @@
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="cn.miranda.MeowCraft.Enum" />
       <recent name="cn.miranda.MeowCraft.Manager" />
     </key>
   </component>
@@ -123,6 +142,12 @@
       <workItem from="1599230451667" duration="1224000" />
       <workItem from="1599264536156" duration="4671000" />
       <workItem from="1599269506679" duration="1366000" />
+      <workItem from="1599284691725" duration="208000" />
+      <workItem from="1599314896522" duration="5769000" />
+      <workItem from="1599351289163" duration="2133000" />
+      <workItem from="1599355400735" duration="156000" />
+      <workItem from="1599361983360" duration="1238000" />
+      <workItem from="1599367267876" duration="10187000" />
     </task>
     <servers />
   </component>
@@ -138,18 +163,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598409340449" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599105675495">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599355137346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599105675495" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599355137346" />
     <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598506490742">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598506490742" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1599053479971">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1599371281006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599053479971" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599371281006" />
     <state x="752" y="405" width="415" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1598622145327">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -174,54 +199,58 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598497422626" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1599270111660">
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1599354205143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599270111660" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1599120906366">
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599354205143" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1599355149769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906366" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1599120906366">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1599355149769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906366" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1599120906366">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1599355149769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906366" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1599120906366">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149769" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1599355149769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906366" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1599120906363">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149769" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1599355149753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906363" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1599120906363">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149753" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1599355149753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906363" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1599120906363">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149753" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1599355149753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906363" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1599120906363">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149753" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1599355149753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599120906363" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599355149753" />
     <state x="685" y="226" width="549" height="583" key="RefactorJ.ExtractClass" timestamp="1599037053605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="226" width="549" height="583" key="RefactorJ.ExtractClass/0.0.1920.1040@0.0.1920.1040" timestamp="1599037053605" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1598982296113">
+    <state x="440" y="95" key="SettingsEditor" timestamp="1599362158829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1598982296113" />
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599362158829" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1598409048124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1598409048124" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1599375912787">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599375912787" />
     <state x="658" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1598536936820">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -238,9 +267,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599056466799" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599053696369">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599316442332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599053696369" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599316442332" />
   </component>
 </project>

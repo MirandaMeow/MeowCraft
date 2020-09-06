@@ -25,9 +25,9 @@ public class ConcentrateEvent implements Listener {
         if (!Occ.isFitOcc(player, "All_Concentrate") || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
             return;
         }
-        int probability = config.getInt("OccSkillConfig.All_Concentrate.probability", 20);
+        int chance = config.getInt("OccSkillConfig.All_Concentrate.chance", 20);
         int currentProbability = Misc.randomNum(0, 100);
-        if (currentProbability > probability) {
+        if (currentProbability > chance) {
             return;
         }
         event.setCancelled(true);

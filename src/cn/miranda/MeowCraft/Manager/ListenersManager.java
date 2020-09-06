@@ -40,5 +40,6 @@ public class ListenersManager implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(new RollDiceEvent(), MeowCraft.plugin);
         Bukkit.getServer().getPluginManager().registerEvents(new FireworkNoDamageEvent(), MeowCraft.plugin);
         Bukkit.getServer().getPluginManager().registerEvents(new ConcentrateEvent(), MeowCraft.plugin);
+        Bukkit.getServer().getPluginManager().registerEvents(new EggCatcherEvent(), MeowCraft.plugin);
     }
 }

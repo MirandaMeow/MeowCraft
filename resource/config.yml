@@ -1,6 +1,62 @@
 Settings:
   prefix: true
 
+EggCatcher:
+  cost: 100
+  chance: 30
+  mobs:
+    BAT: true
+    BEE: true
+    BLAZE: true
+    CAT: true
+    CHICKEN: true
+    COD: true
+    COW: true
+    CREEPER: true
+    DOLPHIN: true
+    DONKEY: true
+    DROWNED: true
+    ENDERMAN: true
+    ENDERMITE: true
+    EVOKER: true
+    FOX: true
+    GHAST: true
+    GIANT: true
+    GUARDIAN: true
+    HORSE: true
+    HUSK: true
+    ILLUSIONER: true
+    LLAMA: true
+    MULE: true
+    OCELOT: true
+    PANDA: true
+    PARROT: true
+    PHANTOM: true
+    PIG: true
+    PILLAGER: true
+    PLAYER: true
+    PUFFERFISH: true
+    RABBIT: true
+    RAVAGER: true
+    SALMON: true
+    SHEEP: true
+    SHULKER: true
+    SILVERFISH: true
+    SKELETON: true
+    SLIME: true
+    SNOWMAN: true
+    SPIDER: true
+    SQUID: true
+    STRAY: true
+    TURTLE: true
+    VEX: true
+    VILLAGER: true
+    VINDICATOR: true
+    WITCH: true
+    WITHER: true
+    WOLF: true
+    ZOMBIE: true
+
 DeadCost:
   ratio: 10
 
@@ -197,7 +253,7 @@ OccSkillConfig:
       - A
       - B
       - C
-    probability: 20
+    chance: 20
     notFitMessage: §e你不适合学习此技能
     lore:
       - §3在战场上集中精力应对突发情况
