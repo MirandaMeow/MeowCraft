@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +142,7 @@
       <workItem from="1599384472100" duration="1280000" />
       <workItem from="1599385975479" duration="4740000" />
       <workItem from="1599405683801" duration="406000" />
-      <workItem from="1599469880354" duration="8974000" />
+      <workItem from="1599469880354" duration="9143000" />
     </task>
     <servers />
   </component>
