@@ -2,7 +2,7 @@ Settings:
   prefix: true
 
 TabPing:
-  enabled: true
+  enabled: false
 
 EggCatcher:
   cost: 100

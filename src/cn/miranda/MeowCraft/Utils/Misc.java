@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Utils;
 
+import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Task.RemoveEntityTask;
 import com.sun.istack.internal.NotNull;
 import org.bukkit.Bukkit;
@@ -20,6 +21,7 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Random;
 
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static org.bukkit.Bukkit.getOnlinePlayers;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 
@@ -141,5 +143,9 @@ public class Misc {
         Field pingField = entityPlayer.getClass().getField("ping");
         int playerPing = pingField.getInt(entityPlayer);
         return Math.min(playerPing, 9999);
+    }
+
+    public static void disableTabPing() {
+        config.set("TabPing.enabled", false);
     }
 }
