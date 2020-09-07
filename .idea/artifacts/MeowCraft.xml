@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="MeowCraft">
-    <output-path>$PROJECT_DIR$/out</output-path>
-    <root id="archive" name="MeowCraft.jar">
-      <element id="module-output" name="MeowCraft" />
-    </root>
-  </artifact>
-</component>
