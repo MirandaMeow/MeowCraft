@@ -8,8 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/TabPingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/TabPingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +72,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/craftbukkit-1.11.2-R0.1-SNAPSHOT.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -143,7 +150,9 @@
       <workItem from="1599384472100" duration="1280000" />
       <workItem from="1599385975479" duration="4740000" />
       <workItem from="1599405683801" duration="406000" />
-      <workItem from="1599469880354" duration="9712000" />
+      <workItem from="1599469880354" duration="11764000" />
+      <workItem from="1599485350784" duration="4914000" />
+      <workItem from="1599490907851" duration="768000" />
     </task>
     <servers />
   </component>
@@ -235,10 +244,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="226" width="549" height="583" key="RefactorJ.ExtractClass/0.0.1920.1040@0.0.1920.1040" timestamp="1599037053605" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1599387249389">
+    <state x="440" y="95" key="SettingsEditor" timestamp="1599480474146">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599387249389" />
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599480474146" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1598409048124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

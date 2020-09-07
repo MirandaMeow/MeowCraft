@@ -41,13 +41,15 @@ public class TabPingTask {
                         objective = scoreboard.getObjective("PingTab");
                     }
                     for (Map.Entry<String, Integer> i : pings.entrySet())
-                        objective.getScore((String) i.getKey()).setScore(((Integer) i.getValue()).intValue());
+                        objective.getScore(i.getKey()).setScore(i.getValue());
                     player.setScoreboard(scoreboard);
                 }
                 if (!config.getBoolean("TabPing.enabled")) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        Scoreboard scoreboard = player.getScoreboard();
-                        scoreboard.getObjective("PingTab").unregister();
+                        if (player.getScoreboard().getObjective("PingTab") == null) {
+                            continue;
+                        }
+                        player.getScoreboard().getObjective("PingTab").unregister();
                     }
                     task.cancel();
                 }

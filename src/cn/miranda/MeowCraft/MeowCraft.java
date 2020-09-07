@@ -28,7 +28,7 @@ public class MeowCraft extends JavaPlugin {
         CommandManager.registerCommands();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册命令");
         TempleManager.refreshTempleLists();
-        MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e成功完成初始化");
+        MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e启用成功");
     }
 
     public void onDisable() {
@@ -40,6 +40,6 @@ public class MeowCraft extends JavaPlugin {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e清除任务");
         ConfigMaganer.saveConfigs();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e保存配置文件");
-        MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e已禁用");
+        MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e禁用成功");
     }
 }
