@@ -21,10 +21,10 @@ public class ArrowBoostShootTask {
         Vector z_axis = new Vector(0, 0, 1);
         Vector x_axis = new Vector(1, 0, 0);
         Vector y_axis = new Vector(0, 1, 0);
-        int settings_range = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.range", 25);
-        int settings_per_wave_amount = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.per_wave_amount", 5);
-        int settings_wave = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.wave", 5);
-        long settings_inverval = skills.getLong("OccSkillConfig.Ranger_ArrowBoost.interval", 5);
+        int settings_range = skills.getInt("Ranger_ArrowBoost.range", 25);
+        int settings_per_wave_amount = skills.getInt("Ranger_ArrowBoost.per_wave_amount", 5);
+        int settings_wave = skills.getInt("Ranger_ArrowBoost.wave", 5);
+        long settings_inverval = skills.getLong("Ranger_ArrowBoost.interval", 5);
         List arrowTargetEntityIDs = new ArrayList();
         final int[] wave_count = {0};
         String playerName = player.getName();
