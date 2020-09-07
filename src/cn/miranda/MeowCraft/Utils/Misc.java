@@ -29,7 +29,7 @@ public class Misc {
         return org.bukkit.Bukkit.getPlayer(playerName);
     }
 
-    public static List<String> getOnlinePlayerMames() {
+    public static List<String> getOnlinePlayerNames() {
         ArrayList<String> players = new ArrayList<>();
         for (Player player : getOnlinePlayers()) {
             players.add(player.getName());
@@ -110,7 +110,7 @@ public class Misc {
 
     }
 
-    public static List getTownsPermission() {
+    public static List<String> getTownsPermission() {
         List<String> permList = new ArrayList<>();
         for (Object key : towns.getValues(false).keySet()) {
             String perm = towns.getString(String.format("%s.permission", key.toString()));

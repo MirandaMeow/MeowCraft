@@ -98,7 +98,7 @@ public class OccSkillCommand implements TabExecutor {
             return new ArrayList<>(Arrays.asList("list", "cooldown"));
         }
         if (strings.length == 2) {
-            return Misc.getOnlinePlayerMames();
+            return Misc.getOnlinePlayerNames();
         }
         return new ArrayList<>();
     }

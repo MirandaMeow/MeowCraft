@@ -76,7 +76,7 @@ public final class HPsetCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Misc.getOnlinePlayerMames();
+            return Misc.getOnlinePlayerNames();
         }
         return new ArrayList();
     }

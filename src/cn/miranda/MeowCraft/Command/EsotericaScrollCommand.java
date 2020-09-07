@@ -65,7 +65,7 @@ public class EsotericaScrollCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1)
-            return Misc.getOnlinePlayerMames();
+            return Misc.getOnlinePlayerNames();
         if (strings.length == 2) {
             return Occ.skillList();
         }

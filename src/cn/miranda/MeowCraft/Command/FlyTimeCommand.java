@@ -125,7 +125,7 @@ public final class FlyTimeCommand implements TabExecutor {
             return new ArrayList<>(Arrays.asList("set", "check", "abort"));
         }
         if (strings.length == 2) {
-            return Misc.getOnlinePlayerMames();
+            return Misc.getOnlinePlayerNames();
         }
         return new ArrayList();
     }
