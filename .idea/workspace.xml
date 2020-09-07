@@ -8,15 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/META-INF/MeowCraft.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +142,7 @@
       <workItem from="1599384472100" duration="1280000" />
       <workItem from="1599385975479" duration="4740000" />
       <workItem from="1599405683801" duration="406000" />
-      <workItem from="1599469880354" duration="8896000" />
+      <workItem from="1599469880354" duration="8974000" />
     </task>
     <servers />
   </component>

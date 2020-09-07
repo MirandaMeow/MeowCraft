@@ -4,6 +4,9 @@ Settings:
 TabPing:
   enabled: false
 
+DeadCost:
+  ratio: 10
+
 EggCatcher:
   cost: 100
   chance: 30
@@ -59,6 +62,3 @@ EggCatcher:
     WITHER: true
     WOLF: true
     ZOMBIE: true
-
-DeadCost:
-  ratio: 10

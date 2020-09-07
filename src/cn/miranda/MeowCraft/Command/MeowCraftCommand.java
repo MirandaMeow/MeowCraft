@@ -47,13 +47,6 @@ public final class MeowCraftCommand implements TabExecutor {
         }
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
-            int i = 0;
-            try {
-                i = Misc.getPing((Player) sender);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            MessageManager.Messager(sender, String.valueOf(i));
             MessageManager.Messager(sender, "§e测试完成");
             return true;
         }
