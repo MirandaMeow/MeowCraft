@@ -9,13 +9,14 @@
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/MeowCraft.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Task/TabPingTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/TabPingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/TabPingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Enum/EggCatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Enum/EggCatcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/temples.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/temples.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/temples.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/temples.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,15 +51,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1gaJwq31EAELFLX7emIt45qOY5h" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -66,17 +66,18 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/craftbukkit-1.11.2-R0.1-SNAPSHOT.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="项目" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -84,19 +85,7 @@
       <recent name="cn.miranda.MeowCraft.Manager" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-    <option name="showServicesTree" value="false" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -152,12 +141,22 @@
       <workItem from="1599405683801" duration="406000" />
       <workItem from="1599469880354" duration="11764000" />
       <workItem from="1599485350784" duration="4914000" />
-      <workItem from="1599490907851" duration="768000" />
+      <workItem from="1599490907851" duration="6932000" />
+      <workItem from="1599498380980" duration="85000" />
+      <workItem from="1599498482903" duration="547000" />
+      <workItem from="1599500700484" duration="57000" />
+      <workItem from="1599500869234" duration="48000" />
+      <workItem from="1599501066473" duration="97000" />
+      <workItem from="1599501195476" duration="148000" />
+      <workItem from="1599501355583" duration="381000" />
+      <workItem from="1599501769150" duration="25000" />
+      <workItem from="1599501819881" duration="142000" />
+      <workItem from="1599501972958" duration="1000000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Inspections" timestamp="1598536710926">
@@ -192,6 +191,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599269656537" />
+    <state x="552" y="179" key="#更新" timestamp="1599498763170">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#更新/0.0.1920.1040@0.0.1920.1040" timestamp="1599498763170" />
     <state x="552" y="179" key="#项目结构" timestamp="1599385046166">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -244,22 +247,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="226" width="549" height="583" key="RefactorJ.ExtractClass/0.0.1920.1040@0.0.1920.1040" timestamp="1599037053605" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1599480474146">
+    <state x="715" y="110" key="SettingsEditor" timestamp="1599502722448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599480474146" />
+    <state x="715" y="110" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599502722448" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1598409048124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1598409048124" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1599476546275">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1599502344156">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599476546275" />
-    <state x="658" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1598536936820">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599502344156" />
+    <state x="658" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1599497390277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="658" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1598536936820" />
+    <state x="658" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1599497390277" />
     <state x="589" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598809160626">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,10 +271,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599471322323" />
-    <state x="644" y="253" width="632" height="534" key="find.popup" timestamp="1599479614042">
+    <state x="644" y="253" width="632" height="534" key="find.popup" timestamp="1599492098229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="644" y="253" width="632" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599479614042" />
+    <state x="644" y="253" width="632" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599492098229" />
     <state x="702" y="138" key="refactoring.ChangeSignatureDialog" timestamp="1598794285104">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,6 +1,5 @@
 package cn.miranda.MeowCraft.Enum;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
@@ -129,9 +128,5 @@ public enum EggCatcher {
         for (EggCatcher i : EggCatcher.values()) {
             i.setAvailable(config.getBoolean(String.format("EggCatcher.mobs.%s", i.getEntityType().toString())));
         }
-    }
-
-    public static void flushEnum() {
-        ConfigMaganer.loadConfigs();
     }
 }

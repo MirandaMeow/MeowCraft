@@ -32,24 +32,25 @@ public class TempleAccessEvent implements Listener {
             }
             String templeName = TempleManager.giveTempleName(fixedLocation);
             if (playerData.getBoolean(String.format("%s.temples.%s", playerName, TempleManager.giveTempleName(fixedLocation)))) {
-                MessageManager.Messager(player, String.format("§e%s", temples.getString(String.format("%s.denyMessage", templeName))));
+                MessageManager.Messager(player, temples.getString(String.format("%s.denyMessage", templeName)));
                 return;
             }
             String title = temples.getString(String.format("%s.title", templeName));
-            executeTempleEffect(player, title);
+            String subtitle = temples.getString(String.format("%s.subtitle", templeName));
+            executeTempleEffect(player, title, subtitle);
             player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, fixedLocation, 100, 0, 2, 0);
+            player.getWorld().playSound(fixedLocation, Sound.ENTITY_WITHER_SPAWN, 10, 10);
             playerData.set(String.format("%s.temples.%s", playerName, templeName), true);
             ConfigMaganer.saveConfigs();
-            MessageManager.Messager(player, String.format("§e%s", temples.getString(String.format("%s.accessMessage", templeName))));
+            MessageManager.Messager(player, temples.getString(String.format("%s.accessMessage", templeName)));
         }
     }
 
-    private void executeTempleEffect(Player player, String title) {
+    private void executeTempleEffect(Player player, String title, String subtitle) {
         int setPlayerMaxHealth = (int) player.getMaxHealth() + 1;
         player.setMaxHealth(setPlayerMaxHealth);
         player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation(), 40, 0, 2, 0);
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 10);
-        player.sendTitle(title, "", 10, 70, 20);
+        player.sendTitle(title, subtitle, 10, 70, 20);
     }
-
 }

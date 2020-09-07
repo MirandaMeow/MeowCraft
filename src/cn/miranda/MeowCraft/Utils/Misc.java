@@ -1,6 +1,5 @@
 package cn.miranda.MeowCraft.Utils;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Task.RemoveEntityTask;
 import com.sun.istack.internal.NotNull;
 import org.bukkit.Bukkit;
@@ -106,7 +105,7 @@ public class Misc {
         int fixedY = (int) location.getY();
         int fixedZ = (int) location.getZ();
         Location fixedLocation = new Location(world, fixedX, fixedY, fixedZ);
-        fixedLocation.add(-0.5, 0, 0.5);
+        fixedLocation.add(0.5, 0, 0.5);
         return fixedLocation;
 
     }
@@ -135,7 +134,7 @@ public class Misc {
     }
 
     public static int getPing(Player player) throws Exception {
-        // 日后升级这里需要改版本号
+        // TODO 日后升级这里需要改版本号
         Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer");
         Object converted = craftPlayer.cast(player);
         Method handle = converted.getClass().getMethod("getHandle");
