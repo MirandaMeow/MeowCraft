@@ -15,8 +15,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temples;
+
 
 public class TempleAccessEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -24,7 +25,6 @@ public class TempleAccessEvent implements Listener {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getHand() == EquipmentSlot.HAND) {
-
             Location blockLocation = event.getClickedBlock().getLocation();
             Location fixedLocation = Misc.getFixedLocation(blockLocation);
             if (!TempleManager.TempleList.contains(fixedLocation)) {
@@ -32,21 +32,21 @@ public class TempleAccessEvent implements Listener {
             }
             String templeName = TempleManager.giveTempleName(fixedLocation);
             if (playerData.getBoolean(String.format("%s.temples.%s", playerName, TempleManager.giveTempleName(fixedLocation)))) {
-                MessageManager.Messager(player, String.format("§e%s", config.getString(String.format("Temples.%s.denyMessage", templeName))));
+                MessageManager.Messager(player, String.format("§e%s", temples.getString(String.format("%s.denyMessage", templeName))));
                 return;
             }
-            String title = config.getString(String.format("Temples.%s.title", templeName));
+            String title = temples.getString(String.format("%s.title", templeName));
             executeTempleEffect(player, title);
             player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, fixedLocation, 100, 0, 2, 0);
             playerData.set(String.format("%s.temples.%s", playerName, templeName), true);
             ConfigMaganer.saveConfigs();
-            MessageManager.Messager(player, String.format("§e%s", config.getString(String.format("Temples.%s.accessMessage", templeName))));
+            MessageManager.Messager(player, String.format("§e%s", temples.getString(String.format("%s.accessMessage", templeName))));
         }
     }
 
     private void executeTempleEffect(Player player, String title) {
-        int setplayerMaxhealth = (int) player.getMaxHealth() + 1;
-        player.setMaxHealth(setplayerMaxhealth);
+        int setPlayerMaxHealth = (int) player.getMaxHealth() + 1;
+        player.setMaxHealth(setPlayerMaxHealth);
         player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation(), 40, 0, 2, 0);
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 10);
         player.sendTitle(title, "", 10, 70, 20);

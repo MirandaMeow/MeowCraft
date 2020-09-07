@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class SelfExplodeEvent implements Listener {
@@ -36,16 +36,16 @@ public class SelfExplodeEvent implements Listener {
                 MessageManager.Messager(player, String.format("§c§l自爆§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.All_SelfExplode", playerName))));
                 return;
             }
-            if (!Occ.requireItem(player, Material.GUNPOWDER, config.getInt("OccSkillConfig.All_SelfExplode.cost", 64))) {
+            if (!Occ.requireItem(player, Material.GUNPOWDER, skills.getInt("All_SelfExplode.cost", 64))) {
                 MessageManager.Messager(player, "§c火药不足");
                 return;
             }
             MessageManager.Messager(player, "§c§l自爆§r§e发动!");
             activeSelfExplode(player);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.All_SelfExplode.cooldown", 300);
+            int coolDown = skills.getInt("All_SelfExplode.cooldown", 300);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.All_SelfExplode", playerName), coolDown);
-            int delay = config.getInt("OccSkillConfig.All_SelfExplode.delay", 10);
+            int delay = skills.getInt("All_SelfExplode.delay", 10);
             playerData.set(String.format("%s.temp.selfExplode", playerName), delay);
             playerData.set(String.format("%s.temp.selfExplodeCancel", playerName), false);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_SelfExplode");
@@ -55,7 +55,7 @@ public class SelfExplodeEvent implements Listener {
     }
 
     private void activeSelfExplode(Player player) {
-        int intensity = config.getInt("OccSkillConfig.All_SelfExplode.intensity", 5);
+        int intensity = skills.getInt("All_SelfExplode.intensity", 5);
         new SelfExplodeTask().SelfExplode(player, intensity);
     }
 }

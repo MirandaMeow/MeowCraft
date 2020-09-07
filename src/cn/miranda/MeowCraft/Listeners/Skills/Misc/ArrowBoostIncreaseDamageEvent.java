@@ -8,7 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 
 public class ArrowBoostIncreaseDamageEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -23,7 +23,7 @@ public class ArrowBoostIncreaseDamageEvent implements Listener {
         if (!ArrowBoostEvent.arrowIDs.contains(entity.getEntityId())) {
             return;
         }
-        int damage = config.getInt("OccSkillConfig.Ranger_ArrowBoost.damage", 2);
+        int damage = skills.getInt("Ranger_ArrowBoost.damage", 2);
         event.setDamage(damage);
     }
 }

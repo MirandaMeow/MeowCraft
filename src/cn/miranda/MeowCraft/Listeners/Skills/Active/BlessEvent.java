@@ -16,7 +16,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static cn.miranda.MeowCraft.Utils.Occ.getTarget;
 
@@ -43,14 +43,14 @@ public class BlessEvent implements Listener {
                 player.sendMessage("§c目标不是玩家");
                 return;
             }
-            if (!Occ.requireItem(player, Material.GLOWSTONE_DUST, config.getInt("OccSkillConfig.Voodoo_Bless.cost", 10))) {
+            if (!Occ.requireItem(player, Material.GLOWSTONE_DUST, skills.getInt("Voodoo_Bless.cost", 10))) {
                 MessageManager.Messager(player, "§c萤石粉不足");
                 return;
             }
             MessageManager.Messager(player, "§c§l巫神祝福§r§e发动!");
             activeBless(target);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.Voodoo_Bless.cooldown", 30);
+            int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Voodoo_Bless", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_Bless");
             ConfigMaganer.saveConfigs();
@@ -58,10 +58,10 @@ public class BlessEvent implements Listener {
     }
 
     private void activeBless(Player player) {
-        int duration = config.getInt("OccSkillConfig.Voodoo_Bless.duration", 30);
-        int level1 = config.getInt("OccSkillConfig.Voodoo_Bless.effect1_level", 1);
-        int level2 = config.getInt("OccSkillConfig.Voodoo_Bless.effect2_level", 1);
-        int level3 = config.getInt("OccSkillConfig.Voodoo_Bless.effect3_level", 1);
+        int duration = skills.getInt("Voodoo_Bless.duration", 30);
+        int level1 = skills.getInt("Voodoo_Bless.effect1_level", 1);
+        int level2 = skills.getInt("Voodoo_Bless.effect2_level", 1);
+        int level3 = skills.getInt("Voodoo_Bless.effect3_level", 1);
         player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, duration * 20, level1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, duration * 20, level2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, duration * 20, level3));

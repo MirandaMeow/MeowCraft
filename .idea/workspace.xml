@@ -7,17 +7,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/EggCatcherEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Command/MeowCraftCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Command/MeowCraftCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/RollDiceEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/RollDiceEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/EsotericaScrollCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/EsotericaScrollCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/RollDiceEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/RollDiceEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/ScrollUseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/ScrollUseEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ArrowBoostEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ArrowBoostEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/BlessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/BlessEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ChargeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ChargeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/DetectEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/DetectEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ImmuneEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ImmuneEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/SelfExplodeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/SelfExplodeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ThorAxeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ThorAxeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Misc/ArrowBoostIncreaseDamageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Misc/ArrowBoostIncreaseDamageEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ListenersManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ListenersManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/TempleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/TempleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/OccSkillsCoolDownTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/OccSkillsCoolDownTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Occ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Occ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +90,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/commons-lang-2.6.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/craftbukkit-1.11.2-R0.1-SNAPSHOT.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -147,7 +165,11 @@
       <workItem from="1599351289163" duration="2133000" />
       <workItem from="1599355400735" duration="156000" />
       <workItem from="1599361983360" duration="1238000" />
-      <workItem from="1599367267876" duration="10187000" />
+      <workItem from="1599367267876" duration="10945000" />
+      <workItem from="1599384472100" duration="1280000" />
+      <workItem from="1599385975479" duration="4740000" />
+      <workItem from="1599405683801" duration="406000" />
+      <workItem from="1599469880354" duration="2654000" />
     </task>
     <servers />
   </component>
@@ -167,10 +189,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599355137346" />
-    <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598506490742">
+    <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599469983101">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598506490742" />
+    <state x="315" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599469983101" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1599371281006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -187,10 +209,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599269656537" />
-    <state x="552" y="179" key="#项目结构" timestamp="1598348726816">
+    <state x="552" y="179" key="#项目结构" timestamp="1599385046166">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="179" key="#项目结构/0.0.1920.1040@0.0.1920.1040" timestamp="1598348726816" />
+    <state x="552" y="179" key="#项目结构/0.0.1920.1040@0.0.1920.1040" timestamp="1599385046166" />
     <state x="718" y="390" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1598519748766">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -199,10 +221,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598497422626" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1599354205143">
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1599386511173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599354205143" />
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599386511173" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1599355149769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -239,10 +261,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="226" width="549" height="583" key="RefactorJ.ExtractClass/0.0.1920.1040@0.0.1920.1040" timestamp="1599037053605" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1599362158829">
+    <state x="440" y="95" key="SettingsEditor" timestamp="1599387249389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599362158829" />
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599387249389" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1598409048124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -259,6 +281,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="589" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598809160626" />
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599471322323">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599471322323" />
     <state x="702" y="138" key="refactoring.ChangeSignatureDialog" timestamp="1598794285104">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -267,9 +293,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599056466799" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599316442332">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599386140393">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599316442332" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599386140393" />
   </component>
 </project>

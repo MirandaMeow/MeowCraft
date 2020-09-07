@@ -7,7 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temples;
 
 
 public class TempleManager {
@@ -15,12 +15,11 @@ public class TempleManager {
 
     public static void refreshTempleLists() {
         TempleList = new ArrayList();
-        ConfigurationSection TempleConfig = config.getConfigurationSection("Temples");
-        if (TempleConfig == null) {
+        if (temples == null) {
             return;
         }
-        for (Object key : TempleConfig.getValues(false).keySet()) {
-            ConfigurationSection temp = TempleConfig.getConfigurationSection(key.toString());
+        for (Object key : temples.getValues(false).keySet()) {
+            ConfigurationSection temp = temples.getConfigurationSection(key.toString());
             String world = temp.getString("world");
             double x_axis = temp.getDouble("x");
             double y_axis = temp.getDouble("y");
@@ -31,12 +30,11 @@ public class TempleManager {
     }
 
     public static String giveTempleName(Location location) {
-        ConfigurationSection TempleConfig = config.getConfigurationSection("Temples");
-        if (TempleConfig == null) {
+        if (temples == null) {
             return "undefined";
         }
-        for (Object key : TempleConfig.getValues(false).keySet()) {
-            ConfigurationSection temp = TempleConfig.getConfigurationSection(key.toString());
+        for (Object key : temples.getValues(false).keySet()) {
+            ConfigurationSection temp = temples.getConfigurationSection(key.toString());
             String world = temp.getString("world");
             double x_axis = temp.getDouble("x");
             double y_axis = temp.getDouble("y");

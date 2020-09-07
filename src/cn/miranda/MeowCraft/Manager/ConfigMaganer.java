@@ -1,7 +1,5 @@
 package cn.miranda.MeowCraft.Manager;
 
-import cn.miranda.MeowCraft.MeowCraft;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -12,13 +10,11 @@ import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
 public class ConfigMaganer {
     public static YamlConfiguration config;
+    public static YamlConfiguration skills;
     public static YamlConfiguration playerData;
+    public static YamlConfiguration temples;
     public static List<List> configList;
     public static File configFile;
-
-    public static void resetConfigList() {
-        configList = new ArrayList();
-    }
 
     public static YamlConfiguration loadFile(String fileName) {
         configFile = new File(plugin.getDataFolder(), fileName);
@@ -34,9 +30,11 @@ public class ConfigMaganer {
     }
 
     public static void loadConfigs() {
-        resetConfigList();
+        configList = new ArrayList();
         config = loadFile("config.yml");
+        skills = loadFile("skills.yml");
         playerData = loadFile("playerData.yml");
+        temples = loadFile("temples.yml");
     }
 
     public static void saveConfigs() {

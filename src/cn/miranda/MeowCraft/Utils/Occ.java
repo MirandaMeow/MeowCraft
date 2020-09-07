@@ -16,7 +16,7 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class Occ {
@@ -56,12 +56,11 @@ public class Occ {
 
     public static List<String> skillList() {
         List<String> skillListName = new ArrayList<String>();
-        ConfigurationSection skillConfig = config.getConfigurationSection("OccSkillConfig");
-        Map<String, Object> skillConfigMap = skillConfig.getValues(true);
+        Map<String, Object> skillConfigMap = skills.getValues(true);
         for (Object key : skillConfigMap.keySet()) {
             String path = key.toString();
             if (path.contains("name")) {
-                skillListName.add(skillConfig.getString(path));
+                skillListName.add(skills.getString(path));
             }
         }
         return skillListName;
@@ -69,11 +68,10 @@ public class Occ {
 
     public static String getSkillID(String skill) {
         String path = null;
-        ConfigurationSection skillConfig = config.getConfigurationSection("OccSkillConfig");
-        Map<String, Object> skillConfigMap = skillConfig.getValues(false);
+        Map<String, Object> skillConfigMap = skills.getValues(false);
         for (Object key : skillConfigMap.keySet()) {
             path = key.toString();
-            if (skillConfig.getString(String.format("%s.name", path)).contains(skill)) {
+            if (skills.getString(String.format("%s.name", path)).contains(skill)) {
                 break;
             }
         }
@@ -81,20 +79,18 @@ public class Occ {
     }
 
     public static List getSkillLore(String skill) {
-        ConfigurationSection skillConfig = config.getConfigurationSection("OccSkillConfig");
         String path = getSkillID(skill);
-        return skillConfig.getList(String.format("%s.lore", path));
+        return skills.getList(String.format("%s.lore", path));
     }
 
     public static List getSkillOccGroup(String skill) {
-        ConfigurationSection skillConfig = config.getConfigurationSection("OccSkillConfig");
         String path = getSkillID(skill);
-        return skillConfig.getList(String.format("%s.group", path));
+        return skills.getList(String.format("%s.group", path));
     }
 
     public static boolean isFitOcc(Player player, String skill) {
         String playerName = player.getName();
-        List fitOcc = config.getList(String.format("OccSkillConfig.%s.group", skill));
+        List fitOcc = skills.getList(String.format("%s.group", skill));
         String playerOcc = playerData.getString(String.format("%s.occConfig.name", playerName));
         return fitOcc.contains(playerOcc);
     }
@@ -181,7 +177,7 @@ public class Occ {
     }
 
     public static String getSkillChineseById(String skillID) {
-        return config.getString(String.format("OccSkillConfig.%s.name", skillID));
+        return skills.getString(String.format("%s.name", skillID));
     }
 
     public static List getPlayerSkills(Player player) {

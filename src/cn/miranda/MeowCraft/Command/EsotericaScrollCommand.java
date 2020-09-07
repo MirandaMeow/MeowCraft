@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 
 public class EsotericaScrollCommand implements TabExecutor {
     @Override
@@ -52,7 +52,7 @@ public class EsotericaScrollCommand implements TabExecutor {
         ItemMeta scrollMeta = esotericaScroll.getItemMeta();
         scrollMeta.setDisplayName("§9秘传之书");
         ArrayList<String> loreList = new ArrayList<>();
-        loreList.add(String.format("§3可习得技能 §c%s", config.getString(String.format("OccSkillConfig.%s.name", type))));
+        loreList.add(String.format("§3可习得技能 §c%s", skills.getString(String.format("%s.name", type))));
         loreList.add("");
         for (Object s : lore) {
             loreList.add(s.toString());

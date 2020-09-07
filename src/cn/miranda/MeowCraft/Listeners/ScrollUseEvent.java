@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class ScrollUseEvent implements Listener {
@@ -43,7 +43,7 @@ public class ScrollUseEvent implements Listener {
             List occ = Occ.getSkillOccGroup(skillChineseName);
             if (!player.hasPermission("occ.bypass")) {
                 if (!occ.contains(playerOcc)) {
-                    MessageManager.Messager(player, config.getString(String.format("OccSkillConfig.%s.notFitMessage", skillID)));
+                    MessageManager.Messager(player, skills.getString(String.format("%s.notFitMessage", skillID)));
                     return;
                 }
             }

@@ -10,7 +10,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class ConcentrateEvent implements Listener {
@@ -25,7 +25,7 @@ public class ConcentrateEvent implements Listener {
         if (!Occ.isFitOcc(player, "All_Concentrate") || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
             return;
         }
-        int chance = config.getInt("OccSkillConfig.All_Concentrate.chance", 20);
+        int chance = skills.getInt("OccSkillConfig.All_Concentrate.chance", 20);
         int currentProbability = Misc.randomNum(0, 100);
         if (currentProbability > chance) {
             return;

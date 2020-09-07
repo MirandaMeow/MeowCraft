@@ -12,7 +12,7 @@ public class MeowCraft extends JavaPlugin {
 
     public MeowCraft() {
         plugin = this;
-        Version = "0.1.0";
+        Version = "0.1.1";
     }
 
     public void onEnable() {

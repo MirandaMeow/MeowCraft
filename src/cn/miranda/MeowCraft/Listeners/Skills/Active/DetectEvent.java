@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class DetectEvent implements Listener {
@@ -39,7 +39,7 @@ public class DetectEvent implements Listener {
             MessageManager.Messager(player, "§c§l地质勘测§r§e发动!");
             activeDetect(player);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.Artisan_Detect.cooldown", 30);
+            int coolDown = skills.getInt("Artisan_Detect.cooldown", 30);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Artisan_Detect", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Artisan_Detect");
             ConfigMaganer.saveConfigs();
@@ -47,7 +47,7 @@ public class DetectEvent implements Listener {
     }
 
     private void activeDetect(Player player) {
-        int settings_radius = config.getInt("OccSkillConfig.Artisan_Detect.radius", 20);
+        int settings_radius = skills.getInt("Artisan_Detect.radius", 20);
         Location playerLocation = player.getLocation();
         int playerX = (int) Math.round(playerLocation.getX());
         int playerY = (int) Math.round(playerLocation.getY());

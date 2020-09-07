@@ -12,11 +12,11 @@ public class RollDiceEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void RollDiceEvent(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        String playerName = player.getName();
+        String playerDisplayName = player.getDisplayName();
         String message = event.getMessage();
         String result;
         try {
-            result = RollDice.getResultMessage(playerName, message);
+            result = RollDice.getResultMessage(playerDisplayName, message);
         } catch (ArithmeticException e) {
             return;
         }

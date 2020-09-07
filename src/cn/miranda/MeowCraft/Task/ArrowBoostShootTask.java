@@ -4,16 +4,14 @@ import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
-import sun.security.mscapi.CPublicKey;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class ArrowBoostShootTask {
@@ -23,10 +21,10 @@ public class ArrowBoostShootTask {
         Vector z_axis = new Vector(0, 0, 1);
         Vector x_axis = new Vector(1, 0, 0);
         Vector y_axis = new Vector(0, 1, 0);
-        int settings_range = config.getInt("OccSkillConfig.Ranger_ArrowBoost.range", 25);
-        int settings_per_wave_amount = config.getInt("OccSkillConfig.Ranger_ArrowBoost.per_wave_amount", 5);
-        int settings_wave = config.getInt("OccSkillConfig.Ranger_ArrowBoost.wave", 5);
-        long settings_inverval = config.getLong("OccSkillConfig.Ranger_ArrowBoost.interval", 5);
+        int settings_range = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.range", 25);
+        int settings_per_wave_amount = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.per_wave_amount", 5);
+        int settings_wave = skills.getInt("OccSkillConfig.Ranger_ArrowBoost.wave", 5);
+        long settings_inverval = skills.getLong("OccSkillConfig.Ranger_ArrowBoost.interval", 5);
         List arrowTargetEntityIDs = new ArrayList();
         final int[] wave_count = {0};
         String playerName = player.getName();

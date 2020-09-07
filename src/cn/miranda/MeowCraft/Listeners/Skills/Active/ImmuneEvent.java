@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class ImmuneEvent implements Listener {
@@ -36,14 +36,14 @@ public class ImmuneEvent implements Listener {
                 MessageManager.Messager(player, String.format("§c§l神圣护甲§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.All_Immune", playerName))));
                 return;
             }
-            if (!Occ.requireItem(player, Material.DIAMOND, config.getInt("OccSkillConfig.All_Immune.cost", 25))) {
+            if (!Occ.requireItem(player, Material.DIAMOND, skills.getInt("All_Immune.cost", 25))) {
                 MessageManager.Messager(player, "§c钻石不足");
                 return;
             }
             MessageManager.Messager(player, "§c§l神圣护甲§r§e发动!");
             activeImmune(player);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.All_Immune.cooldown", 30);
+            int coolDown = skills.getInt("All_Immune.cooldown", 30);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.All_Immune", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_Immune");
             ConfigMaganer.saveConfigs();
@@ -51,7 +51,7 @@ public class ImmuneEvent implements Listener {
     }
 
     private void activeImmune(Player player) {
-        int duration = config.getInt("OccSkillConfig.All_Immune.duration", 10);
+        int duration = skills.getInt("All_Immune.duration", 10);
         player.setGlowing(true);
         player.setInvulnerable(true);
         new ImmuneTask().RemoveImmune(player, duration * 20);

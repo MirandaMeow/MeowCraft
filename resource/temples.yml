@@ -1,0 +1,8 @@
+猫子神殿:
+  world: world
+  x: 500.5
+  y: 70
+  z: 500.5
+  accessMessage: 访问成功提示
+  denyMessage: 重复访问提示
+  title: 标题提示

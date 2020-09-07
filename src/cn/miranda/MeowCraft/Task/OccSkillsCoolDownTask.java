@@ -6,7 +6,7 @@ import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static org.bukkit.Bukkit.getScheduler;
 
@@ -26,7 +26,7 @@ public class OccSkillsCoolDownTask {
                 playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill), timeLeft);
                 if (playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill)) <= 0) {
                     playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill), null);
-                    String skillChineseName = config.getString(String.format("OccSkillConfig.%s.name", skill));
+                    String skillChineseName = skills.getString(String.format("OccSkillConfig.%s.name", skill));
                     MessageManager.Messager(player, String.format("§c§l%s§r§e已经准备就绪", skillChineseName));
                     ConfigMaganer.saveConfigs();
                     task.cancel();

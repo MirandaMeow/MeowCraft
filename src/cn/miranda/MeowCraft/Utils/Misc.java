@@ -14,6 +14,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -103,7 +105,7 @@ public class Misc {
         int fixedY = (int) location.getY();
         int fixedZ = (int) location.getZ();
         Location fixedLocation = new Location(world, fixedX, fixedY, fixedZ);
-        fixedLocation.add(0.5, 0, 0.5);
+        fixedLocation.add(-0.5, 0, 0.5);
         return fixedLocation;
 
     }
@@ -131,5 +133,15 @@ public class Misc {
     public static int randomNum(int min, int max) {
         Random rand = new Random();
         return rand.nextInt(max - min + 1) + min;
+    }
+
+    public static int getPing(Player player) throws Exception {
+        Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer");
+        Object converted = craftPlayer.cast(player);
+        Method handle = converted.getClass().getMethod("getHandle");
+        Object entityPlayer = handle.invoke(converted);
+        Field pingField = entityPlayer.getClass().getField("ping");
+        int playerPing = pingField.getInt(entityPlayer);
+        return Math.min(playerPing, 9999);
     }
 }

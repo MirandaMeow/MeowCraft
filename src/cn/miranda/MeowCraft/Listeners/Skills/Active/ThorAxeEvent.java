@@ -17,7 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class ThorAxeEvent implements Listener {
@@ -44,14 +44,14 @@ public class ThorAxeEvent implements Listener {
                 MessageManager.Messager(player, String.format("§c§l雷神战斧§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.Thug_ThorAxe", playerName))));
                 return;
             }
-            if (!Occ.requireItem(player, Material.GOLD_INGOT, config.getInt("OccSkillConfig.Thug_ThorAxe.cost", 1))) {
+            if (!Occ.requireItem(player, Material.GOLD_INGOT, skills.getInt("Thug_ThorAxe.cost", 1))) {
                 MessageManager.Messager(player, "§c金锭不足");
                 return;
             }
             MessageManager.Messager(player, "§c§l雷神战斧§r§e发动!");
             activeThorAxe(player);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.Thug_ThorAxe.cooldown", 20);
+            int coolDown = skills.getInt("Thug_ThorAxe.cooldown", 20);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Thug_ThorAxe", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Thug_ThorAxe");
             ConfigMaganer.saveConfigs();
@@ -59,7 +59,7 @@ public class ThorAxeEvent implements Listener {
     }
 
     private void activeThorAxe(Player player) {
-        int settings_distance = config.getInt("OccSkillConfig.Thug_ThorAxe.distance", 2);
+        int settings_distance = skills.getInt("Thug_ThorAxe.distance", 2);
         Misc.throwSomething(player, Material.GOLDEN_AXE, settings_distance, 20, true);
     }
 }

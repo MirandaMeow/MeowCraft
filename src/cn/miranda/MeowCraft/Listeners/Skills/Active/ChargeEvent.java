@@ -19,7 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 
 public class ChargeEvent implements Listener {
@@ -46,14 +46,14 @@ public class ChargeEvent implements Listener {
                 MessageManager.Messager(player, String.format("§c§l无畏冲锋§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.Swordsman_Charge", playerName))));
                 return;
             }
-            if (!Occ.requireItem(player, Material.IRON_INGOT, config.getInt("OccSkillConfig.Swordsman_Charge.cost", 1))) {
+            if (!Occ.requireItem(player, Material.IRON_INGOT, skills.getInt("Swordsman_Charge.cost", 1))) {
                 MessageManager.Messager(player, "§c铁锭不足");
                 return;
             }
             MessageManager.Messager(player, "§c§l无畏冲锋§r§e发动!");
             activeCharge(player);
             Effect.activeSkillEffect(player);
-            int coolDown = config.getInt("OccSkillConfig.Swordsman_Charge.cooldown", 30);
+            int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);
             playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Swordsman_Charge", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Swordsman_Charge");
             ConfigMaganer.saveConfigs();
@@ -61,7 +61,7 @@ public class ChargeEvent implements Listener {
     }
 
     private void activeCharge(Player player) {
-        int settings_duration = config.getInt("OccSkillConfig.Swordsman_Charge.duration", 20);
+        int settings_duration = skills.getInt("Swordsman_Charge.duration", 20);
         Misc.moveForward(player, 4);
         player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, settings_duration * 20, 0));
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, settings_duration * 20, 3));

@@ -4,9 +4,11 @@ import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -45,6 +47,13 @@ public final class MeowCraftCommand implements TabExecutor {
         }
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
+            int i = 0;
+            try {
+                i = Misc.getPing((Player) sender);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            MessageManager.Messager(sender, String.valueOf(i));
             MessageManager.Messager(sender, "§e测试完成");
             return true;
         }
