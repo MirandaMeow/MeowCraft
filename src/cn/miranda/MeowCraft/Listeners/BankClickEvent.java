@@ -16,7 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
@@ -104,13 +104,13 @@ public class BankClickEvent implements Listener {
                     return;
                 }
                 String playerTownChinese = Misc.getPlayerTownChinese(player);
-                double townAccount = config.getDouble(String.format("Towns.%s.publicAccount", playerTownChinese), 0.0);
+                double townAccount = towns.getDouble(String.format("%s.publicAccount", playerTownChinese), 0.0);
                 if (townAccount == 0) {
                     MessageManager.Messager(player, "§c税收账户金额为零");
                     return;
                 }
                 econ.depositPlayer(player, townAccount);
-                config.set(String.format("Towns.%s.publicAccount", playerTownChinese), 0);
+                towns.set(String.format("%s.publicAccount", playerTownChinese), 0);
                 ConfigMaganer.saveConfigs();
                 player.closeInventory();
                 MessageManager.Messager(player, String.format("§e你提取了税收账户的全部金额 §b%s", Misc.stringFormat(townAccount)));
@@ -123,43 +123,43 @@ public class BankClickEvent implements Listener {
                 player.openInventory(ChestManager.rateSettingPanel());
                 return;
             case "§e将税率设为 §b0.1%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 0.1);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 0.1);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b0.3%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 0.3);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 0.3);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b0.5%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 0.5);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 0.5);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b1.0%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 1.0);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 1.0);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b1.5%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 1.5);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 1.5);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b2.0%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 2.0);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 2.0);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b2.5%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 2.5);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 2.5);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b5.0%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 5.0);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 5.0);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b10.0%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 10.0);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 10.0);
                 ConfigMaganer.saveConfigs();
                 return;
             case "§e将税率设为 §b50.0%":
-                config.set(String.format("Towns.%s.rate", Misc.getPlayerTownChinese(player)), 50.0);
+                towns.set(String.format("%s.rate", Misc.getPlayerTownChinese(player)), 50.0);
                 ConfigMaganer.saveConfigs();
                 return;
             default:
@@ -191,7 +191,7 @@ public class BankClickEvent implements Listener {
             }
             int valueRate = Integer.parseInt(loreList.get(0).split(" ")[1].substring(2));
             String playerTownChinese = Misc.getPlayerTownChinese(player);
-            double townRate = config.getDouble(String.format("Towns.%s.rate", playerTownChinese), 0.1);
+            double townRate = towns.getDouble(String.format("%s.rate", playerTownChinese), 0.1);
             double commission = valueRate * townRate / 100;
             if (commission < 0.1) {
                 commission = 0.1;

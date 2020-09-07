@@ -13,6 +13,7 @@ public class ConfigMaganer {
     public static YamlConfiguration skills;
     public static YamlConfiguration playerData;
     public static YamlConfiguration temples;
+    public static YamlConfiguration towns;
     public static List<List> configList;
     public static File configFile;
 
@@ -35,6 +36,7 @@ public class ConfigMaganer {
         skills = loadFile("skills.yml");
         playerData = loadFile("playerData.yml");
         temples = loadFile("temples.yml");
+        towns = loadFile("towns.yml");
     }
 
     public static void saveConfigs() {

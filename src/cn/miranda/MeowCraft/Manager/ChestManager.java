@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
@@ -50,12 +50,12 @@ public class ChestManager {
         String playerTown = Misc.getPlayerTownChinese(player);
         String playerMoney_String = Misc.stringFormat(econ.getBalance(player));
         String playerBank_String = Misc.stringFormat(playerData.getInt(String.format("%s.bank", playName), 0));
-        String townRate = Misc.stringFormat(config.getDouble(String.format("Towns.%s.rate", playerTown), 5.0));
-        String townPublicAccount = Misc.stringFormat(config.getDouble(String.format("Towns.%s.publicAccount", playerTown), 0.0));
+        String townRate = Misc.stringFormat(towns.getDouble(String.format("%s.rate", playerTown), 5.0));
+        String townPublicAccount = Misc.stringFormat(towns.getDouble(String.format("%s.publicAccount", playerTown), 0.0));
         Inventory panel = initInventory(String.format("§9小镇银行 §b- §c%s", Misc.getPlayerTownChinese(player)));
         ItemStack depositButton = ItemWithSettings(Material.GOLD_INGOT, "§6存款服务", null);
         ItemStack withdrawButton = ItemWithSettings(Material.IRON_INGOT, "§6取款服务", null);
-        ItemStack checkButton = ItemWithSettings(Material.EMERALD, "§6查询账户", new ArrayList(Arrays.asList(String.format("§e目前持有: §b%s", playerMoney_String), String.format("§e银行存款: §b%s", playerBank_String))));
+        ItemStack checkButton = ItemWithSettings(Material.EMERALD, "§6账户信息", new ArrayList(Arrays.asList(String.format("§e目前持有: §b%s", playerMoney_String), String.format("§e银行存款: §b%s", playerBank_String))));
         ItemStack publicButton = ItemWithSettings(Material.BRICK_STAIRS, "§6小镇税收账户", new ArrayList<>(Arrays.asList(String.format("§e小镇税收收入: §b%s", townPublicAccount), String.format("§e小镇税率: §b%s%%", townRate), "§c只有镇长可以提取")));
         ItemStack rateButton = ItemWithSettings(Material.BLAZE_POWDER, "§6小镇税率调整", new ArrayList<>(Arrays.asList("§c只有镇长可以使用")));
         panel.setItem(20, depositButton);

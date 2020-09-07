@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -23,6 +22,7 @@ import java.util.Random;
 
 import static org.bukkit.Bukkit.getOnlinePlayers;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 
 public class Misc {
     public static Player player(@NotNull String playerName) {
@@ -112,18 +112,16 @@ public class Misc {
 
     public static List getTownsPermission() {
         List<String> permList = new ArrayList<>();
-        ConfigurationSection towns = config.getConfigurationSection("Towns");
         for (Object key : towns.getValues(false).keySet()) {
-            String perm = config.getString(String.format("Towns.%s.permission", key.toString()));
+            String perm = towns.getString(String.format("%s.permission", key.toString()));
             permList.add(perm);
         }
         return permList;
     }
 
     public static String getPlayerTownChinese(Player player) {
-        ConfigurationSection towns = config.getConfigurationSection("Towns");
         for (Object key : towns.getValues(false).keySet()) {
-            if (player.hasPermission(config.getString(String.format("Towns.%s.permission", key.toString())))) {
+            if (player.hasPermission(towns.getString(String.format("%s.permission", key.toString())))) {
                 return key.toString();
             }
         }

@@ -59,21 +59,3 @@ EggCatcher:
 
 DeadCost:
   ratio: 10
-
-Towns:
-  鹿月镇:
-    permission: town.luyue
-    rate: 0.1
-    publicAccount: 100.0
-  千水镇:
-    permission: town.qianshui
-    rate: 0.1
-    publicAccount: 100.0
-  海风镇:
-    permission: town.haifeng
-    rate: 0.1
-    publicAccount: 100.0
-  珏上镇:
-    permission: town.jueshang
-    rate: 0.1
-    publicAccount: 100.0

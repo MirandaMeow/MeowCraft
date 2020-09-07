@@ -9,33 +9,14 @@
     <list default="true" id="609c53b8-e398-4235-b68b-151c9fa9e7f1" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/MeowCraft.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/MeowCraft.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Command/MeowCraftCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Command/MeowCraftCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/RollDiceEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Listeners/RollDiceEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MeowCraft/cn/miranda/MeowCraft/Utils/Misc.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/EsotericaScrollCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/EsotericaScrollCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Command/MeowCraftCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankClickEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/RollDiceEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/RollDiceEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/ScrollUseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/ScrollUseEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ArrowBoostEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ArrowBoostEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/BlessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/BlessEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ChargeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ChargeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/DetectEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/DetectEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ImmuneEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ImmuneEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/SelfExplodeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/SelfExplodeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ThorAxeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Active/ThorAxeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Misc/ArrowBoostIncreaseDamageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Misc/ArrowBoostIncreaseDamageEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/Skills/Passive/ConcentrateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/TempleAccessEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankCloseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Listeners/BankCloseEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ChestManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/TempleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/TempleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/MeowCraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/OccSkillsCoolDownTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/OccSkillsCoolDownTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Occ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Occ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +54,7 @@
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Task/ArrowBoostShootTask.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Enum/EggCatcher.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Manager/ConfigMaganer.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/cn/miranda/MeowCraft/Utils/Misc.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1gaJwq31EAELFLX7emIt45qOY5h" />
   <component name="ProjectViewState">
@@ -169,7 +151,7 @@
       <workItem from="1599384472100" duration="1280000" />
       <workItem from="1599385975479" duration="4740000" />
       <workItem from="1599405683801" duration="406000" />
-      <workItem from="1599469880354" duration="2654000" />
+      <workItem from="1599469880354" duration="3789000" />
     </task>
     <servers />
   </component>
