@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.1.2
+version: 0.1.3
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [ProtocolLib, Vault, mcMMO]
@@ -19,7 +19,7 @@ commands:
   convertexp:
     description: 互转经验和金钱模块
     usage: /convertexp <tomoney|toexp> <exp|money> <money|exp>
-    permissions: meowcraft.convert
+    permissions: convert.admin
   imprint:
     description: 烙印卷轴模块
     usage: /imprint [player] <amount>
@@ -52,3 +52,7 @@ commands:
     description: 银行模块
     usage: /bank
     permissions: bank.admin
+  tabping:
+    description: 延迟显示模块
+    usage: /tabping
+    permissions: tabping.admin

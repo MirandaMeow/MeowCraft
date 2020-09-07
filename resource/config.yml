@@ -1,6 +1,9 @@
 Settings:
   prefix: true
 
+TabPing:
+  enabled: true
+
 EggCatcher:
   cost: 100
   chance: 30

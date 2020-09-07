@@ -17,7 +17,7 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 public final class ConvertExpCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("meowcraft.convert")) {
+        if (!sender.hasPermission("convert.admin")) {
             MessageManager.Messager(sender, "§c你没有权限");
             return true;
         }

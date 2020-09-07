@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Random;
 
 import static org.bukkit.Bukkit.getOnlinePlayers;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 
 public class Misc {
@@ -134,6 +133,7 @@ public class Misc {
     }
 
     public static int getPing(Player player) throws Exception {
+        // 日后升级这里需要改版本号
         Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer");
         Object converted = craftPlayer.cast(player);
         Method handle = converted.getClass().getMethod("getHandle");
