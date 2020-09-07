@@ -26,7 +26,7 @@ public class OccSkillsCoolDownTask {
                 playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill), timeLeft);
                 if (playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill)) <= 0) {
                     playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.%s", playerName, skill), null);
-                    String skillChineseName = skills.getString(String.format("OccSkillConfig.%s.name", skill));
+                    String skillChineseName = skills.getString(String.format("%s.name", skill));
                     MessageManager.Messager(player, String.format("§c§l%s§r§e已经准备就绪", skillChineseName));
                     ConfigMaganer.saveConfigs();
                     task.cancel();
