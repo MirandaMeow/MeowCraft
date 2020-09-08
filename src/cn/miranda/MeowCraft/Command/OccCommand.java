@@ -94,6 +94,6 @@ public final class OccCommand implements TabExecutor {
         if (strings.length == 1) {
             return new ArrayList<>(Arrays.asList("on", "off", "reset"));
         }
-        return new ArrayList();
+        return new ArrayList<String>();
     }
 }

@@ -82,6 +82,6 @@ public final class ConvertExpCommand implements TabExecutor {
         if (strings.length == 1) {
             return new ArrayList<>(Arrays.asList("tomoney", "toexp"));
         }
-        return new ArrayList();
+        return new ArrayList<String>();
     }
 }

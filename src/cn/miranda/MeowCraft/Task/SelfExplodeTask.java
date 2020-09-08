@@ -1,11 +1,12 @@
 package cn.miranda.MeowCraft.Task;
 
+import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class SelfExplodeTask {
@@ -16,30 +17,31 @@ public class SelfExplodeTask {
             @Override
             public void run() {
                 String playerName = player.getName();
-                if (playerData.getBoolean(String.format("%s.temp.selfExplodeCancel", playerName))) {
-                    playerData.set(String.format("%s.temp.selfExplode", playerName), null);
-                    playerData.set(String.format("%s.temp.selfExplodeCancel", playerName), null);
+                if (temp.getBoolean(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName))) {
+                    temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), null);
+                    temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), null);
                     task.cancel();
                     return;
                 }
-                int playerTimeLeft = playerData.getInt(String.format("%s.temp.selfExplode", playerName));
-                if (playerData.getInt(String.format("%s.temp.selfExplode", playerName), 5) == 0) {
+                if (temp.getInt(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), 5) < 0) {
+                    task.cancel();
+                    return;
+                }
+                int playerTimeLeft = temp.getInt(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName));
+                if (temp.getInt(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), 5) == 0) {
                     MessageManager.Messager(player, "§e安拉胡阿克巴!");
-                    playerData.set(String.format("%s.temp.selfExplode", playerName), null);
-                    playerData.set(String.format("%s.temp.selfExplodeCancel", playerName), null);
+                    temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), null);
+                    temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), null);
+                    ConfigMaganer.saveConfigs();
                     player.getWorld().createExplosion(player.getLocation(), intensity);
                     player.setGlowing(false);
                     player.setHealth(0);
                     task.cancel();
                     return;
                 }
-                if (playerTimeLeft % 2 == 0) {
-                    player.setGlowing(true);
-                } else {
-                    player.setGlowing(false);
-                }
+                player.setGlowing(playerTimeLeft % 2 == 0);
                 MessageManager.Messager(player, String.format("§c倒计时剩余 §b%d §c秒", playerTimeLeft));
-                playerData.set(String.format("%s.temp.selfExplode", playerName), playerTimeLeft - 1);
+                temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), playerTimeLeft - 1);
             }
         }, 0L, 20);
     }

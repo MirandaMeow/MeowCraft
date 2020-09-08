@@ -1,6 +1,7 @@
 package cn.miranda.MeowCraft.Manager;
 
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.Town;
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
@@ -47,12 +48,12 @@ public class ChestManager {
 
     public static Inventory mainPanel(Player player) {
         String playName = player.getName();
-        String playerTown = Misc.getPlayerTownChinese(player);
+        String playerTown = Town.getPlayerTownChinese(player);
         String playerMoney_String = Misc.stringFormat(econ.getBalance(player));
         String playerBank_String = Misc.stringFormat(playerData.getInt(String.format("%s.bank", playName), 0));
         String townRate = Misc.stringFormat(towns.getDouble(String.format("%s.rate", playerTown), 5.0));
         String townPublicAccount = Misc.stringFormat(towns.getDouble(String.format("%s.publicAccount", playerTown), 0.0));
-        Inventory panel = initInventory(String.format("§9小镇银行 §b- §c%s", Misc.getPlayerTownChinese(player)));
+        Inventory panel = initInventory(String.format("§9小镇银行 §b- §c%s", Town.getPlayerTownChinese(player)));
         ItemStack depositButton = ItemWithSettings(Material.GOLD_INGOT, "§6存款服务", null);
         ItemStack withdrawButton = ItemWithSettings(Material.IRON_INGOT, "§6取款服务", null);
         ItemStack checkButton = ItemWithSettings(Material.EMERALD, "§6账户信息", new ArrayList(Arrays.asList(String.format("§e目前持有: §b%s", playerMoney_String), String.format("§e银行存款: §b%s", playerBank_String))));

@@ -20,6 +20,8 @@ public class CommandManager {
         registerTownBank();
         registerOccSkillCommand();
         registerTabPingCommand();
+        registerTownApplyCommand();
+        registerTownAdminCommand();
     }
 
     private static void registerMeowPluginHelp() {
@@ -80,5 +82,14 @@ public class CommandManager {
     private static void registerTabPingCommand() {
         PluginCommand command = plugin.getCommand("tabping");
         command.setExecutor(new TabPingCommand());
+    }
+
+    private static void registerTownApplyCommand() {
+        PluginCommand command = plugin.getCommand("townapply");
+        command.setExecutor(new TownApplyCommand());
+    }
+    private static void registerTownAdminCommand() {
+        PluginCommand command = plugin.getCommand("townadmin");
+        command.setExecutor(new TownAdminCommand());
     }
 }

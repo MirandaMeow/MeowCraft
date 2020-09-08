@@ -3,6 +3,7 @@ package cn.miranda.MeowCraft.Command;
 import cn.miranda.MeowCraft.Manager.ChestManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.Town;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -20,7 +21,7 @@ public class TownBankCommand implements TabExecutor {
         }
         Player player = (Player) sender;
         boolean pass = false;
-        for (Object p : Misc.getTownsPermission()) {
+        for (Object p : Town.getTownsPermission()) {
             String perm = p.toString();
             if (player.hasPermission(perm)) {
                 pass = true;
@@ -41,6 +42,6 @@ public class TownBankCommand implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        return new ArrayList();
+        return new ArrayList<String>();
     }
 }

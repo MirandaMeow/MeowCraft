@@ -78,6 +78,6 @@ public final class HPsetCommand implements TabExecutor {
         if (strings.length == 1) {
             return Misc.getOnlinePlayerNames();
         }
-        return new ArrayList();
+        return new ArrayList<String>();
     }
 }

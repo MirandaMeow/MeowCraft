@@ -14,3 +14,7 @@
   permission: town.jueshang
   rate: 0.1
   publicAccount: 100.0
+拾锦镇:
+  permission: town.shijin
+  rate: 0.1
+  publicAccount: 100.0

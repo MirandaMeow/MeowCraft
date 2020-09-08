@@ -57,6 +57,6 @@ public final class MeowCraftCommand implements TabExecutor {
         if (strings.length == 1) {
             return new ArrayList<>(Arrays.asList("help", "reload", "save"));
         }
-        return new ArrayList<>();
+        return new ArrayList<String>();
     }
 }

@@ -69,6 +69,6 @@ public class EsotericaScrollCommand implements TabExecutor {
         if (strings.length == 2) {
             return Occ.skillList();
         }
-        return new ArrayList();
+        return new ArrayList<String>();
     }
 }

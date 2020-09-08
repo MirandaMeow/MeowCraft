@@ -16,8 +16,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
 import static cn.miranda.MeowCraft.Utils.Occ.getTarget;
 
 public class BlessEvent implements Listener {
@@ -34,8 +33,8 @@ public class BlessEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Voodoo_Bless", playerName)) == null) {
                 return;
             }
-            if (playerData.get(String.format("%s.occConfig.occSkills.occCoolDown.Voodoo_Bless", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l巫神祝福§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.Voodoo_Bless", playerName))));
+            if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName)) != null) {
+                MessageManager.Messager(player, String.format("§c§l巫神祝福§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
                 return;
             }
             Player target = (Player) getTarget(player);
@@ -51,7 +50,7 @@ public class BlessEvent implements Listener {
             activeBless(target);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Voodoo_Bless", playerName), coolDown);
+            temp.set(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_Bless");
             ConfigMaganer.saveConfigs();
         }

@@ -17,8 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
 
 public class ArrowBoostEvent implements Listener {
 
@@ -35,8 +34,8 @@ public class ArrowBoostEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Ranger_ArrowBoost", playerName)) == null) {
                 return;
             }
-            if (playerData.get(String.format("%s.occConfig.occSkills.occCoolDown.Ranger_ArrowBoost", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.Ranger_ArrowBoost", playerName))));
+            if (temp.get(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName)) != null) {
+                MessageManager.Messager(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.ARROW, skills.getInt("Ranger_ArrowBoost.cost", 25))) {
@@ -47,7 +46,7 @@ public class ArrowBoostEvent implements Listener {
             activeArrowBoost(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Ranger_ArrowBoost.cooldown", 30);
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Ranger_ArrowBoost", playerName), coolDown);
+            temp.set(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Ranger_ArrowBoost");
             ConfigMaganer.saveConfigs();
         }

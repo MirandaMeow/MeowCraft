@@ -19,8 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
 
 public class ChargeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -42,8 +41,8 @@ public class ChargeEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Swordsman_Charge", playerName)) == null) {
                 return;
             }
-            if (playerData.get(String.format("%s.occConfig.occSkills.occCoolDown.Swordsman_Charge", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l无畏冲锋§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.Swordsman_Charge", playerName))));
+            if (temp.get(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName)) != null) {
+                MessageManager.Messager(player, String.format("§c§l无畏冲锋§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.IRON_INGOT, skills.getInt("Swordsman_Charge.cost", 1))) {
@@ -54,7 +53,7 @@ public class ChargeEvent implements Listener {
             activeCharge(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.Swordsman_Charge", playerName), coolDown);
+            temp.set(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Swordsman_Charge");
             ConfigMaganer.saveConfigs();
         }

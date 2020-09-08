@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
 
 public class OccSkillCommand implements TabExecutor {
     @Override
@@ -69,8 +70,7 @@ public class OccSkillCommand implements TabExecutor {
                 return true;
             }
             if (args.length == 1) {
-                playerData.set(String.format("%s.occConfig.occSkills.occCoolDown", playerName), null);
-                playerData.set(String.format("%s.temp", playerName), null);
+                temp.set(String.format("OccSkillCoolDown.%s", playerName), null);
                 ConfigMaganer.saveConfigs();
                 MessageManager.Messager(player, "§e成功冷却所有职业技能");
                 return true;
@@ -81,8 +81,7 @@ public class OccSkillCommand implements TabExecutor {
                 return true;
             }
             String targetName = target.getName();
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown", targetName), null);
-            playerData.set(String.format("%s.temp", targetName), null);
+            temp.set(String.format("OccSkillCoolDown.%s", targetName), null);
             ConfigMaganer.saveConfigs();
             MessageManager.Messager(player, String.format("§e成功冷却玩家 §b%s §e的所有职业技能", targetName));
             MessageManager.Messager(target, "§e你的所有职业技能已冷却");
@@ -100,6 +99,6 @@ public class OccSkillCommand implements TabExecutor {
         if (strings.length == 2) {
             return Misc.getOnlinePlayerNames();
         }
-        return new ArrayList<>();
+        return new ArrayList<String>();
     }
 }

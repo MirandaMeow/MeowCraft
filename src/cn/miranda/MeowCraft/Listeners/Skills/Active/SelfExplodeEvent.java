@@ -15,8 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
 
 public class SelfExplodeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -32,8 +31,8 @@ public class SelfExplodeEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.All_SelfExplode", playerName)) == null) {
                 return;
             }
-            if (playerData.get(String.format("%s.occConfig.occSkills.occCoolDown.All_SelfExplode", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l自爆§r§e冷却尚未结束, §e剩余 §b%s §e秒", playerData.getInt(String.format("%s.occConfig.occSkills.occCoolDown.All_SelfExplode", playerName))));
+            if (temp.get(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName)) != null) {
+                MessageManager.Messager(player, String.format("§c§l自爆§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.GUNPOWDER, skills.getInt("All_SelfExplode.cost", 64))) {
@@ -44,10 +43,10 @@ public class SelfExplodeEvent implements Listener {
             activeSelfExplode(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_SelfExplode.cooldown", 300);
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown.All_SelfExplode", playerName), coolDown);
+            temp.set(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName), coolDown);
             int delay = skills.getInt("All_SelfExplode.delay", 10);
-            playerData.set(String.format("%s.temp.selfExplode", playerName), delay);
-            playerData.set(String.format("%s.temp.selfExplodeCancel", playerName), false);
+            temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), delay);
+            temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), false);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_SelfExplode");
             ConfigMaganer.saveConfigs();
             event.setCancelled(true);

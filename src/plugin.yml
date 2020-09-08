@@ -1,9 +1,9 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.1.7
+version: 0.1.8
 author: Miranda
 description: 猫子的魔法插件
-softdepend: [ProtocolLib, Vault, mcMMO]
+softdepend: [Vault, mcMMO, PermissionsEx]
 load: POSTWORLD
 api-version: 1.15
 
@@ -56,3 +56,11 @@ commands:
     description: 延迟显示模块
     usage: /tabping
     permissions: tabping.admin
+  townapply:
+    description: 加入小镇申请
+    usage: /townapply <town>
+    permissions: townapply.use
+  townadmin:
+    description: 镇长审核
+    usage: /townadmin <list|apply|deny> <player>
+    permissions: town.admin

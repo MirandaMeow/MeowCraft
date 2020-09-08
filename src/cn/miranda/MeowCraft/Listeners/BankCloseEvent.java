@@ -3,6 +3,7 @@ package cn.miranda.MeowCraft.Listeners;
 import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.Town;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -31,7 +32,7 @@ public class BankCloseEvent implements Listener {
         }
         Player player = (Player) event.getPlayer();
         String playerName = player.getName();
-        String playerTown = Misc.getPlayerTownChinese(player);
+        String playerTown = Town.getPlayerTownChinese(player);
         if (invName.contains("存款")) {
             List setValue = getSettingValue(event.getInventory());
             int money = (int) setValue.get(0);

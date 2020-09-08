@@ -22,11 +22,10 @@ import java.util.Random;
 
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static org.bukkit.Bukkit.getOnlinePlayers;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
 
 public class Misc {
     public static Player player(@NotNull String playerName) {
-        return org.bukkit.Bukkit.getPlayer(playerName);
+        return Bukkit.getPlayer(playerName);
     }
 
     public static List<String> getOnlinePlayerNames() {
@@ -99,7 +98,7 @@ public class Misc {
         new RemoveEntityTask().RemoveEntity(armorstand, delay, thunder);
     }
 
-    public static Location getFixedLocation(Location location) {
+    public static Location getFixedLocation(@NotNull Location location) {
         World world = location.getWorld();
         int fixedX = (int) location.getX();
         int fixedY = (int) location.getY();
@@ -110,30 +109,12 @@ public class Misc {
 
     }
 
-    public static List<String> getTownsPermission() {
-        List<String> permList = new ArrayList<>();
-        for (Object key : towns.getValues(false).keySet()) {
-            String perm = towns.getString(String.format("%s.permission", key.toString()));
-            permList.add(perm);
-        }
-        return permList;
-    }
-
-    public static String getPlayerTownChinese(Player player) {
-        for (Object key : towns.getValues(false).keySet()) {
-            if (player.hasPermission(towns.getString(String.format("%s.permission", key.toString())))) {
-                return key.toString();
-            }
-        }
-        return "undefined";
-    }
-
-    public static int randomNum(int min, int max) {
+    public static int randomNum(@NotNull int min,@NotNull int max) {
         Random rand = new Random();
         return rand.nextInt(max - min + 1) + min;
     }
 
-    public static int getPing(Player player) throws Exception {
+    public static int getPing(@NotNull Player player) throws Exception {
         // TODO 日后升级这里需要改版本号
         Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer");
         Object converted = craftPlayer.cast(player);

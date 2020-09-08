@@ -14,6 +14,7 @@ public class ConfigMaganer {
     public static YamlConfiguration playerData;
     public static YamlConfiguration temples;
     public static YamlConfiguration towns;
+    public static YamlConfiguration temp;
     public static List<List> configList;
     public static File configFile;
 
@@ -37,6 +38,7 @@ public class ConfigMaganer {
         playerData = loadFile("playerData.yml");
         temples = loadFile("temples.yml");
         towns = loadFile("towns.yml");
+        temp = loadFile("temp.yml");
     }
 
     public static void saveConfigs() {
@@ -54,10 +56,7 @@ public class ConfigMaganer {
     }
 
     public static void removeAllFlags() {
-        for (Object key : playerData.getValues(false).keySet()) {
-            playerData.set(String.format("%s.occConfig.occSkills.occCoolDown", key.toString()), null);
-            playerData.set(String.format("%s.temp", key.toString()), null);
-        }
+        temp.set(String.format("OccSkillCoolDown"), null);
         saveConfigs();
     }
 }
