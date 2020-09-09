@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -22,6 +23,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static org.bukkit.Bukkit.getOnlinePlayers;
 
 public class Misc {
@@ -164,5 +166,13 @@ public class Misc {
 
     public static void disableTabPing() {
         config.set("TabPing.enabled", false);
+    }
+
+    public static int getTempleVisitAmount(Player player) {
+        ConfigurationSection configurationSection = playerData.getConfigurationSection(String.format("%s.temples", player.getName()));
+        if (configurationSection == null) {
+            return 0;
+        }
+        return configurationSection.getValues(false).keySet().size();
     }
 }
