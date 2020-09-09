@@ -12,34 +12,46 @@ import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class ListenersManager implements Listener {
+    private static final List<Listener> list = new LinkedList<>();
+
+    private static void register(Listener listener) {
+        Bukkit.getServer().getPluginManager().registerEvents(listener, MeowCraft.plugin);
+    }
+
     public static void registerAllEvents() {
-        Bukkit.getServer().getPluginManager().registerEvents(new ImprintActivateLogPosEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ImprintActivateUseEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new DeadCostEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new FlyTimePlayerQuitEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new FlyTimePlayerJoinEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new OccChooseEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new BanBrewEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ScrollUseEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ArrowBoostEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ArrowBoostCancelNoDamageTicksEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new BlessEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new DetectEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ChargeEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ThorAxeEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new TempleAccessEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new CommandMonitorEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new BankClickEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new BankCloseEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ImmuneEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ImmuneInterruptEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ArrowBoostIncreaseDamageEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new SelfExplodeEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new SelfExplodeCancelByPlayerDeath(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new RollDiceEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new FireworkNoDamageEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new ConcentrateEvent(), MeowCraft.plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(new EggCatcherEvent(), MeowCraft.plugin);
+        list.add(new ImprintActivateLogPosEvent());
+        list.add(new ImprintActivateUseEvent());
+        list.add(new DeadCostEvent());
+        list.add(new FlyTimePlayerQuitEvent());
+        list.add(new FlyTimePlayerJoinEvent());
+        list.add(new OccChooseEvent());
+        list.add(new BanBrewEvent());
+        list.add(new ScrollUseEvent());
+        list.add(new ArrowBoostEvent());
+        list.add(new ArrowBoostCancelNoDamageTicksEvent());
+        list.add(new BlessEvent());
+        list.add(new DetectEvent());
+        list.add(new ChargeEvent());
+        list.add(new ThorAxeEvent());
+        list.add(new TempleAccessEvent());
+        list.add(new CommandMonitorEvent());
+        list.add(new BankClickEvent());
+        list.add(new BankCloseEvent());
+        list.add(new ImmuneEvent());
+        list.add(new ImmuneInterruptEvent());
+        list.add(new ArrowBoostIncreaseDamageEvent());
+        list.add(new SelfExplodeEvent());
+        list.add(new SelfExplodeCancelByPlayerDeath());
+        list.add(new RollDiceEvent());
+        list.add(new FireworkNoDamageEvent());
+        list.add(new ConcentrateEvent());
+        list.add(new EggCatcherEvent());
+        for (Listener i : list) {
+            register(i);
+        }
     }
 }
