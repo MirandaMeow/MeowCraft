@@ -6,19 +6,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static org.bukkit.Bukkit.getOnlinePlayers;
@@ -109,7 +110,7 @@ public class Misc {
 
     }
 
-    public static int randomNum(@NotNull int min,@NotNull int max) {
+    public static int randomNum(@NotNull int min, @NotNull int max) {
         Random rand = new Random();
         return rand.nextInt(max - min + 1) + min;
     }
@@ -123,6 +124,42 @@ public class Misc {
         Field pingField = entityPlayer.getClass().getField("ping");
         int playerPing = pingField.getInt(entityPlayer);
         return Math.min(playerPing, 9999);
+    }
+
+    public static double getPlayerRealMaxHealth(@NotNull Player player) {
+        double Op0 = 0;
+        double Op1 = 0;
+        double Op2 = 1;
+        double playerMaxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        List<EquipmentSlot> slots = new ArrayList<>(Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET, EquipmentSlot.HAND, EquipmentSlot.OFF_HAND));
+        for (EquipmentSlot slot : slots) {
+            ItemStack itemstack = player.getEquipment().getItem(slot);
+            if (itemstack == null) {
+                continue;
+            }
+            if (itemstack.hasItemMeta()) {
+                ItemMeta itemMeta = itemstack.getItemMeta();
+                AttributeModifier itemAttr = itemMeta.getAttributeModifiers(Attribute.GENERIC_MAX_HEALTH).stream().findFirst().get();
+                if (itemAttr == null) {
+                    continue;
+                }
+                if (itemAttr.getSlot() != slot) {
+                    continue;
+                }
+                AttributeModifier.Operation operation = itemAttr.getOperation();
+                switch (operation) {
+                    case ADD_NUMBER:
+                        Op0 += itemAttr.getAmount();
+                        continue;
+                    case ADD_SCALAR:
+                        Op1 += itemAttr.getAmount();
+                        continue;
+                    case MULTIPLY_SCALAR_1:
+                        Op2 *= itemAttr.getAmount() + 1;
+                }
+            }
+        }
+        return Math.round(playerMaxHealth / Op2 / (Op1 + 1) - Op0);
     }
 
     public static void disableTabPing() {

@@ -47,7 +47,7 @@ public class TempleAccessEvent implements Listener {
     }
 
     private void executeTempleEffect(Player player, String title, String subtitle) {
-        int setPlayerMaxHealth = (int) player.getMaxHealth() + 1;
+        int setPlayerMaxHealth = (int) Misc.getPlayerRealMaxHealth(player) + 1;
         player.setMaxHealth(setPlayerMaxHealth);
         player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation(), 40, 0, 2, 0);
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 10);

@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
 
 public class OccSkillCommand implements TabExecutor {

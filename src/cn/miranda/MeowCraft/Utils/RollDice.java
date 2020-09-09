@@ -36,7 +36,7 @@ public class RollDice {
         for (int i : list_int) {
             RDlist.add(i);
         }
-        if (RDlist.size() == 0 || RDlist.indexOf(0) != -1) {
+        if (RDlist.size() == 0 || RDlist.contains(0)) {
             throw new ArithmeticException();
         }
         int r = RDlist.get(0);
@@ -80,5 +80,4 @@ public class RollDice {
             return String.format("§e玩家 §b%s §e检定 §d%s => %d §e结果: §a%s=%d §6失败", playerName, userCMD, test, resultString.toString(), sum);
         }
     }
-
 }
