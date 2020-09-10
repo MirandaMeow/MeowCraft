@@ -66,5 +66,5 @@ commands:
     permissions: town.admin
   playerstatus:
     description: 存储或取出玩家的状态
-    usage: /playerstatus <default|restore>
+    usage: /playerstatus <setdefault|setrestore>
     permissions: playerstatus.admin
