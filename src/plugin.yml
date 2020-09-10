@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.2.0
+version: 0.2.1
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [Vault, mcMMO, PermissionsEx]
@@ -64,3 +64,7 @@ commands:
     description: 镇长审核
     usage: /townadmin <list|apply|deny> <player>
     permissions: town.admin
+  playerstatus:
+    description: 存储或取出玩家的状态
+    usage: /playerstatus <default|restore>
+    permissions: playerstatus.admin

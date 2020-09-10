@@ -128,6 +128,7 @@ public class Misc {
         return Math.min(playerPing, 9999);
     }
 
+    @Deprecated
     public static double getPlayerRealMaxHealth(@NotNull Player player) {
         double Op0 = 0;
         double Op1 = 0;
@@ -141,23 +142,24 @@ public class Misc {
             }
             if (itemstack.hasItemMeta()) {
                 ItemMeta itemMeta = itemstack.getItemMeta();
-                AttributeModifier itemAttr = itemMeta.getAttributeModifiers(Attribute.GENERIC_MAX_HEALTH).stream().findFirst().get();
-                if (itemAttr == null) {
-                    continue;
-                }
-                if (itemAttr.getSlot() != slot) {
-                    continue;
-                }
-                AttributeModifier.Operation operation = itemAttr.getOperation();
-                switch (operation) {
-                    case ADD_NUMBER:
-                        Op0 += itemAttr.getAmount();
+                for (AttributeModifier itemAttr : itemMeta.getAttributeModifiers(Attribute.GENERIC_MAX_HEALTH)) {
+                    if (itemAttr == null) {
                         continue;
-                    case ADD_SCALAR:
-                        Op1 += itemAttr.getAmount();
+                    }
+                    if (itemAttr.getSlot() != slot) {
                         continue;
-                    case MULTIPLY_SCALAR_1:
-                        Op2 *= itemAttr.getAmount() + 1;
+                    }
+                    AttributeModifier.Operation operation = itemAttr.getOperation();
+                    switch (operation) {
+                        case ADD_NUMBER:
+                            Op0 += itemAttr.getAmount();
+                            continue;
+                        case ADD_SCALAR:
+                            Op1 += itemAttr.getAmount();
+                            continue;
+                        case MULTIPLY_SCALAR_1:
+                            Op2 *= itemAttr.getAmount() + 1;
+                    }
                 }
             }
         }

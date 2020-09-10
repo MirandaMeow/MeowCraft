@@ -17,12 +17,12 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 public final class ConvertExpCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("convert.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
-            return true;
-        }
         if (!(sender instanceof Player)) {
             MessageManager.Messager(sender, "§c该命令不能在控制台运行");
+            return true;
+        }
+        if (!sender.hasPermission("convert.admin")) {
+            MessageManager.Messager(sender, "§c你没有权限");
             return true;
         }
         Player player = (Player) sender;
