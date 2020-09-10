@@ -1,5 +1,7 @@
 package cn.miranda.MeowCraft.Task;
 
+import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.MeowCraft;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.Particle;
@@ -7,6 +9,7 @@ import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temples;
 import static org.bukkit.Bukkit.getScheduler;
 
@@ -23,6 +26,9 @@ public class TempleAccessTask {
                 player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation(), 40, 0, 2, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 10);
                 player.sendTitle(title, subtitle, 10, 70, 20);
+                playerData.set(String.format("%s.temples.%s", player.getName(), templeName), true);
+                ConfigMaganer.saveConfigs();
+                MessageManager.Messager(player, temples.getString(String.format("%s.accessMessage", templeName)));
             }
         }, 20);
     }

@@ -39,9 +39,6 @@ public class TempleAccessEvent implements Listener {
             player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, fixedLocation, 100, 0, 2, 0);
             player.getWorld().playSound(fixedLocation, Sound.ENTITY_WITHER_SPAWN, 10, 10);
             new TempleAccessTask().TempleAccess(player, templeName);
-            playerData.set(String.format("%s.temples.%s", playerName, templeName), true);
-            ConfigMaganer.saveConfigs();
-            MessageManager.Messager(player, temples.getString(String.format("%s.accessMessage", templeName)));
         }
     }
 }
