@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: mcMMO.jar EssentialsX-2.15.0.1.jar PermissionsEx-1.23.4.jar 
+ spigot-api-1.15.2-R0.1-SNAPSHOT.jar Vault.jar
+

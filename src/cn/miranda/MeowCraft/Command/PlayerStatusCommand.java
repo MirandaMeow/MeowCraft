@@ -25,6 +25,7 @@ public class PlayerStatusCommand implements TabExecutor {
         }
         if (args.length != 1) {
             MessageManager.Messager(sender, "§e用法: §6/playerstatus §b<setdefault|setrestore>");
+            return true;
         }
         switch (args[0]) {
             case "setdefault":
