@@ -5,12 +5,20 @@ import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import ru.tehkode.libs.com.google.gson.Gson;
+import org.bukkit.util.io.BukkitObjectInputStream;
+import org.bukkit.util.io.BukkitObjectOutputStream;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class PlayerStatusManager {
+import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+
+public class PlayerStatusManager implements Serializable {
     public static HashMap<Player, PlayerStatusManager> playerStatus = new HashMap<>();
     public GameMode gameMode;
     public ItemStack[] inventory;
@@ -45,6 +53,12 @@ public class PlayerStatusManager {
         player.setMaxHealth(20);
         player.setFoodLevel(20);
         player.setFlying(false);
+        try {
+            temp.set("PlayerStatus", encodePlayerStatus());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ConfigMaganer.saveConfigs();
     }
 
     public static void setRestore(Player player) {
@@ -62,5 +76,30 @@ public class PlayerStatusManager {
         player.setFlying(playerStatusManager.isFlying);
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         playerStatus.remove(player);
+        try {
+            temp.set("PlayerStatus", encodePlayerStatus());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ConfigMaganer.saveConfigs();
+    }
+
+    public static String encodePlayerStatus() throws IOException {
+        BASE64Encoder encoder = new BASE64Encoder();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        BukkitObjectOutputStream objectOutputStream = new BukkitObjectOutputStream(outputStream);
+        objectOutputStream.writeObject(playerStatus);
+        return encoder.encode(outputStream.toByteArray());
+    }
+
+    public static void decodePlayerStatus() throws IOException, ClassNotFoundException {
+        BASE64Decoder decoder = new BASE64Decoder();
+        String json = temp.getString("PlayerStatus");
+        if (json == null) {
+            return;
+        }
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(decoder.decodeBuffer(json));
+        BukkitObjectInputStream objectInputStream = new BukkitObjectInputStream(inputStream);
+        playerStatus = (HashMap<Player, PlayerStatusManager>) objectInputStream.readObject();
     }
 }
