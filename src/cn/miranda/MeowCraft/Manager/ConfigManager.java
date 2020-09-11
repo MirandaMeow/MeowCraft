@@ -8,7 +8,7 @@ import java.util.List;
 
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
-public class ConfigMaganer {
+public class ConfigManager {
     public static YamlConfiguration config;
     public static YamlConfiguration skills;
     public static YamlConfiguration playerData;

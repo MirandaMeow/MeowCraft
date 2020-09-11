@@ -17,8 +17,8 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class Occ {
     public static void addGroup(Player player, String group) {

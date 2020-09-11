@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
@@ -16,7 +16,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 import static cn.miranda.MeowCraft.Utils.Occ.getTarget;
 
 public class BlessEvent implements Listener {
@@ -52,7 +52,7 @@ public class BlessEvent implements Listener {
             int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_Bless");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.Material;
@@ -16,7 +16,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class OccChooseEvent implements Listener {
     public HashMap<String, String> occList = new HashMap<String, String>() {{
@@ -62,7 +62,7 @@ public class OccChooseEvent implements Listener {
         Occ.addGroup(player, occ);
         playerData.set(String.format("%s.occConfig.name", playerName), occ);
         playerData.set(String.format("%s.occConfig.enabled", playerName), true);
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
         MessageManager.Messager(player, String.format("§e你已经选择了§a%s§e作为职业", occName));
     }
 }

@@ -25,8 +25,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static org.bukkit.Bukkit.getOnlinePlayers;
 
 public class Misc {

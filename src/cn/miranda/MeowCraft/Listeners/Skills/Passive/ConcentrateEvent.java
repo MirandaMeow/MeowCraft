@@ -10,8 +10,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class ConcentrateEvent implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)

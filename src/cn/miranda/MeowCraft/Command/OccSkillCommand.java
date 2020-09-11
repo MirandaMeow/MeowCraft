@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 
 public class OccSkillCommand implements TabExecutor {
     @Override
@@ -70,7 +70,7 @@ public class OccSkillCommand implements TabExecutor {
             }
             if (args.length == 1) {
                 temp.set(String.format("OccSkillCoolDown.%s", playerName), null);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 MessageManager.Messager(player, "§e成功冷却所有职业技能");
                 return true;
             }
@@ -81,7 +81,7 @@ public class OccSkillCommand implements TabExecutor {
             }
             String targetName = target.getName();
             temp.set(String.format("OccSkillCoolDown.%s", targetName), null);
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             MessageManager.Messager(player, String.format("§e成功冷却玩家 §b%s §e的所有职业技能", targetName));
             MessageManager.Messager(target, "§e你的所有职业技能已冷却");
             return true;

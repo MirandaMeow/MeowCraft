@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 
 public class Town {
     public static List<String> getTownsPermission() {

@@ -8,8 +8,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 

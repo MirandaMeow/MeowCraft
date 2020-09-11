@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Town;
 import org.bukkit.command.Command;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 
 public class TownApplyCommand implements TabExecutor {
     @Override
@@ -40,7 +40,7 @@ public class TownApplyCommand implements TabExecutor {
             return true;
         }
         temp.set(String.format("TownApply.%s", playerName), args[0]);
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
         MessageManager.Messager(player, String.format("§e已经申请加入 §b%s§e, 请等待镇长回应", args[0]));
         return true;
     }

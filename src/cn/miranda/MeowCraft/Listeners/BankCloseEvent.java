@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Town;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.towns;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class BankCloseEvent implements Listener {
@@ -51,7 +51,7 @@ public class BankCloseEvent implements Listener {
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
             towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
             MessageManager.Messager(player, String.format("§e存入了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             return;
         }
         if (invName.contains("取款")) {
@@ -72,7 +72,7 @@ public class BankCloseEvent implements Listener {
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
             towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
             MessageManager.Messager(player, String.format("§e取出了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

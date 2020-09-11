@@ -5,7 +5,7 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 import static org.bukkit.Bukkit.getServer;
 
 public class MessageManager {

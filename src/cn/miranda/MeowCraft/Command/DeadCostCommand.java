@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static org.bukkit.Bukkit.getServer;
 
 public final class DeadCostCommand implements TabExecutor {
@@ -31,12 +31,12 @@ public final class DeadCostCommand implements TabExecutor {
             String playerName = player.getName();
             if (playerData.get(String.format("%s.deadcost", playerName)) == null || !playerData.getBoolean(String.format("%s.deadcost", playerName))) {
                 playerData.set(String.format("%s.deadcost", playerName), true);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 MessageManager.Messager(player, "§e启用死亡不掉落");
                 return true;
             }
             playerData.set(String.format("%s.deadcost", player.getName()), false);
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             MessageManager.Messager(player, "§e禁用死亡不掉落");
             return true;
 
@@ -57,7 +57,7 @@ public final class DeadCostCommand implements TabExecutor {
         }
         getServer().broadcastMessage(String.format("§e死亡不掉落的费率变更为 §b%d%%", setValue));
         config.set("DeadCost.ratio", setValue);
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
         return true;
     }
     @Override

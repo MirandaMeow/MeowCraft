@@ -1,6 +1,5 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Task.TempleAccessTask;
@@ -16,8 +15,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temples;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temples;
 
 
 public class TempleAccessEvent implements Listener {

@@ -1,7 +1,8 @@
 package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Enum.EggCatcher;
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ClassManager;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import org.bukkit.command.Command;
@@ -33,20 +34,23 @@ public final class MeowCraftCommand implements TabExecutor {
             return true;
         }
         if (Objects.equals(args[0], "reload")) {
-            ConfigMaganer.loadConfigs();
+            ConfigManager.loadConfigs();
             TempleManager.refreshTempleLists();
             EggCatcher.flushAvailable();
             MessageManager.Messager(sender, "§e成功重载配置文件");
             return true;
         }
         if (Objects.equals(args[0], "save")) {
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             MessageManager.Messager(sender, "§e配置文件已保存");
             return true;
         }
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
+/*
             Player player = (Player) sender;
+*/
+            ClassManager.loadClass();
             MessageManager.Messager(sender, "§e测试完成");
             return true;
         }

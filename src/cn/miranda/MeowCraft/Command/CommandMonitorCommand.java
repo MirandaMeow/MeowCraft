@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class CommandMonitorCommand implements TabExecutor {
     @Override
@@ -36,12 +36,12 @@ public class CommandMonitorCommand implements TabExecutor {
             case "on":
                 playerData.set(String.format("%s.cmdlogger", targetName), true);
                 MessageManager.Messager(player, String.format("§e玩家§b %s §e已§c启用§e指令监视", targetName));
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 return true;
             case "off":
                 playerData.set(String.format("%s.cmdlogger", targetName), false);
                 MessageManager.Messager(player, String.format("§e玩家§b %s §e已§c禁用§e指令监视", targetName));
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 return true;
             default:
                 MessageManager.Messager(sender, "§e用法: §6/cmdlogger §b<player> <on|off>");

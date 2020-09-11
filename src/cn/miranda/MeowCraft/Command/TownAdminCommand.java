@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 
 public class TownAdminCommand implements TabExecutor {
     @Override
@@ -47,7 +47,7 @@ public class TownAdminCommand implements TabExecutor {
                 Occ.reversePlayerGroup(targetNameApply);
                 MessageManager.Messager(player, String.format("§e成功接纳玩家 §b%s", targetNameApply));
                 temp.set(String.format("TownApply.%s", targetNameApply), null);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 return true;
             case "deny":
                 String targetNameDeny = args[1];
@@ -57,7 +57,7 @@ public class TownAdminCommand implements TabExecutor {
                 }
                 MessageManager.Messager(player, String.format("§e拒绝接纳玩家 §b%s", targetNameDeny));
                 temp.set(String.format("TownApply.%s", targetNameDeny), null);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 return true;
             case "list":
                 List<String> applyList = Town.getApplyList(playerTown);

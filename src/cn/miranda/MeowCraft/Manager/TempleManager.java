@@ -7,7 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temples;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temples;
 
 
 public class TempleManager {

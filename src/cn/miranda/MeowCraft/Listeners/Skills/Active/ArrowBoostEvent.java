@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.ArrowBoostShootTask;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
@@ -17,7 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ArrowBoostEvent implements Listener {
 
@@ -48,7 +48,7 @@ public class ArrowBoostEvent implements Listener {
             int coolDown = skills.getInt("Ranger_ArrowBoost.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Ranger_ArrowBoost");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

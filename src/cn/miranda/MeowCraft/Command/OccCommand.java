@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.command.Command;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public final class OccCommand implements TabExecutor {
     @Override
@@ -44,7 +44,7 @@ public final class OccCommand implements TabExecutor {
                 }
                 String occ = playerData.getString(String.format("%s.occConfig.name", playerName), "");
                 playerData.set(String.format("%s.occConfig.enabled", playerName), true);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 Occ.removeALLOccGroups(player);
                 Occ.removeGroup(player, "Essential");
                 Occ.addGroup(player, occ);
@@ -60,7 +60,7 @@ public final class OccCommand implements TabExecutor {
                     return true;
                 }
                 playerData.set(String.format("%s.occConfig.enabled", playerName), false);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 Occ.removeALLOccGroups(player);
                 Occ.addGroup(player, "Essential");
                 MessageManager.Messager(player, "§e已经临时禁用职业");
@@ -79,7 +79,7 @@ public final class OccCommand implements TabExecutor {
                 Occ.mcMMOSkillsReset(player);
                 Occ.removePermission(player, "occ.reset");
                 playerData.set(String.format("%s.occConfig", playerName), null);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 MessageManager.Messager(player, "§emcMMO 技能等级已重置");
                 MessageManager.Messager(player, "§e已经重置职业");
                 return true;

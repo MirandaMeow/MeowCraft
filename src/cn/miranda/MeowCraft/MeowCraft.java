@@ -20,14 +20,15 @@ public class MeowCraft extends JavaPlugin {
 
     public void onEnable() {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e正在启用");
-        ConfigMaganer.loadConfigs();
-        ConfigMaganer.removeAllFlags();
+        ConfigManager.loadConfigs();
+        ConfigManager.removeAllFlags();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e载入配置文件");
         ListenersManager.registerAllEvents();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册监听器");
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e焊接前置插件");
         PluginLoadManager.LoadPlugins();
         CommandManager.registerCommands();
+        ClassManager.loadClass();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册命令");
         TempleManager.refreshTempleLists();
         try {
@@ -46,7 +47,7 @@ public class MeowCraft extends JavaPlugin {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e清除监听器");
         getScheduler().cancelTasks(this);
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e清除任务");
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e保存配置文件");
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e禁用成功");
     }

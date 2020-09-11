@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class ArrowBoostShootTask {

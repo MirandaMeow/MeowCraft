@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.TabPingTask;
 import org.bukkit.command.Command;
@@ -10,7 +10,7 @@ import org.bukkit.command.TabExecutor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 
 public class TabPingCommand implements TabExecutor {
     @Override
@@ -28,12 +28,12 @@ public class TabPingCommand implements TabExecutor {
             new TabPingTask().TabPing();
             config.set("TabPing.enabled", true);
             MessageManager.Messager(sender, "§e延迟显示§c已启用");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             return true;
         }
         config.set("TabPing.enabled", false);
         MessageManager.Messager(sender, "§e延迟显示§c已禁用");
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
         return true;
     }
 

@@ -1,13 +1,13 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class FlyTimePlayerQuitEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -18,6 +18,6 @@ public class FlyTimePlayerQuitEvent implements Listener {
             return;
         }
         playerData.set(String.format("%s.flytime.quit", playerName), true);
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
     }
 }

@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
@@ -19,7 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ChargeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -55,7 +55,7 @@ public class ChargeEvent implements Listener {
             int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Swordsman_Charge");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

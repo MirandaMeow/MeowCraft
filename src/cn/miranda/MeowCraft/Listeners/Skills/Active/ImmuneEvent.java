@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.ImmuneTask;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ImmuneEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -45,7 +45,7 @@ public class ImmuneEvent implements Listener {
             int coolDown = skills.getInt("All_Immune.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.All_Immune", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_Immune");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

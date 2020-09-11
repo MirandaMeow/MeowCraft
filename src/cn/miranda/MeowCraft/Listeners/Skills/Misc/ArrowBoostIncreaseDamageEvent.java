@@ -8,7 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class ArrowBoostIncreaseDamageEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)

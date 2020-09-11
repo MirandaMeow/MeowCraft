@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.bukkit.Bukkit.getScheduler;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 
 public class TabPingTask {
     private volatile BukkitTask task = null;

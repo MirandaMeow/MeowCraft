@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class EsotericaScrollCommand implements TabExecutor {
     @Override

@@ -1,12 +1,12 @@
 package cn.miranda.MeowCraft.Task;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class FlyTimeCoolDownTask {
@@ -23,7 +23,7 @@ public class FlyTimeCoolDownTask {
                 }
                 if (playerData.getBoolean(String.format("%s.flytime.quit", playerName))) {
                     playerData.set(String.format("%s.flytime.quit", playerName), null);
-                    ConfigMaganer.saveConfigs();
+                    ConfigManager.saveConfigs();
                     task.cancel();
                     return;
                 }
@@ -31,7 +31,7 @@ public class FlyTimeCoolDownTask {
                     player.setAllowFlight(false);
                     MessageManager.Messager(player, "§e限时飞行已终止");
                     playerData.set(String.format("%s.flytime", playerName), null);
-                    ConfigMaganer.saveConfigs();
+                    ConfigManager.saveConfigs();
                     task.cancel();
                     return;
                 }
@@ -44,7 +44,7 @@ public class FlyTimeCoolDownTask {
                     player.setAllowFlight(false);
                     MessageManager.Messager(player, "§e限时飞行已经结束");
                     playerData.set(String.format("%s.flytime", playerName), null);
-                    ConfigMaganer.saveConfigs();
+                    ConfigManager.saveConfigs();
                     task.cancel();
                 }
             }

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 
 public class PlayerStatusManager implements Serializable {
     public static HashMap<Player, PlayerStatusManager> playerStatus = new HashMap<>();
@@ -58,7 +58,7 @@ public class PlayerStatusManager implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
     }
 
     public static void setRestore(Player player) {
@@ -81,7 +81,7 @@ public class PlayerStatusManager implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ConfigMaganer.saveConfigs();
+        ConfigManager.saveConfigs();
     }
 
     public static String encodePlayerStatus() throws IOException {

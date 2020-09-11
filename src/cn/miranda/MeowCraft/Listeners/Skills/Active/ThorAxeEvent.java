@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
@@ -17,7 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ThorAxeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -53,7 +53,7 @@ public class ThorAxeEvent implements Listener {
             int coolDown = skills.getInt("Thug_ThorAxe.cooldown", 20);
             temp.set(String.format("OccSkillCoolDown.%s.Thug_ThorAxe", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Thug_ThorAxe");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
     }
 

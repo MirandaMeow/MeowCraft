@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.FlyTimeCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public final class FlyTimeCommand implements TabExecutor {
     @Override
@@ -52,7 +52,7 @@ public final class FlyTimeCommand implements TabExecutor {
                 playerData.set(String.format("%s.flytime.time", targetName), setTime);
                 playerData.set(String.format("%s.flytime.cancel", targetName), false);
                 new FlyTimeCoolDownTask().initFlyTime(target);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 return true;
             case "check":
                 if (args.length > 2) {
@@ -110,7 +110,7 @@ public final class FlyTimeCommand implements TabExecutor {
                     return true;
                 }
                 playerData.set(String.format("%s.flytime.cancel", targetAbortName), true);
-                ConfigMaganer.saveConfigs();
+                ConfigManager.saveConfigs();
                 MessageManager.Messager(sender, String.format("§e终止了玩家 §b%s §e的限时飞行", targetAbortName));
                 return true;
             default:

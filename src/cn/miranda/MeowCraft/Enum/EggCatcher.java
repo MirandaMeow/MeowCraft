@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 
 public enum EggCatcher {
     BAT("蝙蝠", EntityType.BAT, config.getBoolean("EggCatcher.mobs.BAT")),

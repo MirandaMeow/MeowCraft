@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Task.SelfExplodeTask;
@@ -15,7 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.*;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class SelfExplodeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -48,7 +48,7 @@ public class SelfExplodeEvent implements Listener {
             temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), delay);
             temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), false);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_SelfExplode");
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
             event.setCancelled(true);
         }
     }

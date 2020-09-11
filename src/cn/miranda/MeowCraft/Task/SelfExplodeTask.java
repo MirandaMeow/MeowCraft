@@ -1,12 +1,12 @@
 package cn.miranda.MeowCraft.Task;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class SelfExplodeTask {
@@ -32,7 +32,7 @@ public class SelfExplodeTask {
                     MessageManager.Messager(player, "§e安拉胡阿克巴!");
                     temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), null);
                     temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), null);
-                    ConfigMaganer.saveConfigs();
+                    ConfigManager.saveConfigs();
                     player.getWorld().createExplosion(player.getLocation(), intensity);
                     player.setGlowing(false);
                     player.setHealth(0);

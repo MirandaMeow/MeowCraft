@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ConfigMaganer;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
@@ -17,8 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class ScrollUseEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -91,7 +91,7 @@ public class ScrollUseEvent implements Listener {
             }
             playerData.set(String.format("%s.occConfig.occSkills.%s", playerName, skillID), true);
             Effect.useEsotericaScroll(player);
-            ConfigMaganer.saveConfigs();
+            ConfigManager.saveConfigs();
         }
 
     }
