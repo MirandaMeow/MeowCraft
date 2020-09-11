@@ -6,7 +6,7 @@ import cn.miranda.MeowCraft.Listeners.Skills.Active.*;
 import cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostCancelNoDamageTicksEvent;
 import cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostIncreaseDamageEvent;
 import cn.miranda.MeowCraft.Listeners.Skills.Misc.ImmuneInterruptEvent;
-import cn.miranda.MeowCraft.Listeners.Skills.Misc.SelfExplodeCancelByPlayerDeath;
+import cn.miranda.MeowCraft.Listeners.Skills.Misc.SelfExplodeCancelByPlayerDeathEvent;
 import cn.miranda.MeowCraft.Listeners.Skills.Passive.ConcentrateEvent;
 import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.Bukkit;
@@ -45,7 +45,7 @@ public class ListenersManager implements Listener {
         list.add(new ImmuneInterruptEvent());
         list.add(new ArrowBoostIncreaseDamageEvent());
         list.add(new SelfExplodeEvent());
-        list.add(new SelfExplodeCancelByPlayerDeath());
+        list.add(new SelfExplodeCancelByPlayerDeathEvent());
         list.add(new RollDiceEvent());
         list.add(new FireworkNoDamageEvent());
         list.add(new ConcentrateEvent());
