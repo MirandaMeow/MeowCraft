@@ -5,6 +5,7 @@ import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -60,6 +61,6 @@ public final class MeowCraftCommand implements TabExecutor {
         if (strings.length == 1) {
             return new ArrayList<>(Arrays.asList("help", "reload", "save"));
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

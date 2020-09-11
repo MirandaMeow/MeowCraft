@@ -44,6 +44,7 @@ public class TownAdminCommand implements TabExecutor {
                 }
                 PermissionUser pexUser = PermissionsEx.getUser(targetNameApply);
                 pexUser.addGroup(Town.getTownPermissionGroup(playerTown));
+                Occ.reversePlayerGroup(targetNameApply);
                 MessageManager.Messager(player, String.format("§e成功接纳玩家 §b%s", targetNameApply));
                 temp.set(String.format("TownApply.%s", targetNameApply), null);
                 ConfigMaganer.saveConfigs();

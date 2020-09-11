@@ -40,7 +40,7 @@ public class ScrollUseEvent implements Listener {
             String skillChineseName = playerItemMeta.getLore().get(0).split(" ")[1].substring(2);
             String skillID = Occ.getSkillID(skillChineseName);
             String playerOcc = playerData.getString(String.format("%s.occConfig.name", playerName));
-            List occ = Occ.getSkillOccGroup(skillChineseName);
+            List<?> occ = Occ.getSkillOccGroup(skillChineseName);
             if (!player.hasPermission("occ.bypass")) {
                 if (!occ.contains(playerOcc)) {
                     MessageManager.Messager(player, skills.getString(String.format("%s.notFitMessage", skillID)));
@@ -62,7 +62,7 @@ public class ScrollUseEvent implements Listener {
                         return;
                     }
                 } else {
-                    List noSkillChinese = Occ.playerNoSkillsChinese(player, requirePreposeSkillChinese);
+                    List<String>  noSkillChinese = Occ.playerNoSkillsChinese(player, requirePreposeSkillChinese);
                     if (noSkillChinese.size() != 0) {
                         MessageManager.Messager(player, String.format("§e需要前置技能: §c§l%s§r", Occ.getSkillChineseStringFromList(noSkillChinese)));
                         return;

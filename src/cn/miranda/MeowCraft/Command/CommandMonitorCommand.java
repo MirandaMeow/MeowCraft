@@ -57,6 +57,6 @@ public class CommandMonitorCommand implements TabExecutor {
         if (strings.length ==2) {
             return new ArrayList<>(Arrays.asList("on", "off"));
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

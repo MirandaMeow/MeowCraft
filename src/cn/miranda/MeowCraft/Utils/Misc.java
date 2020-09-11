@@ -1,6 +1,8 @@
 package cn.miranda.MeowCraft.Utils;
 
 import cn.miranda.MeowCraft.Task.RemoveEntityTask;
+import com.earth2me.essentials.Essentials;
+import com.earth2me.essentials.User;
 import com.sun.istack.internal.NotNull;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -176,5 +178,12 @@ public class Misc {
             return 0;
         }
         return configurationSection.getValues(false).keySet().size();
+    }
+
+    @Deprecated
+    public static String test(Player player) {
+        Essentials ess = (Essentials) Bukkit.getServer().getPluginManager().getPlugin("Essentials");
+        User user = ess.getUserMap().getUser(player.getName());
+        return user.getNick(true);
     }
 }

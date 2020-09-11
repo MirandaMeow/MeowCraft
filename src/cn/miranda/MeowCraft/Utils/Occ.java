@@ -11,6 +11,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import ru.tehkode.permissions.PermissionGroup;
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
@@ -37,6 +38,23 @@ public class Occ {
         }
     }
 
+    public static void reversePlayerGroup(String playerName) {
+        PermissionUser pexUser = PermissionsEx.getUser(playerName);
+        List<PermissionGroup> userGroup = new ArrayList<>(Arrays.asList(pexUser.getGroups()));
+        List<String> groupList = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E"));
+        if (!groupList.contains(userGroup.get(0).getName())) {
+            return;
+        }
+        pexUser.addGroup("default");
+        for (PermissionGroup permissionGroup : userGroup) {
+            pexUser.removeGroup(permissionGroup);
+        }
+        for (PermissionGroup permissionGroup : userGroup) {
+            pexUser.addGroup(permissionGroup);
+        }
+        pexUser.removeGroup("default");
+    }
+
     public static void mcMMOSkillsReset(Player player) {
         PlayerProfile mcmmoProfile = UserManager.getPlayer(player).getProfile();
         for (PrimarySkillType skillType : PrimarySkillType.NON_CHILD_SKILLS) {
@@ -55,7 +73,7 @@ public class Occ {
     }
 
     public static List<String> skillList() {
-        List<String> skillListName = new ArrayList<String>();
+        List<String> skillListName = new ArrayList<>();
         Map<String, Object> skillConfigMap = skills.getValues(true);
         for (Object key : skillConfigMap.keySet()) {
             String path = key.toString();
@@ -78,19 +96,19 @@ public class Occ {
         return path.split("\\.")[0];
     }
 
-    public static List getSkillLore(String skill) {
+    public static List<?> getSkillLore(String skill) {
         String path = getSkillID(skill);
         return skills.getList(String.format("%s.lore", path));
     }
 
-    public static List getSkillOccGroup(String skill) {
+    public static List<?> getSkillOccGroup(String skill) {
         String path = getSkillID(skill);
         return skills.getList(String.format("%s.group", path));
     }
 
     public static boolean isFitOcc(Player player, String skill) {
         String playerName = player.getName();
-        List fitOcc = skills.getList(String.format("%s.group", skill));
+        List<?> fitOcc = skills.getList(String.format("%s.group", skill));
         String playerOcc = playerData.getString(String.format("%s.occConfig.name", playerName));
         return fitOcc.contains(playerOcc);
     }
@@ -150,7 +168,7 @@ public class Occ {
         return noList;
     }
 
-    public static String getSkillChineseStringFromList(List list) {
+    public static String getSkillChineseStringFromList(List<String> list) {
         StringBuilder out = new StringBuilder();
         for (Object i : list) {
             out.append(i.toString()).append(" ");
@@ -180,11 +198,11 @@ public class Occ {
         return skills.getString(String.format("%s.name", skillID));
     }
 
-    public static List getPlayerSkills(Player player) {
+    public static List<String> getPlayerSkills(Player player) {
         List<String> list = new ArrayList<>();
         ConfigurationSection skillsList = playerData.getConfigurationSection(String.format("%s.occConfig.occSkills", player.getName()));
         if (skillsList == null) {
-            return new ArrayList();
+            return new ArrayList<>();
         }
         for (Object key : skillsList.getValues(false).keySet()) {
             list.add(key.toString());
