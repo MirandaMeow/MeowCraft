@@ -51,8 +51,4 @@ public class Town {
     public static String getTownPermissionGroup(String townName) {
         return towns.getString(String.format("%s.permission", townName)).replace(".", "_");
     }
-
-    public static String getTownPermission(String townName) {
-        return towns.getString(String.format("%s.permission", townName));
-    }
 }

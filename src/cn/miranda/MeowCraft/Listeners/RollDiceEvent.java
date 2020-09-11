@@ -15,9 +15,8 @@ public class RollDiceEvent implements Listener {
         String playerDisplayName = player.getDisplayName();
         String message = event.getMessage();
         String result;
-        try {
-            result = RollDice.getResultMessage(playerDisplayName, message);
-        } catch (ArithmeticException e) {
+        result = RollDice.getResultMessage(playerDisplayName, message);
+        if (result == null) {
             return;
         }
         MessageManager.Broadcast(result);

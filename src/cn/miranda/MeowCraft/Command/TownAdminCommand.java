@@ -77,11 +77,11 @@ public class TownAdminCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<String>(Arrays.asList("apply", "deny", "list"));
+            return new ArrayList<>(Arrays.asList("apply", "deny", "list"));
         }
         if (strings.length == 2) {
             return Misc.getOnlinePlayerNames();
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

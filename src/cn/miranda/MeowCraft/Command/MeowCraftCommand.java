@@ -4,8 +4,6 @@ import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Manager.ConfigMaganer;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
-import cn.miranda.MeowCraft.Utils.Misc;
-import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;

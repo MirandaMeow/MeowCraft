@@ -37,12 +37,12 @@ public class RollDice {
             RDlist.add(i);
         }
         if (RDlist.size() == 0 || RDlist.contains(0)) {
-            throw new ArithmeticException();
+            return null;
         }
         int r = RDlist.get(0);
         int d = RDlist.get(1);
         if (r > 20 || d > 100) {
-            throw new ArithmeticException();
+            return null;
         }
         String userCMD = "r" + r + "d" + d;
         StringBuilder resultString = new StringBuilder();

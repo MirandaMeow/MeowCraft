@@ -23,6 +23,7 @@ import org.bukkit.util.Vector;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.config;
 import static cn.miranda.MeowCraft.Manager.ConfigMaganer.playerData;
@@ -41,13 +42,9 @@ public class Misc {
         return players;
     }
 
-    public static boolean isInt(@NotNull String s) {
-        try {
-            Integer.parseInt(s);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
+    public static boolean isInt(@NotNull String string) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        return pattern.matcher(string).matches();
     }
 
     public static boolean isInventoryFull(@NotNull Player player) {
@@ -97,7 +94,7 @@ public class Misc {
     public static void throwSomething(@NotNull Player player, @NotNull Material material, @NotNull int ratio, @NotNull long delay, @NotNull boolean thunder) {
         ArmorStand armorstand = (ArmorStand) player.getWorld().spawnEntity(player.getLocation(), EntityType.ARMOR_STAND);
         armorstand.setVisible(false);
-        armorstand.setItemInHand(new ItemStack(material, 1));
+        armorstand.setItemInHand(new ItemStack(material));
         Vector playerVector = player.getEyeLocation().getDirection().setY(0);
         armorstand.setVelocity(playerVector.multiply(ratio));
         new RemoveEntityTask().RemoveEntity(armorstand, delay, thunder);
