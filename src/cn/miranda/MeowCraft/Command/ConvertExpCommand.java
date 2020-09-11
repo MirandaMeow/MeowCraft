@@ -18,26 +18,26 @@ public final class ConvertExpCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Messager(sender, "§c该命令不能在控制台运行");
+            MessageManager.Message(sender, "§c该命令不能在控制台运行");
             return true;
         }
         if (!sender.hasPermission("convert.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         Player player = (Player) sender;
         if (args.length != 3) {
-            MessageManager.Messager(sender, "§e用法: §6/convertexp §b<tomoney|toexp> <exp|money> <money|exp>");
+            MessageManager.Message(sender, "§e用法: §6/convertexp §b<tomoney|toexp> <exp|money> <money|exp>");
             return true;
         }
         if (!Misc.isInt(args[1]) || !Misc.isInt(args[2])) {
-            MessageManager.Messager(sender, "§c输入不正确");
+            MessageManager.Message(sender, "§c输入不正确");
             return true;
         }
         int setValue1 = Integer.parseInt(args[1]);
         int setValue2 = Integer.parseInt(args[2]);
         if (setValue1 <= 0 || setValue1 > 65535 || setValue2 <= 0 || setValue2 > 65535) {
-            MessageManager.Messager(sender, "§e输入的数值范围是 §b1 - 65535 §e之间的正整数");
+            MessageManager.Message(sender, "§e输入的数值范围是 §b1 - 65535 §e之间的正整数");
             return true;
         }
         String playerName = player.getName();
@@ -45,7 +45,7 @@ public final class ConvertExpCommand implements TabExecutor {
         double playerMoney = econ.getBalance(playerName);
         if (Objects.equals(args[0], "tomoney")) {
             if (playerExp < setValue1) {
-                MessageManager.Messager(player, "§c经验值不足无法完成转换");
+                MessageManager.Message(player, "§c经验值不足无法完成转换");
                 return true;
             }
             double playerSetExp = playerExp - setValue1;
@@ -54,26 +54,26 @@ public final class ConvertExpCommand implements TabExecutor {
             player.setTotalExperience((int) playerSetExp);
             econ.depositPlayer(playerName, setValue2);
             double nowMoney = econ.getBalance(playerName);
-            MessageManager.Messager(sender, String.format("§e用 §b%d §e经验值换到了 §b%d §e金钱", setValue1, setValue2));
-            MessageManager.Messager(sender, String.format("§e当前经验值 §b%s", Misc.stringFormat(playerSetExp)));
-            MessageManager.Messager(sender, String.format("§e当前金钱 §b%s", Misc.stringFormat(nowMoney)));
+            MessageManager.Message(sender, String.format("§e用 §b%d §e经验值换到了 §b%d §e金钱", setValue1, setValue2));
+            MessageManager.Message(sender, String.format("§e当前经验值 §b%s", Misc.stringFormat(playerSetExp)));
+            MessageManager.Message(sender, String.format("§e当前金钱 §b%s", Misc.stringFormat(nowMoney)));
             return true;
         }
         if (Objects.equals(args[0], "toexp")) {
             if (playerMoney < setValue1) {
-                MessageManager.Messager(sender, "§c金钱不足无法完成转换");
+                MessageManager.Message(sender, "§c金钱不足无法完成转换");
                 return true;
             }
             econ.withdrawPlayer(playerName, setValue1);
             player.giveExp(setValue2);
             double nowExp = player.getTotalExperience();
             double nowMoney = econ.getBalance(playerName);
-            MessageManager.Messager(sender, String.format("§e用 §b%d §e金钱换到了 §b%d §e经验值", setValue1, setValue2));
-            MessageManager.Messager(sender, String.format("§e当前经验值 §b%s", Misc.stringFormat(nowExp)));
-            MessageManager.Messager(sender, String.format("§e当前金钱 §b%s", Misc.stringFormat(nowMoney)));
+            MessageManager.Message(sender, String.format("§e用 §b%d §e金钱换到了 §b%d §e经验值", setValue1, setValue2));
+            MessageManager.Message(sender, String.format("§e当前经验值 §b%s", Misc.stringFormat(nowExp)));
+            MessageManager.Message(sender, String.format("§e当前金钱 §b%s", Misc.stringFormat(nowMoney)));
             return true;
         }
-        MessageManager.Messager(sender, "§c参数不正确");
+        MessageManager.Message(sender, "§c参数不正确");
         return true;
     }
 
@@ -82,6 +82,6 @@ public final class ConvertExpCommand implements TabExecutor {
         if (strings.length == 1) {
             return new ArrayList<>(Arrays.asList("tomoney", "toexp"));
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

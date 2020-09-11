@@ -28,7 +28,7 @@ public class TempleAccessTask {
                 player.sendTitle(title, subtitle, 10, 70, 20);
                 playerData.set(String.format("%s.temples.%s", player.getName(), templeName), true);
                 ConfigManager.saveConfigs();
-                MessageManager.Messager(player, temples.getString(String.format("%s.accessMessage", templeName)));
+                MessageManager.Message(player, temples.getString(String.format("%s.accessMessage", templeName)));
             }
         }, 20);
     }

@@ -16,23 +16,23 @@ public class TabPingCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!sender.hasPermission("tabping.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         if (args.length != 0) {
-            MessageManager.Messager(sender, "§e用法: §6/tabping");
+            MessageManager.Message(sender, "§e用法: §6/tabping");
             return true;
         }
         boolean state = config.getBoolean("TabPing.enabled", true);
         if (!state) {
             new TabPingTask().TabPing();
             config.set("TabPing.enabled", true);
-            MessageManager.Messager(sender, "§e延迟显示§c已启用");
+            MessageManager.Message(sender, "§e延迟显示§c已启用");
             ConfigManager.saveConfigs();
             return true;
         }
         config.set("TabPing.enabled", false);
-        MessageManager.Messager(sender, "§e延迟显示§c已禁用");
+        MessageManager.Message(sender, "§e延迟显示§c已禁用");
         ConfigManager.saveConfigs();
         return true;
     }

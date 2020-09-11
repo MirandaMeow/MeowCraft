@@ -34,6 +34,6 @@ public class ConcentrateEvent implements Listener {
             return;
         }
         event.setCancelled(true);
-        MessageManager.Messager(player, "§e伤害闪避!");
+        MessageManager.Message(player, "§e伤害闪避!");
     }
 }

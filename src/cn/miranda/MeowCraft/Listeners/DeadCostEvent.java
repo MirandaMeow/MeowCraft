@@ -40,8 +40,8 @@ public class DeadCostEvent implements Listener {
             double value = Double.parseDouble(playerLoseMoney);
             econ.withdrawPlayer(playerName, value);
             String nowMoney = Misc.stringFormat(econ.getBalance(playerName));
-            MessageManager.Messager(player, String.format("§e你因为死亡扣除了 §b%s§e (§b%d%%§e) 金钱", playerLoseMoney, cost));
-            MessageManager.Messager(player, String.format("§e剩余金钱 §b%s", nowMoney));
+            MessageManager.Message(player, String.format("§e你因为死亡扣除了 §b%s§e (§b%d%%§e) 金钱", playerLoseMoney, cost));
+            MessageManager.Message(player, String.format("§e剩余金钱 §b%s", nowMoney));
             event.setKeepInventory(true);
             event.setKeepLevel(true);
             event.getDrops().clear();

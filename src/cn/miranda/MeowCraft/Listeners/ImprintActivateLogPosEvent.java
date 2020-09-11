@@ -17,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static org.bukkit.event.block.Action.RIGHT_CLICK_AIR;
 import static org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK;
 
 public class ImprintActivateLogPosEvent implements Listener {
@@ -34,7 +33,7 @@ public class ImprintActivateLogPosEvent implements Listener {
                     return;
                 }
                 if (Misc.isInventoryFull(player)) {
-                    MessageManager.Messager(player, "§9[§d烙印§9] §c你的背包满了");
+                    MessageManager.Message(player, "§9[§d烙印§9] §c你的背包满了");
                     return;
                 }
                 Location playerLocation = player.getLocation();

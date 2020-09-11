@@ -34,7 +34,7 @@ public class ScrollUseEvent implements Listener {
                 return;
             }
             if (playerData.get(String.format("%s.occConfig", playerName)) == null) {
-                MessageManager.Messager(player, "§e没有职业, 不能学习技能");
+                MessageManager.Message(player, "§e没有职业, 不能学习技能");
                 return;
             }
             String skillChineseName = playerItemMeta.getLore().get(0).split(" ")[1].substring(2);
@@ -43,12 +43,12 @@ public class ScrollUseEvent implements Listener {
             List<?> occ = Occ.getSkillOccGroup(skillChineseName);
             if (!player.hasPermission("occ.bypass")) {
                 if (!occ.contains(playerOcc)) {
-                    MessageManager.Messager(player, skills.getString(String.format("%s.notFitMessage", skillID)));
+                    MessageManager.Message(player, skills.getString(String.format("%s.notFitMessage", skillID)));
                     return;
                 }
             }
             if (playerData.getBoolean(String.format("%s.occConfig.occSkills.%s", playerName, skillID))) {
-                MessageManager.Messager(player, "§e你已经习得此技能");
+                MessageManager.Message(player, "§e你已经习得此技能");
                 return;
             }
             int isRequiredPreposeSkill = playerItemMeta.getLore().indexOf("§3需要前置技能");
@@ -58,13 +58,13 @@ public class ScrollUseEvent implements Listener {
                 if (once != -1) {
                     boolean pass = Occ.isPlayerhasSkillOnce(player, requirePreposeSkillChinese);
                     if (!pass) {
-                        MessageManager.Messager(player, String.format("§e需要前置技能: §c§l%s§r§e其中之一", Occ.getSkillChineseString(requirePreposeSkillChinese)));
+                        MessageManager.Message(player, String.format("§e需要前置技能: §c§l%s§r§e其中之一", Occ.getSkillChineseString(requirePreposeSkillChinese)));
                         return;
                     }
                 } else {
                     List<String>  noSkillChinese = Occ.playerNoSkillsChinese(player, requirePreposeSkillChinese);
                     if (noSkillChinese.size() != 0) {
-                        MessageManager.Messager(player, String.format("§e需要前置技能: §c§l%s§r", Occ.getSkillChineseStringFromList(noSkillChinese)));
+                        MessageManager.Message(player, String.format("§e需要前置技能: §c§l%s§r", Occ.getSkillChineseStringFromList(noSkillChinese)));
                         return;
                     }
                 }
@@ -85,9 +85,9 @@ public class ScrollUseEvent implements Listener {
             }
             player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
             if (overRide) {
-                MessageManager.Messager(player, String.format("§e技能 §c§l%s§r§e被替换为了 §c§l%s§r", hint, skillChineseName));
+                MessageManager.Message(player, String.format("§e技能 §c§l%s§r§e被替换为了 §c§l%s§r", hint, skillChineseName));
             } else {
-                MessageManager.Messager(player, String.format("§e你习得了技能 §c§l%s§r", skillChineseName));
+                MessageManager.Message(player, String.format("§e你习得了技能 §c§l%s§r", skillChineseName));
             }
             playerData.set(String.format("%s.occConfig.occSkills.%s", playerName, skillID), true);
             Effect.useEsotericaScroll(player);

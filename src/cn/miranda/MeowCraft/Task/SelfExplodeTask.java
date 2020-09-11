@@ -29,7 +29,7 @@ public class SelfExplodeTask {
                 }
                 int playerTimeLeft = temp.getInt(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName));
                 if (temp.getInt(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), 5) == 0) {
-                    MessageManager.Messager(player, "§e安拉胡阿克巴!");
+                    MessageManager.Message(player, "§e安拉胡阿克巴!");
                     temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), null);
                     temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), null);
                     ConfigManager.saveConfigs();
@@ -40,7 +40,7 @@ public class SelfExplodeTask {
                     return;
                 }
                 player.setGlowing(playerTimeLeft % 2 == 0);
-                MessageManager.Messager(player, String.format("§c倒计时剩余 §b%d §c秒", playerTimeLeft));
+                MessageManager.Message(player, String.format("§c倒计时剩余 §b%d §c秒", playerTimeLeft));
                 temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), playerTimeLeft - 1);
             }
         }, 0L, 20);

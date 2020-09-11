@@ -32,7 +32,7 @@ public class TempleAccessEvent implements Listener {
             }
             String templeName = TempleManager.giveTempleName(fixedLocation);
             if (playerData.getBoolean(String.format("%s.temples.%s", playerName, TempleManager.giveTempleName(fixedLocation)))) {
-                MessageManager.Messager(player, temples.getString(String.format("%s.denyMessage", templeName)));
+                MessageManager.Message(player, temples.getString(String.format("%s.denyMessage", templeName)));
                 return;
             }
             player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, fixedLocation, 100, 0, 2, 0);

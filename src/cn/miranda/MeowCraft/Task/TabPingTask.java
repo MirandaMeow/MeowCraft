@@ -21,7 +21,7 @@ public class TabPingTask {
     public void TabPing() {
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
             public void run() {
-                HashMap<String, Integer> pings = new HashMap<String, Integer>();
+                HashMap<String, Integer> pings = new HashMap<>();
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     try {
                         pings.put(player.getName(), Misc.getPing(player));

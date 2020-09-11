@@ -32,14 +32,14 @@ public class SelfExplodeEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l自爆§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName))));
+                MessageManager.Message(player, String.format("§c§l自爆§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.GUNPOWDER, skills.getInt("All_SelfExplode.cost", 64))) {
-                MessageManager.Messager(player, "§c火药不足");
+                MessageManager.Message(player, "§c火药不足");
                 return;
             }
-            MessageManager.Messager(player, "§c§l自爆§r§e发动!");
+            MessageManager.Message(player, "§c§l自爆§r§e发动!");
             activeSelfExplode(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_SelfExplode.cooldown", 300);

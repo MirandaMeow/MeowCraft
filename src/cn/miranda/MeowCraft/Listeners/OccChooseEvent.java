@@ -47,12 +47,12 @@ public class OccChooseEvent implements Listener {
             return;
         }
         if (!player.hasPermission("occ.set")) {
-            MessageManager.Messager(player, "§c你无法选择职业");
+            MessageManager.Message(player, "§c你无法选择职业");
             return;
         }
         String occName = blockSign.getLine(1);
         if (occList.get(occName) == null) {
-            MessageManager.Messager(player, "§c职业不存在");
+            MessageManager.Message(player, "§c职业不存在");
             return;
         }
         Occ.removePermission(player, "occ.set");
@@ -63,6 +63,6 @@ public class OccChooseEvent implements Listener {
         playerData.set(String.format("%s.occConfig.name", playerName), occ);
         playerData.set(String.format("%s.occConfig.enabled", playerName), true);
         ConfigManager.saveConfigs();
-        MessageManager.Messager(player, String.format("§e你已经选择了§a%s§e作为职业", occName));
+        MessageManager.Message(player, String.format("§e你已经选择了§a%s§e作为职业", occName));
     }
 }

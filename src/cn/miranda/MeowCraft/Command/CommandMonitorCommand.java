@@ -19,32 +19,32 @@ public class CommandMonitorCommand implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         Player player = (Player) sender;
         if (!player.hasPermission("cmdlogger.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         if (args.length != 2) {
-            MessageManager.Messager(sender, "§e用法: §6/cmdlogger §b<player> <on|off>");
+            MessageManager.Message(sender, "§e用法: §6/cmdlogger §b<player> <on|off>");
             return true;
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Messager(sender, "§c指定玩家不在线");
+            MessageManager.Message(sender, "§c指定玩家不在线");
             return true;
         }
         String targetName = target.getName();
         switch (args[1]) {
             case "on":
                 playerData.set(String.format("%s.cmdlogger", targetName), true);
-                MessageManager.Messager(player, String.format("§e玩家§b %s §e已§c启用§e指令监视", targetName));
+                MessageManager.Message(player, String.format("§e玩家§b %s §e已§c启用§e指令监视", targetName));
                 ConfigManager.saveConfigs();
                 return true;
             case "off":
                 playerData.set(String.format("%s.cmdlogger", targetName), false);
-                MessageManager.Messager(player, String.format("§e玩家§b %s §e已§c禁用§e指令监视", targetName));
+                MessageManager.Message(player, String.format("§e玩家§b %s §e已§c禁用§e指令监视", targetName));
                 ConfigManager.saveConfigs();
                 return true;
             default:
-                MessageManager.Messager(sender, "§e用法: §6/cmdlogger §b<player> <on|off>");
+                MessageManager.Message(sender, "§e用法: §6/cmdlogger §b<player> <on|off>");
                 return true;
         }
     }

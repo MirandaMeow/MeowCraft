@@ -50,7 +50,7 @@ public class BankCloseEvent implements Listener {
             TownPublic += rate;
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
             towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
-            MessageManager.Messager(player, String.format("§e存入了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
+            MessageManager.Message(player, String.format("§e存入了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
             ConfigManager.saveConfigs();
             return;
         }
@@ -71,13 +71,13 @@ public class BankCloseEvent implements Listener {
             TownPublic += rate;
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
             towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
-            MessageManager.Messager(player, String.format("§e取出了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
+            MessageManager.Message(player, String.format("§e取出了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
             ConfigManager.saveConfigs();
         }
     }
 
     private List getSettingValue(Inventory inv) {
         ItemStack item = inv.getItem(39);
-        return new ArrayList(Arrays.asList(Integer.parseInt(item.getItemMeta().getLore().get(0).split(" ")[1].substring(2)), Double.parseDouble(item.getItemMeta().getLore().get(1).split(" ")[1].substring(2))));
+        return new ArrayList<>(Arrays.asList(Integer.parseInt(item.getItemMeta().getLore().get(0).split(" ")[1].substring(2)), Double.parseDouble(item.getItemMeta().getLore().get(1).split(" ")[1].substring(2))));
     }
 }

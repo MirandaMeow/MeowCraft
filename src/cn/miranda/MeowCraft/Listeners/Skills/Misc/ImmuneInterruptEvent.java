@@ -26,7 +26,7 @@ public class ImmuneInterruptEvent implements Listener {
         if (playerData.get(String.format("%s.occConfig.occSkills.occCoolDown.All_Immune", playerName), 0) != null) {
             player.setGlowing(false);
             player.setInvulnerable(false);
-            MessageManager.Messager(player, "§c§l神圣护甲§r§e被中断!");
+            MessageManager.Message(player, "§c§l神圣护甲§r§e被中断!");
         }
     }
 }

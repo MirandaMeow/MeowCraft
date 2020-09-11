@@ -9,7 +9,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 import static org.bukkit.Bukkit.getServer;
 
 public class MessageManager {
-    public static void Messager(@Nullable CommandSender sender, @NotNull String message) {
+    public static void Message(@Nullable CommandSender sender, @NotNull String message) {
         if (sender == null) {
             Bukkit.getConsoleSender().sendMessage(message);
         } else {

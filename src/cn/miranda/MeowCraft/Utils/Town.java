@@ -30,7 +30,7 @@ public class Town {
     }
 
     public static List<String> getTownList() {
-        List<String> townList = new ArrayList<String>();
+        List<String> townList = new ArrayList<>();
         for (Object key : towns.getValues(false).keySet()) {
             townList.add(key.toString());
         }
@@ -38,7 +38,7 @@ public class Town {
     }
 
     public static List<String> getApplyList(String townName) {
-        List<String> applyList = new ArrayList<String>();
+        List<String> applyList = new ArrayList<>();
         ConfigurationSection applySection = temp.getConfigurationSection("TownApply");
         for (Object key : applySection.getValues(false).keySet()) {
             if (Objects.equals(temp.getString(String.format("TownApply.%s", key.toString())), townName)) {

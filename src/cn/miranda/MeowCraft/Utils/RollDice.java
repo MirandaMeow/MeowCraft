@@ -11,9 +11,9 @@ public class RollDice {
         Matcher matcherNoTest = Pattern.compile(pattNoTest).matcher(message);
         String pattWithTest = "^\\.[rR](\\d+)[dD](\\d+) (\\d+)$";
         Matcher matcherWithTest = Pattern.compile(pattWithTest).matcher(message);
-        int r = 0;
-        int d = 0;
-        int test = 0;
+        int r;
+        int d;
+        int test;
         if (matcherWithTest.find()) {
             r = Integer.parseInt(matcherWithTest.group(1));
             d = Integer.parseInt(matcherWithTest.group(2));
@@ -30,8 +30,7 @@ public class RollDice {
 
     public static String getResultMessage(String playerName, String message) {
         int[] list_int = getChatRDValue(message);
-        List<Integer> RDlist = new ArrayList<Integer>();
-        List<Integer> result = new ArrayList<>();
+        List<Integer> RDlist = new ArrayList<>();
         int sum = 0;
         for (int i : list_int) {
             RDlist.add(i);
@@ -48,7 +47,6 @@ public class RollDice {
         StringBuilder resultString = new StringBuilder();
         for (int i = 0; i < r; i++) {
             int tempResult = Misc.randomNum(1, d);
-            result.add(tempResult);
             sum += tempResult;
             if (i != r - 1) {
                 resultString.append(tempResult).append("+");
@@ -67,8 +65,8 @@ public class RollDice {
             return String.format("§e玩家 §b%s §e检定 §d%s => %d §e结果: §a%s=%d §6大成功", playerName, userCMD, test, resultString.toString(), sum);
         }
         if (test >= sum) {
-            int hardToSuccess = (int) test / 2;
-            int VeryHardToSuccess = (int) test / 2;
+            int hardToSuccess = test / 2;
+            int VeryHardToSuccess = test / 2;
             if (sum <= VeryHardToSuccess) {
                 return String.format("§e玩家 §b%s §e检定 §d%s => %d §e结果: §a%s=%d §6极难成功", playerName, userCMD, test, resultString.toString(), sum);
             }

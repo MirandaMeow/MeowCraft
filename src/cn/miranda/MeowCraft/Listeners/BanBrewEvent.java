@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BanBrewEvent implements Listener {
@@ -29,7 +28,7 @@ public class BanBrewEvent implements Listener {
         if (Occ.inGroup(player, "D")) {
             return;
         }
-        MessageManager.Messager(player, "§c你的知识不足以使用酿造台! 这种活还是让巫毒来吧!");
+        MessageManager.Message(player, "§c你的知识不足以使用酿造台! 这种活还是让巫毒来吧!");
         event.setCancelled(true);
     }
 }

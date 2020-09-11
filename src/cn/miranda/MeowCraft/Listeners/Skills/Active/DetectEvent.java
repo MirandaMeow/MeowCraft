@@ -32,10 +32,10 @@ public class DetectEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l地质勘测§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName))));
+                MessageManager.Message(player, String.format("§c§l地质勘测§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName))));
                 return;
             }
-            MessageManager.Messager(player, "§c§l地质勘测§r§e发动!");
+            MessageManager.Message(player, "§c§l地质勘测§r§e发动!");
             activeDetect(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Artisan_Detect.cooldown", 30);
@@ -59,12 +59,12 @@ public class DetectEvent implements Listener {
                     Location currentLocation = new Location(player.getWorld(), currentX, playerY, currentZ);
                     if (currentLocation.getBlock().getType().equals(Material.DIAMOND_ORE)) {
                         player.setCompassTarget(currentLocation);
-                        MessageManager.Messager(player, String.format("§e当前层离你最近的钻石矿位于 §b(%d %d %d)", (int) currentLocation.getX(), (int) currentLocation.getY(), (int) currentLocation.getZ()));
+                        MessageManager.Message(player, String.format("§e当前层离你最近的钻石矿位于 §b(%d %d %d)", (int) currentLocation.getX(), (int) currentLocation.getY(), (int) currentLocation.getZ()));
                         return;
                     }
                 }
             }
         }
-        MessageManager.Messager(player, String.format("§e当前层 §b%d §e范围内没有钻石矿", settings_radius));
+        MessageManager.Message(player, String.format("§e当前层 §b%d §e范围内没有钻石矿", settings_radius));
     }
 }

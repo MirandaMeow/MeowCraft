@@ -101,24 +101,24 @@ public class BankClickEvent implements Listener {
                 return;
             case "§6小镇税收账户":
                 if (!player.hasPermission("town.admin")) {
-                    MessageManager.Messager(player, "§c只有镇长才可以提取税收账户");
+                    MessageManager.Message(player, "§c只有镇长才可以提取税收账户");
                     return;
                 }
                 String playerTownChinese = Town.getPlayerTownChinese(player);
                 double townAccount = towns.getDouble(String.format("%s.publicAccount", playerTownChinese), 0.0);
                 if (townAccount == 0) {
-                    MessageManager.Messager(player, "§c税收账户金额为零");
+                    MessageManager.Message(player, "§c税收账户金额为零");
                     return;
                 }
                 econ.depositPlayer(player, townAccount);
                 towns.set(String.format("%s.publicAccount", playerTownChinese), 0);
                 ConfigManager.saveConfigs();
                 player.closeInventory();
-                MessageManager.Messager(player, String.format("§e你提取了税收账户的全部金额 §b%s", Misc.stringFormat(townAccount)));
+                MessageManager.Message(player, String.format("§e你提取了税收账户的全部金额 §b%s", Misc.stringFormat(townAccount)));
                 return;
             case "§6小镇税率调整":
                 if (!player.hasPermission("town.admin")) {
-                    MessageManager.Messager(player, "§c只有镇长才可以调整税率");
+                    MessageManager.Message(player, "§c只有镇长才可以调整税率");
                     return;
                 }
                 player.openInventory(ChestManager.rateSettingPanel());

@@ -17,10 +17,6 @@ public class FlyTimeCoolDownTask {
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
             @Override
             public void run() {
-                if (!(player instanceof Player)) {
-                    task.cancel();
-                    return;
-                }
                 if (playerData.getBoolean(String.format("%s.flytime.quit", playerName))) {
                     playerData.set(String.format("%s.flytime.quit", playerName), null);
                     ConfigManager.saveConfigs();
@@ -29,7 +25,7 @@ public class FlyTimeCoolDownTask {
                 }
                 if (playerData.getBoolean(String.format("%s.flytime.cancel", playerName))) {
                     player.setAllowFlight(false);
-                    MessageManager.Messager(player, "§e限时飞行已终止");
+                    MessageManager.Message(player, "§e限时飞行已终止");
                     playerData.set(String.format("%s.flytime", playerName), null);
                     ConfigManager.saveConfigs();
                     task.cancel();
@@ -38,11 +34,11 @@ public class FlyTimeCoolDownTask {
                 int currentTime = playerData.getInt(String.format("%s.flytime.time", playerName)) - 1;
                 playerData.set(String.format("%s.flytime.time", playerName), currentTime);
                 if (playerData.getInt(String.format("%s.flytime.time", playerName)) <= 10) {
-                    MessageManager.Messager(player, String.format("§e飞行时间剩余 §b%d §e秒", playerData.getInt(String.format("%s.flytime.time", playerName))));
+                    MessageManager.Message(player, String.format("§e飞行时间剩余 §b%d §e秒", playerData.getInt(String.format("%s.flytime.time", playerName))));
                 }
                 if (playerData.getInt(String.format("%s.flytime.time", playerName)) == 0) {
                     player.setAllowFlight(false);
-                    MessageManager.Messager(player, "§e限时飞行已经结束");
+                    MessageManager.Message(player, "§e限时飞行已经结束");
                     playerData.set(String.format("%s.flytime", playerName), null);
                     ConfigManager.saveConfigs();
                     task.cancel();

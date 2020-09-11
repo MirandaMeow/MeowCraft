@@ -19,12 +19,12 @@ public final class DeadCostCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length > 1) {
-            MessageManager.Messager(sender, "§e用法: §6/deadcost §b[value]");
+            MessageManager.Message(sender, "§e用法: §6/deadcost §b[value]");
             return true;
         }
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                MessageManager.Messager(sender, "§c无法在控制台使用该命令");
+                MessageManager.Message(sender, "§c无法在控制台使用该命令");
                 return true;
             }
             Player player = (Player) sender;
@@ -32,27 +32,27 @@ public final class DeadCostCommand implements TabExecutor {
             if (playerData.get(String.format("%s.deadcost", playerName)) == null || !playerData.getBoolean(String.format("%s.deadcost", playerName))) {
                 playerData.set(String.format("%s.deadcost", playerName), true);
                 ConfigManager.saveConfigs();
-                MessageManager.Messager(player, "§e启用死亡不掉落");
+                MessageManager.Message(player, "§e启用死亡不掉落");
                 return true;
             }
             playerData.set(String.format("%s.deadcost", player.getName()), false);
             ConfigManager.saveConfigs();
-            MessageManager.Messager(player, "§e禁用死亡不掉落");
+            MessageManager.Message(player, "§e禁用死亡不掉落");
             return true;
 
         }
         if (!sender.hasPermission("deadcost.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         if (!Misc.isInt(args[0])) {
-            MessageManager.Messager(sender, "§c参数不正确");
+            MessageManager.Message(sender, "§c参数不正确");
             return true;
         }
 
         int setValue = Integer.parseInt(args[0]);
         if (setValue < 0 || setValue > 100) {
-            MessageManager.Messager(sender, "§e请输入一个介于 §b0 - 100 §e的正整数");
+            MessageManager.Message(sender, "§e请输入一个介于 §b0 - 100 §e的正整数");
             return true;
         }
         getServer().broadcastMessage(String.format("§e死亡不掉落的费率变更为 §b%d%%", setValue));
@@ -62,6 +62,6 @@ public final class DeadCostCommand implements TabExecutor {
     }
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

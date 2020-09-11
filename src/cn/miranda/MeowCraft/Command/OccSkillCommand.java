@@ -20,73 +20,69 @@ public class OccSkillCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Messager(sender, "§c无法在控制台使用该命令");
+            MessageManager.Message(sender, "§c无法在控制台使用该命令");
             return true;
         }
         Player player = (Player) sender;
         String playerName = player.getName();
         if (args.length > 2 || args.length == 0) {
-            MessageManager.Messager(player, "§e用法: §6/occskill §b<list|cooldown> [player]");
+            MessageManager.Message(player, "§e用法: §6/occskill §b<list|cooldown> [player]");
             return true;
         }
         if (Objects.equals(args[0], "list")) {
             if (args.length == 1) {
-                MessageManager.Messager(player, "§e已习得技能:");
-                List skillIDs = Occ.getPlayerSkills(player);
-                if (skillIDs.size() == 0) {
-                    MessageManager.Messager(player, "§e无");
-                    return true;
-                }
-                for (Object i : skillIDs) {
-                    MessageManager.Messager(player, String.format("§c%s", Occ.getSkillChineseById(i.toString())));
-                }
-                return true;
+                MessageManager.Message(player, "§e已习得技能:");
+                return displaySkillList(player, player);
             }
             if (!player.hasPermission("occskill.admin")) {
-                MessageManager.Messager(sender, "§c你没有权限");
+                MessageManager.Message(sender, "§c你没有权限");
                 return true;
             }
             Player target = Misc.player(args[1]);
             if (target == null) {
-                MessageManager.Messager(sender, "§c指定玩家不在线");
+                MessageManager.Message(sender, "§c指定玩家不在线");
                 return true;
             }
             String targetName = target.getName();
-            MessageManager.Messager(player, String.format("§e玩家§b %s §e已习得技能:", targetName));
-            List skillIDs = Occ.getPlayerSkills(target);
-            if (skillIDs.size() == 0) {
-                MessageManager.Messager(player, "§e无");
-                return true;
-            }
-            for (Object i : skillIDs) {
-                MessageManager.Messager(player, String.format("§c%s", Occ.getSkillChineseById(i.toString())));
-            }
-            return true;
+            MessageManager.Message(player, String.format("§e玩家§b %s §e已习得技能:", targetName));
+            return displaySkillList(player, target);
         }
         if (Objects.equals(args[0], "cooldown")) {
             if (!player.hasPermission("occskill.admin")) {
-                MessageManager.Messager(sender, "§c你没有权限");
+                MessageManager.Message(sender, "§c你没有权限");
                 return true;
             }
             if (args.length == 1) {
                 temp.set(String.format("OccSkillCoolDown.%s", playerName), null);
                 ConfigManager.saveConfigs();
-                MessageManager.Messager(player, "§e成功冷却所有职业技能");
+                MessageManager.Message(player, "§e成功冷却所有职业技能");
                 return true;
             }
             Player target = Misc.player(args[1]);
             if (target == null) {
-                MessageManager.Messager(sender, "§c指定玩家不在线");
+                MessageManager.Message(sender, "§c指定玩家不在线");
                 return true;
             }
             String targetName = target.getName();
             temp.set(String.format("OccSkillCoolDown.%s", targetName), null);
             ConfigManager.saveConfigs();
-            MessageManager.Messager(player, String.format("§e成功冷却玩家 §b%s §e的所有职业技能", targetName));
-            MessageManager.Messager(target, "§e你的所有职业技能已冷却");
+            MessageManager.Message(player, String.format("§e成功冷却玩家 §b%s §e的所有职业技能", targetName));
+            MessageManager.Message(target, "§e你的所有职业技能已冷却");
             return true;
         }
-        MessageManager.Messager(player, "§e用法: §6/occskill §b<list|cooldown> [player]");
+        MessageManager.Message(player, "§e用法: §6/occskill §b<list|cooldown> [player]");
+        return true;
+    }
+
+    public boolean displaySkillList(Player player, Player target) {
+        List<String> skillIDs = Occ.getPlayerSkills(target);
+        if (skillIDs.size() == 0) {
+            MessageManager.Message(player, "§e无");
+            return true;
+        }
+        for (Object i : skillIDs) {
+            MessageManager.Message(player, String.format("§c%s", Occ.getSkillChineseById(i.toString())));
+        }
         return true;
     }
 
@@ -98,6 +94,6 @@ public class OccSkillCommand implements TabExecutor {
         if (strings.length == 2) {
             return Misc.getOnlinePlayerNames();
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

@@ -20,36 +20,36 @@ public class EsotericaScrollCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("esotericascroll.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         if (args.length != 2) {
-            MessageManager.Messager(sender, "§e用法: §6/esotericascroll §b<player> <skill>");
+            MessageManager.Message(sender, "§e用法: §6/esotericascroll §b<player> <skill>");
             return true;
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Messager(sender, "§c指定玩家不在线");
+            MessageManager.Message(sender, "§c指定玩家不在线");
             return true;
         }
-        String targetName = target.getName();
         String skillChineseName = args[1];
-        List skillList = Occ.skillList();
+        List<String> skillList = Occ.skillList();
         if (!skillList.contains(skillChineseName)) {
-            MessageManager.Messager(sender, "§c技能不存在");
+            MessageManager.Message(sender, "§c技能不存在");
             return true;
         }
         if (Misc.isInventoryFull(target)) {
-            MessageManager.Messager(sender, "§c你的背包满了");
+            MessageManager.Message(sender, "§c你的背包满了");
             return true;
         }
         getEsotericaScroll(target, Occ.getSkillID(skillChineseName), Occ.getSkillLore(skillChineseName));
         return true;
     }
 
-    private static void getEsotericaScroll(Player player, String type, List lore) {
+    private static void getEsotericaScroll(Player player, String type, List<?> lore) {
         ItemStack esotericaScroll = new ItemStack(Material.PAPER, 1);
         ItemMeta scrollMeta = esotericaScroll.getItemMeta();
+        assert scrollMeta != null;
         scrollMeta.setDisplayName("§9秘传之书");
         ArrayList<String> loreList = new ArrayList<>();
         loreList.add(String.format("§3可习得技能 §c%s", skills.getString(String.format("%s.name", type))));
@@ -69,6 +69,6 @@ public class EsotericaScrollCommand implements TabExecutor {
         if (strings.length == 2) {
             return Occ.skillList();
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

@@ -18,7 +18,7 @@ public class CommandMonitorEvent implements Listener {
         String command = event.getMessage();
         for (String p : Misc.getOnlinePlayerNames()) {
             if (playerData.getBoolean(String.format("%s.cmdlogger", p))) {
-                MessageManager.Messager(Misc.player(p), String.format("§e玩家 §b%s §e使用了命令 §b%s", playerName, command));
+                MessageManager.Message(Misc.player(p), String.format("§e玩家 §b%s §e使用了命令 §b%s", playerName, command));
             }
         }
     }

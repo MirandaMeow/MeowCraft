@@ -20,7 +20,7 @@ public class FlyTimePlayerJoinEvent implements Listener {
         }
         int remainTime = playerData.getInt(String.format("%s.flytime.time", playerName));
         player.setAllowFlight(true);
-        MessageManager.Messager(player, String.format("§e飞行时间剩余 §b%d §e秒", remainTime));
+        MessageManager.Message(player, String.format("§e飞行时间剩余 §b%d §e秒", remainTime));
         new FlyTimeCoolDownTask().initFlyTime(player);
     }
 }

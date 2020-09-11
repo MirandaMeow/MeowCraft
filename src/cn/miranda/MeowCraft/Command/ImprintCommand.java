@@ -19,21 +19,21 @@ public final class ImprintCommand implements TabExecutor {
         int amount;
         Player target;
         if (!sender.hasPermission("imprint.admin")) {
-            MessageManager.Messager(sender, "§c你没有权限");
+            MessageManager.Message(sender, "§c你没有权限");
             return true;
         }
         if (args.length > 2 || args.length == 0) {
-            MessageManager.Messager(sender, "§e用法 §6/imprint §b[player] <amount>");
+            MessageManager.Message(sender, "§e用法 §6/imprint §b[player] <amount>");
             return true;
         }
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                MessageManager.Messager(sender, "§c不能对控制台使用");
+                MessageManager.Message(sender, "§c不能对控制台使用");
                 return true;
             }
             target = (Player) sender;
             if (!Misc.isInt(args[0])) {
-                MessageManager.Messager(sender, "§c参数不正确");
+                MessageManager.Message(sender, "§c参数不正确");
                 return true;
             }
             amount = Integer.parseInt(args[0]);
@@ -41,20 +41,20 @@ public final class ImprintCommand implements TabExecutor {
             String playerInputPlayerName = args[0];
             target = Misc.player(playerInputPlayerName);
             if (target == null) {
-                MessageManager.Messager(sender, "§c玩家不存在");
+                MessageManager.Message(sender, "§c玩家不存在");
                 return true;
             }
             if (!Misc.isInt(args[1])) {
-                MessageManager.Messager(sender, "§c参数不正确");
+                MessageManager.Message(sender, "§c参数不正确");
                 return true;
             }
             amount = Integer.parseInt(args[1]);
         }
         if (Misc.isInventoryFull(target)) {
             if (args.length == 1) {
-                MessageManager.Messager(sender, "§c你的背包已满");
+                MessageManager.Message(sender, "§c你的背包已满");
             } else {
-                MessageManager.Messager(sender, "§c对方的背包已满");
+                MessageManager.Message(sender, "§c对方的背包已满");
             }
             return true;
         }
@@ -74,7 +74,7 @@ public final class ImprintCommand implements TabExecutor {
         scrollMeta.setLore(loreList);
         scroll.setItemMeta(scrollMeta);
         target.getInventory().addItem(scroll);
-        MessageManager.Messager(target, String.format("§e收到 §b%d §e个烙印卷轴", amount));
+        MessageManager.Message(target, String.format("§e收到 §b%d §e个烙印卷轴", amount));
         return true;
     }
     @Override
@@ -82,6 +82,6 @@ public final class ImprintCommand implements TabExecutor {
         if (strings.length == 1) {
             return Misc.getOnlinePlayerNames();
         }
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

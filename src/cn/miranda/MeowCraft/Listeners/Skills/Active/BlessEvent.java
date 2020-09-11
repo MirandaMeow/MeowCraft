@@ -17,7 +17,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
-import static cn.miranda.MeowCraft.Utils.Occ.getTarget;
 
 public class BlessEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
@@ -34,19 +33,19 @@ public class BlessEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName)) != null) {
-                MessageManager.Messager(player, String.format("§c§l巫神祝福§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
+                MessageManager.Message(player, String.format("§c§l巫神祝福§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
                 return;
             }
-            Player target = (Player) getTarget(player);
-            if (!(target instanceof Player)) {
-                player.sendMessage("§c目标不是玩家");
+            Player target = Occ.getTarget(player);
+            if (target == null) {
+                MessageManager.Message(player, "§c目标不是玩家");
                 return;
             }
             if (!Occ.requireItem(player, Material.GLOWSTONE_DUST, skills.getInt("Voodoo_Bless.cost", 10))) {
-                MessageManager.Messager(player, "§c萤石粉不足");
+                MessageManager.Message(player, "§c萤石粉不足");
                 return;
             }
-            MessageManager.Messager(player, "§c§l巫神祝福§r§e发动!");
+            MessageManager.Message(player, "§c§l巫神祝福§r§e发动!");
             activeBless(target);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
@@ -64,6 +63,6 @@ public class BlessEvent implements Listener {
         player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, duration * 20, level1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, duration * 20, level2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, duration * 20, level3));
-        MessageManager.Messager(player, "§e你被祝福了, 快上!");
+        MessageManager.Message(player, "§e你被祝福了, 快上!");
     }
 }

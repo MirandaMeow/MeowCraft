@@ -44,17 +44,17 @@ public class EggCatcherEvent implements Listener {
             return;
         }
         if (!player.hasPermission(eggCatcher.getPermission())) {
-            MessageManager.Messager(player, "§c你没有权限捕捉§b" + eggCatcher.getName());
+            MessageManager.Message(player, "§c你没有权限捕捉§b" + eggCatcher.getName());
             return;
         }
         if (!EggCatcher.getAvailableList().contains(targetType)) {
-            MessageManager.Messager(player, String.format("§b%s §c不可被捕捉", eggCatcher.getName()));
+            MessageManager.Message(player, String.format("§b%s §c不可被捕捉", eggCatcher.getName()));
             return;
         }
         if (EggCatcher.getCanTamedEntity().contains(targetType)) {
             Tameable t = (Tameable) target;
             if (t.isTamed()) {
-                MessageManager.Messager(player, "§c无法捕捉已被驯服的动物");
+                MessageManager.Message(player, "§c无法捕捉已被驯服的动物");
                 return;
             }
         }
@@ -62,16 +62,16 @@ public class EggCatcherEvent implements Listener {
         int chance = config.getInt("EggCatcher.chance", 30);
         int cost = config.getInt("EggCatcher.cost", 100);
         if (playerMoney < cost) {
-            MessageManager.Messager(player, "§c金钱不足无法捕捉");
+            MessageManager.Message(player, "§c金钱不足无法捕捉");
             return;
         }
         econ.withdrawPlayer(player, cost);
         int opt = Misc.randomNum(1, 100);
         if (opt > chance) {
-            MessageManager.Messager(player, String.format("§e扣除了 §b%d §e用于捕捉 §b%s§e, §c不过没捉到", cost, eggCatcher.getName()));
+            MessageManager.Message(player, String.format("§e扣除了 §b%d §e用于捕捉 §b%s§e, §c不过没捉到", cost, eggCatcher.getName()));
             return;
         }
-        MessageManager.Messager(player, String.format("§e扣除了 §b%d §e用于捕捉 §b%s§e, §c捕捉成功了", cost, eggCatcher.getName()));
+        MessageManager.Message(player, String.format("§e扣除了 §b%d §e用于捕捉 §b%s§e, §c捕捉成功了", cost, eggCatcher.getName()));
         target.getWorld().dropItem(targetLocation, eggCatcher.getItemStack());
         Effect.eggCatchDropItem(target);
         target.remove();
