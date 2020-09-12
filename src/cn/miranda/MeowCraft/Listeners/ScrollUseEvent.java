@@ -22,7 +22,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class ScrollUseEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ScrollUseEvent(PlayerInteractEvent event) {
+    private void ScrollUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if ((event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) && player.getInventory().getItemInMainHand().getType() == Material.PAPER && event.getHand() == EquipmentSlot.HAND) {

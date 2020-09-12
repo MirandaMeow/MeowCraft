@@ -11,7 +11,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class FlyTimePlayerQuitEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void FlyTimePlayerQuitEvent(PlayerQuitEvent event) {
+    private void FlyTimePlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (playerData.get(String.format("%s.flytime", playerName)) == null) {

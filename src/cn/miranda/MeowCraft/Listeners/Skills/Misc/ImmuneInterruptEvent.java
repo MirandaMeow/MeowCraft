@@ -12,7 +12,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class ImmuneInterruptEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ImmuneInterruptEvent(PlayerMoveEvent event) {
+    private void ImmuneInterrupt(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         Location from = event.getFrom().clone();
         Location to = event.getTo().clone();

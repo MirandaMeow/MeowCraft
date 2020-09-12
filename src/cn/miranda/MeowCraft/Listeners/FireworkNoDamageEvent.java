@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class FireworkNoDamageEvent implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
-    private void FireworkNoDamageEvent(EntityDamageByEntityEvent event) {
+    private void FireworkNoDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager().getType() == EntityType.FIREWORK) {
             event.setCancelled(true);
         }

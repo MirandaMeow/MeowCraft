@@ -19,7 +19,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ImmuneEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ImmuneEvent(PlayerInteractEvent event) {
+    private void Immune(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {

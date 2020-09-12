@@ -12,7 +12,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class ArrowBoostIncreaseDamageEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ArrowBoostIncreaseDamageEvent(EntityDamageByEntityEvent event) {
+    private void ArrowBoostIncreaseDamage(EntityDamageByEntityEvent event) {
         if (ArrowBoostEvent.arrowIDs == null) {
             return;
         }

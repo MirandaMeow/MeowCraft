@@ -12,7 +12,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class CommandMonitorEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void CommandMonitorEvent(PlayerCommandPreprocessEvent event) {
+    private void CommandMonitor(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         String command = event.getMessage();

@@ -18,12 +18,14 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ChargeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ChargeEvent(PlayerInteractEvent event) {
+    private void Charge(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {
@@ -31,12 +33,7 @@ public class ChargeEvent implements Listener {
                 return;
             }
         }
-        ArrayList<Material> swords = new ArrayList<>();
-        swords.add(Material.DIAMOND_SWORD);
-        swords.add(Material.GOLDEN_SWORD);
-        swords.add(Material.IRON_SWORD);
-        swords.add(Material.WOODEN_SWORD);
-        swords.add(Material.STONE_SWORD);
+        List<Material> swords = new ArrayList<>(Arrays.asList(Material.DIAMOND_SWORD, Material.GOLDEN_SWORD, Material.IRON_SWORD, Material.WOODEN_SWORD, Material.STONE_SWORD));
         if (player.isSneaking() && (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && swords.contains(player.getInventory().getItemInMainHand().getType()) && event.getHand() == EquipmentSlot.HAND) {
             if (playerData.get(String.format("%s.occConfig.occSkills.Swordsman_Charge", playerName)) == null) {
                 return;

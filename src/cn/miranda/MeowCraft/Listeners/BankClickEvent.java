@@ -23,7 +23,7 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class BankClickEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void BankClickEvent(InventoryClickEvent event) {
+    private void BankClick(InventoryClickEvent event) {
         String invName = event.getView().getTitle();
         if (!invName.contains("§9小镇银行")) {
             return;

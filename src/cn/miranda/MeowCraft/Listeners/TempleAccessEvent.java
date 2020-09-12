@@ -21,7 +21,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.temples;
 
 public class TempleAccessEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void AccessTempleEvent(PlayerInteractEvent event) {
+    private void AccessTemple(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getHand() == EquipmentSlot.HAND) {

@@ -11,7 +11,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 
 public class ArrowBoostCancelNoDamageTicksEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ArrowBoostCancelNoDamageTicksEvent(ProjectileHitEvent event) {
+    private void ArrowBoostCancelNoDamageTicks(ProjectileHitEvent event) {
         if (ArrowBoostEvent.arrowIDs == null) {
             return;
         }

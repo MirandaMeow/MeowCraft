@@ -22,7 +22,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 public class ArrowBoostEvent implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ArrowBoostEvent(PlayerInteractEvent event) {
+    private void ArrowBoost(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {

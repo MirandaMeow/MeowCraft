@@ -28,7 +28,6 @@ public class MeowCraft extends JavaPlugin {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e焊接前置插件");
         PluginLoadManager.LoadPlugins();
         CommandManager.registerCommands();
-        ClassManager.loadClass();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册命令");
         TempleManager.refreshTempleLists();
         try {

@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BanBrewEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void DeadCostEvent(PlayerInteractEvent event) {
+    private void DeadCost(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;

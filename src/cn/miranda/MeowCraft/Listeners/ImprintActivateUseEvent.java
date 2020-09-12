@@ -18,7 +18,7 @@ import static org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK;
 
 public class ImprintActivateUseEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ImprintActivateUseEvent(PlayerInteractEvent event) {
+    private void ImprintActivateUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (!player.isSneaking() && (event.getAction() == RIGHT_CLICK_BLOCK || event.getAction() == RIGHT_CLICK_AIR) && player.getInventory().getItemInMainHand().getType().equals(Material.PAPER) && event.getHand() == EquipmentSlot.HAND) {
             ItemMeta playerItemMeta = player.getInventory().getItemInMainHand().getItemMeta();

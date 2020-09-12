@@ -29,7 +29,7 @@ public class OccChooseEvent implements Listener {
     List<Material> signs = new ArrayList<>(Arrays.asList(Material.OAK_WALL_SIGN, Material.SPRUCE_WALL_SIGN, Material.BIRCH_WALL_SIGN, Material.ACACIA_WALL_SIGN, Material.JUNGLE_WALL_SIGN, Material.DARK_OAK_WALL_SIGN));
 
     @EventHandler(priority = EventPriority.NORMAL)
-    private void OccChooseEvent(PlayerInteractEvent event) {
+    private void OccChoose(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK || event.getHand() != EquipmentSlot.HAND) {
             return;
         }

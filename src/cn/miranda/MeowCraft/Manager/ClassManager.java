@@ -2,6 +2,7 @@ package cn.miranda.MeowCraft.Manager;
 
 import cn.miranda.MeowCraft.MeowCraft;
 
+//TODO:找到 ClassNotFoundException 的原因争取删掉这坨屎
 @Deprecated
 public class ClassManager {
     public static void loadClass() {

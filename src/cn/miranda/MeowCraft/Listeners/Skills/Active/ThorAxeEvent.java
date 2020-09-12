@@ -16,12 +16,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ThorAxeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void ThorAxeEvent(PlayerInteractEvent event) {
+    private void ThorAxe(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {
@@ -29,12 +31,7 @@ public class ThorAxeEvent implements Listener {
                 return;
             }
         }
-        ArrayList<Material> axes = new ArrayList<>();
-        axes.add(Material.DIAMOND_AXE);
-        axes.add(Material.GOLDEN_AXE);
-        axes.add(Material.IRON_AXE);
-        axes.add(Material.WOODEN_AXE);
-        axes.add(Material.STONE_AXE);
+        List<Material> axes = new ArrayList<>(Arrays.asList(Material.DIAMOND_AXE, Material.GOLDEN_AXE, Material.IRON_AXE, Material.WOODEN_AXE, Material.STONE_AXE));
         if (player.isSneaking() && (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && axes.contains(player.getInventory().getItemInMainHand().getType()) && event.getHand() == EquipmentSlot.HAND) {
             if (playerData.get(String.format("%s.occConfig.occSkills.Thug_ThorAxe", playerName)) == null) {
                 return;

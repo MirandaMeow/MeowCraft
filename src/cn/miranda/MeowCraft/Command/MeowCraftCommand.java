@@ -45,12 +45,9 @@ public final class MeowCraftCommand implements TabExecutor {
             return true;
         }
         //TODO 测试用命令，需要移除
-        if (Objects.equals(args[0], "test")) {
-/*
-            Player player = (Player) sender;
-*/
+        if (Objects.equals(args[0], "debug")) {
             ClassManager.loadClass();
-            MessageManager.Message(sender, "§e测试完成");
+            MessageManager.Message(sender, "§e所有类加载完成");
             return true;
         }
         MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload>");
@@ -60,7 +57,7 @@ public final class MeowCraftCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("help", "reload", "save"));
+            return new ArrayList<>(Arrays.asList("help", "reload", "save", "debug"));
         }
         return new ArrayList<>();
     }

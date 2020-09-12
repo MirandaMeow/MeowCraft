@@ -19,7 +19,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class DetectEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void DetectEvent(PlayerInteractEvent event) {
+    private void Detect(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {

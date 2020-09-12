@@ -12,7 +12,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class FlyTimePlayerJoinEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void FlyTimePlayerJoinEvent(PlayerJoinEvent event) {
+    private void FlyTimePlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (playerData.get(String.format("%s.flytime", playerName)) == null) {

@@ -19,7 +19,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class SelfExplodeEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void SelfExplodeEvent(PlayerInteractEvent event) {
+    private void SelfExplode(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {

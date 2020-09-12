@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
@@ -182,5 +183,15 @@ public class Misc {
         Essentials ess = (Essentials) Bukkit.getServer().getPluginManager().getPlugin("Essentials");
         User user = ess.getUserMap().getUser(player.getName());
         return user.getNick(true);
+    }
+
+    public static void setItemDuration(ItemStack itemStack, int duration) {
+        Damageable itemMeta = (Damageable) itemStack.getItemMeta();
+        itemMeta.setDamage(duration);
+        itemStack.setItemMeta((ItemMeta) itemMeta);
+    }
+
+    public static int getItemDuration(ItemStack itemStack) {
+        return ((Damageable) itemStack.getItemMeta()).getDamage();
     }
 }

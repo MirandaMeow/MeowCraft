@@ -21,7 +21,7 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class EggCatcherEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void EggCatcherEvent(ProjectileHitEvent event) {
+    private void EggCatcher(ProjectileHitEvent event) {
         EggCatcher eggCatcher;
         ProjectileSource shooter = event.getEntity().getShooter();
         if (!(shooter instanceof Player)) {

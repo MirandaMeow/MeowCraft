@@ -20,7 +20,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class BlessEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void BlessEvent(PlayerInteractEvent event) {
+    private void Bless(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         if (!player.hasPermission("occ.bypass")) {

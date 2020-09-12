@@ -22,7 +22,7 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class BankCloseEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void BankCloseEvent(InventoryCloseEvent event) {
+    private void BankClose(InventoryCloseEvent event) {
         String invName = event.getView().getTitle();
         if (!invName.contains("§9小镇银行")) {
             return;

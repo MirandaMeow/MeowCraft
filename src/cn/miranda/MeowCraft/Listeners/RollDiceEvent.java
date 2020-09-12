@@ -10,7 +10,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class RollDiceEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void RollDiceEvent(AsyncPlayerChatEvent event) {
+    private void RollDice(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String playerDisplayName = player.getDisplayName();
         String message = event.getMessage();

@@ -15,7 +15,7 @@ import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class DeadCostEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
-    private void DeadCostEvent(PlayerDeathEvent event) {
+    private void DeadCost(PlayerDeathEvent event) {
         Player player = event.getEntity();
         String playerName = player.getName();
         int cost = config.getInt("DeadCost.ratio", 10);

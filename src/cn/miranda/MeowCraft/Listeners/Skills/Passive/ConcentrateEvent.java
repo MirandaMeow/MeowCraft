@@ -1,6 +1,7 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Passive;
 
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.entity.Entity;
@@ -15,7 +16,7 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class ConcentrateEvent implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
-    private void ConcentrateEvent(EntityDamageEvent event) {
+    private void Concentrate(EntityDamageEvent event) {
         Entity entity = event.getEntity();
         if (!(entity instanceof Player)) {
             return;
@@ -33,7 +34,9 @@ public class ConcentrateEvent implements Listener {
         if (currentProbability > chance) {
             return;
         }
-        event.setCancelled(true);
-        MessageManager.Message(player, "§e伤害闪避!");
+        int reduce = skills.getInt("All_Concentrate.reduce", 30);
+        Effect.activeSkillEffect(player);
+        event.setDamage(event.getDamage() * (1 - reduce / 100));
+        MessageManager.Message(player, "§e受到的伤害减轻了");
     }
 }
