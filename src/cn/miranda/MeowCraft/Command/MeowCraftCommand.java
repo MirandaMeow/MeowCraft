@@ -22,7 +22,7 @@ public final class MeowCraftCommand implements TabExecutor {
             return true;
         }
         if (args.length == 0) {
-            MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload>");
+            MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload|save|debug>");
             return true;
         }
         if (Objects.equals(args[0], "help")) {
@@ -50,7 +50,7 @@ public final class MeowCraftCommand implements TabExecutor {
             MessageManager.Message(sender, "§e所有类加载完成");
             return true;
         }
-        MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload>");
+        MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload|save|debug>");
         return true;
     }
 

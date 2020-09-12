@@ -14,7 +14,7 @@ commands:
     permissions: hpset.set
   meowcraft:
     description: 核心模块
-    usage: /meowcraft <help|reload>
+    usage: /meowcraft <help|reload|save|debug>
     permissions: meow.admin
   convertexp:
     description: 互转经验和金钱模块
