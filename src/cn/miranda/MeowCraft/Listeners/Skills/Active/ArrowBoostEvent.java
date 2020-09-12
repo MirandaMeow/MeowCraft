@@ -2,10 +2,10 @@ package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
-import cn.miranda.MeowCraft.Task.ArrowBoostShootTask;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
-
-import java.util.List;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
@@ -43,18 +41,12 @@ public class ArrowBoostEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l箭矢爆发§r§e发动!");
-            activeArrowBoost(player);
+            SkillLib.ArrowBoost(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Ranger_ArrowBoost.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Ranger_ArrowBoost");
             ConfigManager.saveConfigs();
         }
-    }
-
-    public static List<Integer> arrowIDs = null;
-
-    private void activeArrowBoost(Player player) {
-        arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player);
     }
 }

@@ -49,6 +49,7 @@ public class ListenersManager implements Listener {
         list.add(new ConcentrateEvent());
         list.add(new EggCatcherEvent());
         list.add(new PickAxeAttackEvent());
+        list.add(new ThrowPotionEvent());
         for (Listener i : list) {
             register(i);
         }

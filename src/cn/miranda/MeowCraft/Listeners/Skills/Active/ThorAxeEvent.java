@@ -4,8 +4,8 @@ import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
-import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,17 +45,12 @@ public class ThorAxeEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l雷神战斧§r§e发动!");
-            activeThorAxe(player);
+            SkillLib.ThorAxe(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Thug_ThorAxe.cooldown", 20);
             temp.set(String.format("OccSkillCoolDown.%s.Thug_ThorAxe", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Thug_ThorAxe");
             ConfigManager.saveConfigs();
         }
-    }
-
-    private void activeThorAxe(Player player) {
-        int settings_distance = skills.getInt("Thug_ThorAxe.distance", 2);
-        Misc.throwSomething(player, Material.GOLDEN_AXE, settings_distance, 20, true);
     }
 }

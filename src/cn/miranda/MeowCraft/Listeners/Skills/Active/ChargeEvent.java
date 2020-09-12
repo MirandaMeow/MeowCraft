@@ -4,8 +4,8 @@ import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
-import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,20 +45,13 @@ public class ChargeEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l无畏冲锋§r§e发动!");
-            activeCharge(player);
+            SkillLib.Charge(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Swordsman_Charge");
             ConfigManager.saveConfigs();
         }
-    }
-
-    private void activeCharge(Player player) {
-        int settings_duration = skills.getInt("Swordsman_Charge.duration", 20);
-        Misc.moveForward(player, 4);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, settings_duration * 20, 0));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, settings_duration * 20, 3));
     }
 }
 

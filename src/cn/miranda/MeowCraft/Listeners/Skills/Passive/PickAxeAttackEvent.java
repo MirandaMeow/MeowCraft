@@ -46,9 +46,7 @@ public class PickAxeAttackEvent implements Listener {
         List<Material> swords = new ArrayList<>(Arrays.asList(Material.DIAMOND_SWORD, Material.GOLDEN_SWORD, Material.IRON_SWORD, Material.WOODEN_SWORD, Material.STONE_SWORD));
         List<Material> axes = new ArrayList<>(Arrays.asList(Material.DIAMOND_AXE, Material.GOLDEN_AXE, Material.IRON_AXE, Material.WOODEN_AXE, Material.STONE_AXE));
         if (swords.contains(playerHold) || axes.contains(playerHold)) {
-            Effect.activeSkillEffect(player);
             event.setDamage(event.getDamage() - 3);
-            MessageManager.Message(player, "§e你你感觉手中的工具并不得心应手");
             return;
         }
         success = false;

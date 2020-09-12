@@ -2,10 +2,10 @@ package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
-import cn.miranda.MeowCraft.Task.ImmuneTask;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,19 +40,12 @@ public class ImmuneEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l神圣护甲§r§e发动!");
-            activeImmune(player);
+            SkillLib.Immune(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_Immune.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.All_Immune", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_Immune");
             ConfigManager.saveConfigs();
         }
-    }
-
-    private void activeImmune(Player player) {
-        int duration = skills.getInt("All_Immune.duration", 10);
-        player.setGlowing(true);
-        player.setInvulnerable(true);
-        new ImmuneTask().RemoveImmune(player, duration * 20);
     }
 }

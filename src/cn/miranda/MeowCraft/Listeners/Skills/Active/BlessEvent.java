@@ -5,6 +5,7 @@ import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
@@ -46,23 +45,12 @@ public class BlessEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l巫神祝福§r§e发动!");
-            activeBless(target);
+            SkillLib.Bless(target);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_Bless");
             ConfigManager.saveConfigs();
         }
-    }
-
-    private void activeBless(Player player) {
-        int duration = skills.getInt("Voodoo_Bless.duration", 30);
-        int level1 = skills.getInt("Voodoo_Bless.effect1_level", 1);
-        int level2 = skills.getInt("Voodoo_Bless.effect2_level", 1);
-        int level3 = skills.getInt("Voodoo_Bless.effect3_level", 1);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, duration * 20, level1));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, duration * 20, level2));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, duration * 20, level3));
-        MessageManager.Message(player, "§e你被祝福了, 快上!");
     }
 }

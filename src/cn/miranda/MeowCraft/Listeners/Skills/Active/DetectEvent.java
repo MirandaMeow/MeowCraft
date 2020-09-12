@@ -5,7 +5,7 @@ import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
-import org.bukkit.Location;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,35 +36,12 @@ public class DetectEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l地质勘测§r§e发动!");
-            activeDetect(player);
+            SkillLib.Detect(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Artisan_Detect.cooldown", 30);
             temp.set(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Artisan_Detect");
             ConfigManager.saveConfigs();
         }
-    }
-
-    private void activeDetect(Player player) {
-        int settings_radius = skills.getInt("Artisan_Detect.radius", 20);
-        Location playerLocation = player.getLocation();
-        int playerX = (int) Math.round(playerLocation.getX());
-        int playerY = (int) Math.round(playerLocation.getY());
-        int playerZ = (int) Math.round(playerLocation.getZ());
-        for (int currentRadius = 1; currentRadius <= settings_radius; currentRadius++) {
-            for (int x = -(2 * currentRadius - 1); x <= (2 * currentRadius - 1); x++) {
-                for (int z = -(2 * currentRadius - 1); z <= (2 * currentRadius - 1); z++) {
-                    int currentX = playerX + x;
-                    int currentZ = playerZ + z;
-                    Location currentLocation = new Location(player.getWorld(), currentX, playerY, currentZ);
-                    if (currentLocation.getBlock().getType().equals(Material.DIAMOND_ORE)) {
-                        player.setCompassTarget(currentLocation);
-                        MessageManager.Message(player, String.format("§e当前层离你最近的钻石矿位于 §b(%d %d %d)", (int) currentLocation.getX(), (int) currentLocation.getY(), (int) currentLocation.getZ()));
-                        return;
-                    }
-                }
-            }
-        }
-        MessageManager.Message(player, String.format("§e当前层 §b%d §e范围内没有钻石矿", settings_radius));
     }
 }

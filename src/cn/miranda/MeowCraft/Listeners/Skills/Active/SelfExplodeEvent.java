@@ -3,9 +3,9 @@ package cn.miranda.MeowCraft.Listeners.Skills.Active;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
-import cn.miranda.MeowCraft.Task.SelfExplodeTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,7 +40,7 @@ public class SelfExplodeEvent implements Listener {
                 return;
             }
             MessageManager.Message(player, "§c§l自爆§r§e发动!");
-            activeSelfExplode(player);
+            SkillLib.SelfExplode(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_SelfExplode.cooldown", 300);
             temp.set(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName), coolDown);
@@ -51,10 +51,5 @@ public class SelfExplodeEvent implements Listener {
             ConfigManager.saveConfigs();
             event.setCancelled(true);
         }
-    }
-
-    private void activeSelfExplode(Player player) {
-        int intensity = skills.getInt("All_SelfExplode.intensity", 5);
-        new SelfExplodeTask().SelfExplode(player, intensity);
     }
 }

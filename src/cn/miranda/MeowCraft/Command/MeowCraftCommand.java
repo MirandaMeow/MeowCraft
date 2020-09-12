@@ -5,9 +5,11 @@ import cn.miranda.MeowCraft.Manager.ClassManager;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -48,6 +50,11 @@ public final class MeowCraftCommand implements TabExecutor {
         if (Objects.equals(args[0], "debug")) {
             ClassManager.loadClass();
             MessageManager.Message(sender, "§e所有类加载完成");
+            return true;
+        }
+        //TODO 测试用命令，需要移除
+        if (Objects.equals(args[0], "test")) {
+            MessageManager.Message(sender, "§e测试完成");
             return true;
         }
         MessageManager.Message(sender, "§e用法: §6/meowcraft §b<help|reload|save|debug>");

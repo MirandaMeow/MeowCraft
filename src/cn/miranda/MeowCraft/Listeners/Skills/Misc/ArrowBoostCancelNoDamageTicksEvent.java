@@ -1,6 +1,7 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Misc;
 
 import cn.miranda.MeowCraft.Listeners.Skills.Active.ArrowBoostEvent;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -12,14 +13,14 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 public class ArrowBoostCancelNoDamageTicksEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void ArrowBoostCancelNoDamageTicks(ProjectileHitEvent event) {
-        if (ArrowBoostEvent.arrowIDs == null) {
+        if (SkillLib.arrowIDs == null) {
             return;
         }
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.ARROW) {
             return;
         }
-        if (!ArrowBoostEvent.arrowIDs.contains(entity.getEntityId())) {
+        if (!SkillLib.arrowIDs.contains(entity.getEntityId())) {
             return;
         }
         Entity target = event.getHitEntity();
