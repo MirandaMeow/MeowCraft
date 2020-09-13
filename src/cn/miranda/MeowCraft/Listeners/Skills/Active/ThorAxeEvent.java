@@ -37,14 +37,14 @@ public class ThorAxeEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Thug_ThorAxe", playerName)) != null) {
-                MessageManager.Message(player, String.format("§c§l雷神战斧§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Thug_ThorAxe", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l雷神战斧§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Thug_ThorAxe", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.GOLD_INGOT, skills.getInt("Thug_ThorAxe.cost", 1))) {
-                MessageManager.Message(player, "§c金锭不足");
+                MessageManager.ActionBarMessage(player, "§c金锭不足");
                 return;
             }
-            MessageManager.Message(player, "§c§l雷神战斧§r§e发动!");
+            MessageManager.ActionBarMessage(player, "§c§l雷神战斧§r§e发动!");
             SkillLib.ThorAxe(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Thug_ThorAxe.cooldown", 20);

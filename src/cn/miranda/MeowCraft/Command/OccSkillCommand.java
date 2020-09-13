@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 
 public class OccSkillCommand implements TabExecutor {
@@ -76,14 +77,32 @@ public class OccSkillCommand implements TabExecutor {
 
     public boolean displaySkillList(Player player, Player target) {
         List<String> skillIDs = Occ.getPlayerSkills(target);
-        if (skillIDs.size() == 0) {
-            MessageManager.Message(player, "§e无");
-            return true;
+        List<String> active = new ArrayList<>();
+        List<String> passive = new ArrayList<>();
+        for (String skill : skillIDs) {
+            if (skills.getBoolean(String.format("%s.isPassive", skill))) {
+                passive.add(skill);
+                continue;
+            }
+            active.add(skill);
         }
-        for (Object i : skillIDs) {
-            MessageManager.Message(player, String.format("§c%s", Occ.getSkillChineseById(i.toString())));
-        }
+        MessageManager.Message(player, "§e    主动技能:");
+        showSkills(player, active);
+        MessageManager.Message(player, "§e    被动技能:");
+        showSkills(player, passive);
         return true;
+    }
+
+    public static void showSkills(Player player, List<String> skillList) {
+        if (skillList.size() == 0) {
+            MessageManager.Message(player, "§e        无");
+        } else {
+            for (Object i : skillList) {
+                String currentSkill = Occ.getSkillChineseById(i.toString());
+                List<String> hoverLore = Occ.getHoverLore(i.toString());
+                MessageManager.HoverMessage(player, String.format("§c        %s", currentSkill), hoverLore);
+            }
+        }
     }
 
     @Override

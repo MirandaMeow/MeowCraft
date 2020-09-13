@@ -32,12 +32,12 @@ public final class DeadCostCommand implements TabExecutor {
             if (playerData.get(String.format("%s.deadcost", playerName)) == null || !playerData.getBoolean(String.format("%s.deadcost", playerName))) {
                 playerData.set(String.format("%s.deadcost", playerName), true);
                 ConfigManager.saveConfigs();
-                MessageManager.Message(player, "§e启用死亡不掉落");
+                MessageManager.ActionBarMessage(player, "§e启用死亡不掉落");
                 return true;
             }
             playerData.set(String.format("%s.deadcost", player.getName()), false);
             ConfigManager.saveConfigs();
-            MessageManager.Message(player, "§e禁用死亡不掉落");
+            MessageManager.ActionBarMessage(player, "§e禁用死亡不掉落");
             return true;
 
         }

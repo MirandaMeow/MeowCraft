@@ -37,6 +37,6 @@ public class ConcentrateEvent implements Listener {
         int reduce = skills.getInt("All_Concentrate.reduce", 30);
         Effect.activeSkillEffect(player);
         event.setDamage(event.getDamage() * (1 - reduce / 100));
-        MessageManager.Message(player, "§e受到的伤害减轻了");
+        MessageManager.ActionBarMessage(player, "§e受到的伤害减轻了");
     }
 }

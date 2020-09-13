@@ -37,14 +37,14 @@ public class ChargeEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName)) != null) {
-                MessageManager.Message(player, String.format("§c§l无畏冲锋§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l无畏冲锋§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.IRON_INGOT, skills.getInt("Swordsman_Charge.cost", 1))) {
-                MessageManager.Message(player, "§c铁锭不足");
+                MessageManager.ActionBarMessage(player, "§c铁锭不足");
                 return;
             }
-            MessageManager.Message(player, "§c§l无畏冲锋§r§e发动!");
+            MessageManager.ActionBarMessage(player, "§c§l无畏冲锋§r§e发动!");
             SkillLib.Charge(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);

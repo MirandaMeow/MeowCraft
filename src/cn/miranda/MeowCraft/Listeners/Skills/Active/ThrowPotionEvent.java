@@ -32,11 +32,11 @@ public class ThrowPotionEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName)) != null) {
-                MessageManager.Message(player, String.format("§c§l魔药喷洒§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l魔药喷洒§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName))));
                 return;
             }
             Material material = player.getInventory().getItemInMainHand().getType();
-            MessageManager.Message(player, "§c§l魔药喷洒§r§e发动!");
+            MessageManager.ActionBarMessage(player, "§c§l魔药喷洒§r§e发动!");
             switch (material) {
                 case MAGMA_CREAM:
                     SkillLib.ThrowPotions(player, Material.SPLASH_POTION);

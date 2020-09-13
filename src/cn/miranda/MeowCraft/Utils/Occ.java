@@ -96,6 +96,9 @@ public class Occ {
         return path.split("\\.")[0];
     }
 
+    public static List<String> getHoverLore(String skill) {
+        return (List<String>) skills.getList(String.format("%s.hoverLore", skill));
+    }
     public static List<?> getSkillLore(String skill) {
         String path = getSkillID(skill);
         return skills.getList(String.format("%s.lore", path));

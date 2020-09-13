@@ -75,7 +75,7 @@ public class PickAxeAttackEvent implements Listener {
             default:
                 break;
         }
-        MessageManager.Message(player, "§e你使用手中的镐狠狠的击中了对手");
+        MessageManager.ActionBarMessage(player, "§e你使用手中的镐狠狠的击中了对手");
         Effect.activeSkillEffect(player);
         success = true;
         event.setDamage(event.getDamage() + plusDamage);
