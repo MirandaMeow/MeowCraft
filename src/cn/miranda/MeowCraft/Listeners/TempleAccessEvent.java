@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Listeners;
 
+import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Task.TempleAccessTask;
@@ -38,6 +39,8 @@ public class TempleAccessEvent implements Listener {
             player.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, fixedLocation, 100, 0, 2, 0);
             player.getWorld().playSound(fixedLocation, Sound.ENTITY_WITHER_SPAWN, 10, 10);
             new TempleAccessTask().TempleAccess(player, templeName);
+            playerData.set(String.format("%s.temples.%s", player.getName(), templeName), true);
+            ConfigManager.saveConfigs();
         }
     }
 }

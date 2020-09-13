@@ -1,21 +1,17 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Passive;
 
 import cn.miranda.MeowCraft.Manager.MessageManager;
-import cn.miranda.MeowCraft.MeowCraft;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
-import org.bukkit.plugin.RegisteredListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,7 +69,7 @@ public class PickAxeAttackEvent implements Listener {
                 plusDamage = 4;
                 break;
             default:
-                break;
+                return;
         }
         MessageManager.ActionBarMessage(player, "§e你使用手中的镐狠狠的击中了对手");
         Effect.activeSkillEffect(player);
@@ -84,9 +80,13 @@ public class PickAxeAttackEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void reduceDuration(PlayerItemDamageEvent event) {
         Player playerE = event.getPlayer();
+        if (player == null) {
+            return;
+        }
         if (playerE.hashCode() != player.hashCode() || !success) {
             return;
         }
         event.setDamage(1);
+        success = false;
     }
 }

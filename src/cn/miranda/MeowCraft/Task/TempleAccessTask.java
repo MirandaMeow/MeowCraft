@@ -20,14 +20,12 @@ public class TempleAccessTask {
             public void run() {
                 String title = temples.getString(String.format("%s.title", templeName));
                 String subtitle = temples.getString(String.format("%s.subtitle", templeName));
-                int setPlayerMaxHealth = Misc.getTempleVisitAmount(player) + 21;
+                int setPlayerMaxHealth = Misc.getTempleVisitAmount(player) + 20;
                 player.setMaxHealth(setPlayerMaxHealth);
                 player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
                 player.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, player.getLocation(), 40, 0, 2, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 10);
                 player.sendTitle(title, subtitle, 10, 70, 20);
-                playerData.set(String.format("%s.temples.%s", player.getName(), templeName), true);
-                ConfigManager.saveConfigs();
                 MessageManager.Message(player, temples.getString(String.format("%s.accessMessage", templeName)));
             }
         }, 20);
