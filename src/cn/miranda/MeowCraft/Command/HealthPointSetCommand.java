@@ -76,7 +76,7 @@ public final class HealthPointSetCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Misc.getOnlinePlayerNames();
+            return Misc.returnSelectList(Misc.getOnlinePlayerNames(), strings[0]);
         }
         return new ArrayList<>();
     }

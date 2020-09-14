@@ -121,10 +121,10 @@ public final class FlyTimeCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("set", "check", "abort"));
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("set", "check", "abort")), strings[0]);
         }
         if (strings.length == 2) {
-            return Misc.getOnlinePlayerNames();
+            return Misc.returnSelectList(Misc.getOnlinePlayerNames(), strings[1]);
         }
         return new ArrayList<>();
     }

@@ -9,10 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
@@ -108,10 +105,13 @@ public class OccSkillCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("list", "cooldown"));
+            if (!commandSender.hasPermission("occskill.admin")) {
+                return new ArrayList<>(Collections.singletonList("list"));
+            }
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("list", "cooldown")), strings[0]);
         }
         if (strings.length == 2) {
-            return Misc.getOnlinePlayerNames();
+            return Misc.returnSelectList(Misc.getOnlinePlayerNames(), strings[1]);
         }
         return new ArrayList<>();
     }

@@ -32,7 +32,7 @@ public class BlessEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l巫神祝福§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l巫神祝福§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
                 return;
             }
             Player target = Occ.getTarget(player);

@@ -32,7 +32,7 @@ public class ImmuneEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.All_Immune", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l神圣护甲§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_Immune", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l神圣护甲§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_Immune", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.DIAMOND, skills.getInt("All_Immune.cost", 25))) {

@@ -32,7 +32,7 @@ public class DetectEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l地质勘测§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l地质勘测§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Artisan_Detect", playerName))));
                 return;
             }
             MessageManager.ActionBarMessage(player, "§c§l地质勘测§r§e发动!");

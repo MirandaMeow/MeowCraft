@@ -2,6 +2,7 @@ package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -92,7 +93,7 @@ public final class OccCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("on", "off", "reset"));
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("on", "off", "reset")), strings[0]);
         }
         return new ArrayList<>();
     }

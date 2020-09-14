@@ -2,6 +2,7 @@ package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.PlayerStatusManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -45,7 +46,7 @@ public class PlayerStatusCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("setdefault", "setrestore"));
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("setdefault", "setrestore")), strings[0]);
         }
         return new ArrayList<>();
     }

@@ -185,13 +185,16 @@ public class Misc {
         return user.getNick(true);
     }
 
-    public static void setItemDuration(ItemStack itemStack, int duration) {
-        Damageable itemMeta = (Damageable) itemStack.getItemMeta();
-        itemMeta.setDamage(duration);
-        itemStack.setItemMeta((ItemMeta) itemMeta);
-    }
-
-    public static int getItemDuration(ItemStack itemStack) {
-        return ((Damageable) itemStack.getItemMeta()).getDamage();
+    public static List<String> returnSelectList(List<String> list, String select) {
+        List<String> selected = new ArrayList<>();
+        for (String s : list) {
+            if (s.contains(select)) {
+                selected.add(s);
+            }
+        }
+        if (selected.size() != 0) {
+            return selected;
+        }
+        return list;
     }
 }

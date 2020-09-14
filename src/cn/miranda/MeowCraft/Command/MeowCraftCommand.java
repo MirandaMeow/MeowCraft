@@ -5,6 +5,7 @@ import cn.miranda.MeowCraft.Manager.ClassManager;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.SkillLib;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -69,7 +70,7 @@ public final class MeowCraftCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("help", "reload", "save", "debug"));
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("help", "reload", "save", "debug")), strings[0]);
         }
         return new ArrayList<>();
     }

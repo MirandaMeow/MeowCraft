@@ -2,6 +2,7 @@ package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Town;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -49,7 +50,7 @@ public class TownApplyCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Town.getTownList();
+            return Misc.returnSelectList(Town.getTownList(), strings[0]);
         }
         return new ArrayList<>();
     }

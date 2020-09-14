@@ -80,7 +80,7 @@ public final class ConvertExpCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(Arrays.asList("tomoney", "toexp"));
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("tomoney", "toexp")), strings[0]);
         }
         return new ArrayList<>();
     }

@@ -33,7 +33,7 @@ public class ArrowBoostEvent implements Listener {
                 return;
             }
             if (temp.get(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束, §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName))));
+                MessageManager.ActionBarMessage(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.ARROW, skills.getInt("Ranger_ArrowBoost.cost", 25))) {

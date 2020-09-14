@@ -49,12 +49,10 @@ public class MessageManager {
         TextComponent message = new TextComponent(title);
         List<BaseComponent> list = new ArrayList<>();
         for (String line : lines) {
-            if (lines.indexOf(line) != lines.size() - 1) {
-                list.add(new TextComponent(line));
-                list.add(new TextComponent("\n"));
-                continue;
-            }
             list.add(new TextComponent(line));
+            if (lines.indexOf(line) != lines.size() - 1) {
+                list.add(new TextComponent("\n"));
+            }
         }
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, list.toArray(new BaseComponent[list.size()])));
         player.spigot().sendMessage(message);

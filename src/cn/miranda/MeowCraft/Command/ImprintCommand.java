@@ -77,10 +77,11 @@ public final class ImprintCommand implements TabExecutor {
         MessageManager.Message(target, String.format("§e收到 §b%d §e个烙印卷轴", amount));
         return true;
     }
+
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Misc.getOnlinePlayerNames();
+            return Misc.returnSelectList(Misc.getOnlinePlayerNames(), strings[0]);
         }
         return new ArrayList<>();
     }

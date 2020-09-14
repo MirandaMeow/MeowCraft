@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.3.1
+version: 0.3.2
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [Vault, mcMMO, PermissionsEx]
