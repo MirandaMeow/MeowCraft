@@ -31,10 +31,8 @@ public class PlayerStatusCommand implements TabExecutor {
         switch (args[0]) {
             case "setdefault":
                 PlayerStatusManager.setDefault(player);
-                MessageManager.Message(player, "§e玩家数据已保存");
                 return true;
             case "setrestore":
-                MessageManager.Message(player, "§e玩家数据已恢复");
                 PlayerStatusManager.setRestore(player);
                 return true;
             default:

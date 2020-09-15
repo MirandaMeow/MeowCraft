@@ -37,6 +37,10 @@ public class PlayerStatusManager implements Serializable {
     }
 
     public static void setDefault(Player player) {
+        if (playerStatus.containsKey(player)) {
+            MessageManager.Message(player, "§e已存在玩家数据, 跳过保存");
+            return;
+        }
         PlayerStatusManager playerStatusManager = new PlayerStatusManager(
                 player.getGameMode(),
                 player.getInventory().getContents(),
@@ -59,10 +63,12 @@ public class PlayerStatusManager implements Serializable {
             e.printStackTrace();
         }
         ConfigManager.saveConfigs();
+        MessageManager.Message(player, "§e玩家数据已保存");
     }
 
     public static void setRestore(Player player) {
         if (playerStatus.get(player) == null) {
+            MessageManager.Message(player, "§c没有你的数据");
             return;
         }
         PlayerStatusManager playerStatusManager = playerStatus.get(player);
@@ -82,6 +88,7 @@ public class PlayerStatusManager implements Serializable {
             e.printStackTrace();
         }
         ConfigManager.saveConfigs();
+        MessageManager.Message(player, "§e玩家数据已恢复");
     }
 
     public static String encodePlayerStatus() throws IOException {
