@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -18,7 +19,7 @@ public class OccSkillCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Message(sender, "§c无法在控制台使用该命令");
+            MessageManager.Message(sender, Notify.No_Console.getString());
             return true;
         }
         Player player = (Player) sender;
@@ -33,12 +34,12 @@ public class OccSkillCommand implements TabExecutor {
                 return displaySkillList(player, player);
             }
             if (!player.hasPermission("occskill.admin")) {
-                MessageManager.Message(sender, "§c你没有权限");
+                MessageManager.Message(sender, Notify.No_Permission.getString());
                 return true;
             }
             Player target = Misc.player(args[1]);
             if (target == null) {
-                MessageManager.Message(sender, "§c指定玩家不在线");
+                MessageManager.Message(sender, Notify.No_Player.getString());
                 return true;
             }
             String targetName = target.getName();
@@ -47,7 +48,7 @@ public class OccSkillCommand implements TabExecutor {
         }
         if (Objects.equals(args[0], "cooldown")) {
             if (!player.hasPermission("occskill.admin")) {
-                MessageManager.Message(sender, "§c你没有权限");
+                MessageManager.Message(sender, Notify.No_Permission.getString());
                 return true;
             }
             if (args.length == 1) {
@@ -58,7 +59,7 @@ public class OccSkillCommand implements TabExecutor {
             }
             Player target = Misc.player(args[1]);
             if (target == null) {
-                MessageManager.Message(sender, "§c指定玩家不在线");
+                MessageManager.Message(sender, Notify.No_Player.getString());
                 return true;
             }
             String targetName = target.getName();

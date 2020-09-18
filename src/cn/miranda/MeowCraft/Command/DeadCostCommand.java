@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -24,7 +25,7 @@ public final class DeadCostCommand implements TabExecutor {
         }
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                MessageManager.Message(sender, "§c无法在控制台使用该命令");
+                MessageManager.Message(sender, Notify.No_Console.getString());
                 return true;
             }
             Player player = (Player) sender;
@@ -42,11 +43,11 @@ public final class DeadCostCommand implements TabExecutor {
 
         }
         if (!sender.hasPermission("deadcost.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         if (!Misc.isInt(args[0])) {
-            MessageManager.Message(sender, "§c参数不正确");
+            MessageManager.Message(sender, Notify.Invalid_Input.getString());
             return true;
         }
 

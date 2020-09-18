@@ -66,7 +66,7 @@ public enum EggCatcher {
     private EntityType entityType;
     private boolean available;
 
-    private EggCatcher(String name, EntityType entityType, boolean available) {
+    EggCatcher(String name, EntityType entityType, boolean available) {
         this.name = name;
         this.entityType = entityType;
         this.available = available;

@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -20,13 +21,13 @@ public final class OccCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Message(sender, "§c无法在控制台使用该命令");
+            MessageManager.Message(sender, Notify.No_Console.getString());
             return true;
         }
         Player player = (Player) sender;
         String playerName = player.getName();
         if (!player.hasPermission("occ.use")) {
-            MessageManager.Message(player, "§c你无法使用这个命令");
+            MessageManager.Message(player,  Notify.No_Permission.getString());
             return true;
         }
         if (args.length != 1) {
@@ -39,8 +40,8 @@ public final class OccCommand implements TabExecutor {
                     MessageManager.Message(player, "§c你无法变更自己的职业状态");
                     return true;
                 }
-                if (playerData.get(String.format("%s", playerName)) == null) {
-                    MessageManager.Message(player, "§c你没有职业");
+                if (playerData.get(String.format("%s.occConfig", playerName)) == null) {
+                    MessageManager.Message(player, Notify.No_Occ.getString());
                     return true;
                 }
                 String occ = playerData.getString(String.format("%s.occConfig.name", playerName), "");
@@ -56,8 +57,8 @@ public final class OccCommand implements TabExecutor {
                     MessageManager.Message(player, "§c你无法变更自己的职业状态");
                     return true;
                 }
-                if (playerData.get(String.format("%s", playerName)) == null) {
-                    MessageManager.Message(player, "§c你没有职业");
+                if (playerData.get(String.format("%s.occConfig", playerName)) == null) {
+                    MessageManager.Message(player, Notify.No_Occ.getString());
                     return true;
                 }
                 playerData.set(String.format("%s.occConfig.enabled", playerName), false);
@@ -71,8 +72,8 @@ public final class OccCommand implements TabExecutor {
                     MessageManager.Message(player, "§c你无法重置自己的职业");
                     return true;
                 }
-                if (playerData.get(String.format("%s", playerName)) == null) {
-                    MessageManager.Message(player, "§c你没有职业");
+                if (playerData.get(String.format("%s.occConfig", playerName)) == null) {
+                    MessageManager.Message(player, Notify.No_Occ.getString());
                     return true;
                 }
                 Occ.removeALLOccGroups(player);

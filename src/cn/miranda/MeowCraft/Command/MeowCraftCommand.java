@@ -1,6 +1,7 @@
 package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Enum.EggCatcher;
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ClassManager;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
@@ -26,7 +27,7 @@ public final class MeowCraftCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("meow.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         if (args.length == 0) {

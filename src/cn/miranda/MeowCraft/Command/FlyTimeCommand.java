@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.FlyTimeCoolDownTask;
@@ -23,16 +24,16 @@ public final class FlyTimeCommand implements TabExecutor {
         switch (args[0]) {
             case "set":
                 if (!sender.hasPermission("flytime.admin")) {
-                    MessageManager.Message(sender, "§c你没有权限！");
+                    MessageManager.Message(sender, Notify.No_Permission.getString());
                     return true;
                 }
                 if (args.length != 3) {
-                    MessageManager.Message(sender, "§c参数数量不正确");
+                    MessageManager.Message(sender, Notify.Invalid_Input_Length.getString());
                     return true;
                 }
                 Player target = Misc.player(args[1]);
                 if (target == null) {
-                    MessageManager.Message(sender, "§c指定玩家不在线");
+                    MessageManager.Message(sender, Notify.No_Player.getString());
                     return true;
                 }
                 String targetName = target.getName();
@@ -41,7 +42,7 @@ public final class FlyTimeCommand implements TabExecutor {
                     return true;
                 }
                 if (!Misc.isInt(args[2])) {
-                    MessageManager.Message(sender, "§e参数不正确");
+                    MessageManager.Message(sender, Notify.Invalid_Input.getString());
                     return true;
                 }
                 int setTime = Integer.parseInt(args[2]);
@@ -55,12 +56,12 @@ public final class FlyTimeCommand implements TabExecutor {
                 return true;
             case "check":
                 if (args.length > 2) {
-                    MessageManager.Message(sender, "§e参数过多");
+                    MessageManager.Message(sender, Notify.Invalid_Input_Length.getString());
                     return true;
                 }
                 if (args.length == 1) {
                     if (!(sender instanceof Player)) {
-                        MessageManager.Message(sender, "§c无法在控制台使用该命令");
+                        MessageManager.Message(sender, Notify.No_Console.getString());
                         return true;
                     }
                     String senderName = sender.getName();
@@ -73,12 +74,12 @@ public final class FlyTimeCommand implements TabExecutor {
                     return true;
                 }
                 if (!sender.hasPermission("flytime.admin")) {
-                    MessageManager.Message(sender, "§c你没有权限！");
+                    MessageManager.Message(sender, Notify.No_Permission.getString());
                     return true;
                 }
                 Player targetCheck = Misc.player(args[1]);
                 if (targetCheck == null) {
-                    MessageManager.Message(sender, "§c指定玩家不在线");
+                    MessageManager.Message(sender, Notify.No_Player.getString());
                     return true;
                 }
                 String targetCheckName = targetCheck.getName();
@@ -91,16 +92,16 @@ public final class FlyTimeCommand implements TabExecutor {
                 return true;
             case "abort":
                 if (!sender.hasPermission("flytime.admin")) {
-                    MessageManager.Message(sender, "§c你没有权限！");
+                    MessageManager.Message(sender, Notify.No_Permission.getString());
                     return true;
                 }
                 if (args.length != 2) {
-                    MessageManager.Message(sender, "§e参数过少");
+                    MessageManager.Message(sender, Notify.Invalid_Input_Length.getString());
                     return true;
                 }
                 Player targetAbort = Misc.player(args[1]);
                 if (targetAbort == null) {
-                    MessageManager.Message(sender, "§c指定玩家不在线");
+                    MessageManager.Message(sender, Notify.No_Player.getString());
                     return true;
                 }
                 String targetAbortName = targetAbort.getName();

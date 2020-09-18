@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import cn.miranda.MeowCraft.Utils.Occ;
@@ -20,7 +21,7 @@ public class EsotericaScrollCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("esotericascroll.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         if (args.length != 2) {
@@ -29,7 +30,7 @@ public class EsotericaScrollCommand implements TabExecutor {
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Message(sender, "§c指定玩家不在线");
+            MessageManager.Message(sender, Notify.No_Player.getString());
             return true;
         }
         String skillChineseName = args[1];

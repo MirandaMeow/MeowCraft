@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -19,7 +20,7 @@ public class CommandMonitorCommand implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         Player player = (Player) sender;
         if (!player.hasPermission("cmdlogger.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         if (args.length != 2) {
@@ -28,7 +29,7 @@ public class CommandMonitorCommand implements TabExecutor {
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Message(sender, "§c指定玩家不在线");
+            MessageManager.Message(sender, Notify.No_Player.getString());
             return true;
         }
         String targetName = target.getName();

@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,7 +16,7 @@ public final class HealthPointSetCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("hpset.set")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return false;
         }
         if (args.length > 2 || args.length == 0) {
@@ -24,7 +25,7 @@ public final class HealthPointSetCommand implements TabExecutor {
         }
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                MessageManager.Message(sender, "§c不能对控制台使用");
+                MessageManager.Message(sender, Notify.Not_For_Console.getString());
                 return true;
             }
             Player player = (Player) sender;
@@ -34,7 +35,7 @@ public final class HealthPointSetCommand implements TabExecutor {
                 return true;
             }
             if (!Misc.isInt(args[0])) {
-                MessageManager.Message(player, "§c输入错误");
+                MessageManager.Message(player, Notify.Invalid_Input.getString());
                 return true;
             }
             int setValue = Integer.parseInt(args[0]);
@@ -48,7 +49,7 @@ public final class HealthPointSetCommand implements TabExecutor {
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Message(sender, "§c指定玩家不在线");
+            MessageManager.Message(sender, Notify.No_Player.getString());
             return true;
         }
         if (Objects.equals(args[1], "reset")) {
@@ -58,7 +59,7 @@ public final class HealthPointSetCommand implements TabExecutor {
             return true;
         }
         if (!Misc.isInt(args[1])) {
-            MessageManager.Message(sender, "§c输入不正确");
+            MessageManager.Message(sender, Notify.Invalid_Input.getString());
             return true;
         }
         int setValue = Integer.parseInt(args[1]);

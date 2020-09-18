@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.Material;
@@ -19,7 +20,7 @@ public final class ImprintCommand implements TabExecutor {
         int amount;
         Player target;
         if (!sender.hasPermission("imprint.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         if (args.length > 2 || args.length == 0) {
@@ -28,12 +29,12 @@ public final class ImprintCommand implements TabExecutor {
         }
         if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                MessageManager.Message(sender, "§c不能对控制台使用");
+                MessageManager.Message(sender, Notify.Not_For_Console.getString());
                 return true;
             }
             target = (Player) sender;
             if (!Misc.isInt(args[0])) {
-                MessageManager.Message(sender, "§c参数不正确");
+                MessageManager.Message(sender, Notify.Invalid_Input.getString());
                 return true;
             }
             amount = Integer.parseInt(args[0]);
@@ -41,11 +42,11 @@ public final class ImprintCommand implements TabExecutor {
             String playerInputPlayerName = args[0];
             target = Misc.player(playerInputPlayerName);
             if (target == null) {
-                MessageManager.Message(sender, "§c玩家不存在");
+                MessageManager.Message(sender, Notify.No_Player.getString());
                 return true;
             }
             if (!Misc.isInt(args[1])) {
-                MessageManager.Message(sender, "§c参数不正确");
+                MessageManager.Message(sender, Notify.Invalid_Input.getString());
                 return true;
             }
             amount = Integer.parseInt(args[1]);

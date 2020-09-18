@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -19,7 +20,7 @@ public class TownApplyCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Message(sender, "§c该命令不能在控制台运行");
+            MessageManager.Message(sender, Notify.No_Console.getString());
             return true;
         }
         Player player = (Player) sender;

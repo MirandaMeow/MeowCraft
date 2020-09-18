@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
@@ -18,11 +19,11 @@ public final class ConvertExpCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            MessageManager.Message(sender, "§c该命令不能在控制台运行");
+            MessageManager.Message(sender, Notify.No_Console.getString());
             return true;
         }
         if (!sender.hasPermission("convert.admin")) {
-            MessageManager.Message(sender, "§c你没有权限");
+            MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
         Player player = (Player) sender;
@@ -31,7 +32,7 @@ public final class ConvertExpCommand implements TabExecutor {
             return true;
         }
         if (!Misc.isInt(args[1]) || !Misc.isInt(args[2])) {
-            MessageManager.Message(sender, "§c输入不正确");
+            MessageManager.Message(sender, Notify.Invalid_Input.getString());
             return true;
         }
         int setValue1 = Integer.parseInt(args[1]);
@@ -73,7 +74,7 @@ public final class ConvertExpCommand implements TabExecutor {
             MessageManager.Message(sender, String.format("§e当前金钱 §b%s", Misc.stringFormat(nowMoney)));
             return true;
         }
-        MessageManager.Message(sender, "§c参数不正确");
+        MessageManager.Message(sender, Notify.Invalid_Input.getString());
         return true;
     }
 
