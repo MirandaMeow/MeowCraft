@@ -6,13 +6,15 @@ import cn.miranda.MeowCraft.MeowCraft;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class SelfExplodeTask {
     private volatile BukkitTask task = null;
 
-    public void SelfExplode(Player player, int intensity) {
+    public void SelfExplode(Player player) {
+        int intensity = skills.getInt("All_SelfExplode.intensity", 5);
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
             @Override
             public void run() {

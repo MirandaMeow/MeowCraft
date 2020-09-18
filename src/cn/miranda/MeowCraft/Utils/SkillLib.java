@@ -74,8 +74,7 @@ public class SkillLib {
     }
 
     public static void SelfExplode(Player player) {
-        int intensity = skills.getInt("All_SelfExplode.intensity", 5);
-        new SelfExplodeTask().SelfExplode(player, intensity);
+        new SelfExplodeTask().SelfExplode(player);
     }
 
     public static void ThorAxe(Player player) {
