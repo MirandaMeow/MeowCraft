@@ -97,7 +97,7 @@ public class OccSkillCommand implements TabExecutor {
         } else {
             for (Object i : skillList) {
                 String currentSkill = Occ.getSkillChineseById(i.toString());
-                List<String> hoverLore = Occ.getHoverLore(i.toString());
+                List<String> hoverLore = Occ.getSkillDescribe(i.toString());
                 MessageManager.HoverMessage(player, String.format("§c        %s", currentSkill), hoverLore);
             }
         }

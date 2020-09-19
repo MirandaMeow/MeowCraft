@@ -96,12 +96,12 @@ public class Occ {
         return path.split("\\.")[0];
     }
 
-    public static List<String> getHoverLore(String skill) {
-        return (List<String>) skills.getList(String.format("%s.hoverLore", skill));
+    public static List<String> getSkillLore(String skill) {
+        return (List<String>) skills.getList(String.format("%s.lore", skill));
     }
-    public static List<?> getSkillLore(String skill) {
-        String path = getSkillID(skill);
-        return skills.getList(String.format("%s.lore", path));
+
+    public static String getHoverLore(String skill) {
+        return skills.getString(String.format("%s.hoverLore", skill));
     }
 
     public static List<?> getSkillOccGroup(String skill) {
@@ -214,5 +214,16 @@ public class Occ {
             list.remove("occCoolDown");
         }
         return list;
+    }
+
+    public static List<String> getSkillDescribe(String skill) {
+        List<String> out = new ArrayList<>();
+        String hoverLore = getHoverLore(skill);
+        String[] args = hoverLore.split(",");
+        List<String> SkillLore = Occ.getSkillLore(skill);
+        for (String s: args) {
+            out.add(SkillLore.get(Integer.parseInt(s)));
+        }
+        return out;
     }
 }
