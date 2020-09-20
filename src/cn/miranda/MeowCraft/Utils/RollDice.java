@@ -66,7 +66,7 @@ public class RollDice {
         }
         if (test >= sum) {
             int hardToSuccess = test / 2;
-            int VeryHardToSuccess = test / 2;
+            int VeryHardToSuccess = test / 5;
             if (sum <= VeryHardToSuccess) {
                 return String.format("§e玩家 §b%s §e检定 §d%s => %d §e结果: §a%s=%d §6极难成功", playerName, userCMD, test, resultString.toString(), sum);
             }
