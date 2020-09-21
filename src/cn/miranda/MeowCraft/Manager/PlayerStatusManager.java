@@ -7,6 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
+import ru.tehkode.permissions.PermissionGroup;
+import ru.tehkode.permissions.PermissionUser;
+import ru.tehkode.permissions.bukkit.PermissionsEx;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -14,26 +17,30 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class PlayerStatusManager implements Serializable {
     public static HashMap<Player, PlayerStatusManager> playerStatus = new HashMap<>();
-    public GameMode gameMode;
-    public ItemStack[] inventory;
-    public float exp;
-    public int level;
-    public int food;
-    public boolean isFlying;
+    public final GameMode gameMode;
+    public final ItemStack[] inventory;
+    public final float exp;
+    public final int level;
+    public final int food;
+    public final boolean isFlying;
+    public final List<String> groups;
+    public final List<String> permissions;
 
-    public PlayerStatusManager(GameMode gameMode, ItemStack[] inventory, float exp, int level, int food, boolean isFlying) {
+    public PlayerStatusManager(GameMode gameMode, ItemStack[] inventory, float exp, int level, int food, boolean isFlying, List<String> groups, List<String> permissions) {
         this.gameMode = gameMode;
         this.inventory = inventory;
         this.exp = exp;
         this.level = level;
         this.food = food;
         this.isFlying = isFlying;
+        this.groups = groups;
+        this.permissions = permissions;
     }
 
     public static void setDefault(Player player) {
@@ -47,7 +54,9 @@ public class PlayerStatusManager implements Serializable {
                 player.getExp(),
                 player.getLevel(),
                 player.getFoodLevel(),
-                player.getAllowFlight()
+                player.getAllowFlight(),
+                getPlayerPermissionGroups(player),
+                getPlayerPermissions(player)
         );
         playerStatus.put(player, playerStatusManager);
         player.setGameMode(GameMode.SURVIVAL);
@@ -58,7 +67,7 @@ public class PlayerStatusManager implements Serializable {
         player.setFoodLevel(20);
         player.setFlying(false);
         try {
-            temp.set("PlayerStatus", encodePlayerStatus());
+            cache.set("PlayerStatus", encodePlayerStatus());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,9 +90,11 @@ public class PlayerStatusManager implements Serializable {
         player.setFoodLevel(playerStatusManager.food);
         player.setFlying(playerStatusManager.isFlying);
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        restorePlayerPermissionGroups(player, playerStatusManager.groups);
+        restorePlayerPermissions(player, playerStatusManager.permissions);
         playerStatus.remove(player);
         try {
-            temp.set("PlayerStatus", encodePlayerStatus());
+            cache.set("PlayerStatus", encodePlayerStatus());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,7 +102,47 @@ public class PlayerStatusManager implements Serializable {
         MessageManager.Message(player, "§e玩家数据已恢复");
     }
 
-    public static String encodePlayerStatus() throws IOException {
+    private static List<String> getPlayerPermissionGroups(Player player) {
+        PermissionUser pexUser = PermissionsEx.getUser(player);
+        Map<String, List<PermissionGroup>> groupMap = pexUser.getAllParents();
+        pexUser.setParents(new ArrayList<>());
+        pexUser.addGroup("Event");
+        List<String> out = new ArrayList<>();
+        List<PermissionGroup> permissionGroups = groupMap.entrySet().stream().findFirst().get().getValue();
+        if (permissionGroups.size() == 0) {
+            return new ArrayList<>();
+        }
+        for (PermissionGroup current : permissionGroups) {
+            out.add(current.getName());
+        }
+        return out;
+    }
+
+    private static void restorePlayerPermissionGroups(Player player, List<String> groups) {
+        PermissionUser pexUser = PermissionsEx.getUser(player);
+        if (groups.size() == 0) {
+            pexUser.setParents(new ArrayList<>(Collections.singletonList(PermissionsEx.getPermissionManager().getGroup("default"))));
+        }
+        List<PermissionGroup> pexGroup = new ArrayList<>();
+        for (String current : groups) {
+            pexGroup.add(PermissionsEx.getPermissionManager().getGroup(current));
+        }
+        pexUser.setParents(pexGroup);
+    }
+
+    private static List<String> getPlayerPermissions(Player player) {
+        PermissionUser pexUser = PermissionsEx.getUser(player);
+        Map<String, List<String>> permissionMap = pexUser.getAllPermissions();
+        pexUser.setPermissions(new ArrayList<>());
+        return permissionMap.entrySet().stream().findFirst().get().getValue();
+    }
+
+    private static void restorePlayerPermissions(Player player, List<String> permissions) {
+        PermissionUser pexUser = PermissionsEx.getUser(player);
+        pexUser.setPermissions(permissions);
+    }
+
+    private static String encodePlayerStatus() throws IOException {
         BASE64Encoder encoder = new BASE64Encoder();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         BukkitObjectOutputStream objectOutputStream = new BukkitObjectOutputStream(outputStream);
@@ -101,7 +152,7 @@ public class PlayerStatusManager implements Serializable {
 
     public static void decodePlayerStatus() throws IOException, ClassNotFoundException {
         BASE64Decoder decoder = new BASE64Decoder();
-        String json = temp.getString("PlayerStatus");
+        String json = cache.getString("PlayerStatus");
         if (json == null) {
             return;
         }
