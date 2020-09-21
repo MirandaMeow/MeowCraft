@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 
 public class Town {
@@ -39,9 +39,9 @@ public class Town {
 
     public static List<String> getApplyList(String townName) {
         List<String> applyList = new ArrayList<>();
-        ConfigurationSection applySection = temp.getConfigurationSection("TownApply");
+        ConfigurationSection applySection = cache.getConfigurationSection("TownApply");
         for (Object key : applySection.getValues(false).keySet()) {
-            if (Objects.equals(temp.getString(String.format("TownApply.%s", key.toString())), townName)) {
+            if (Objects.equals(cache.getString(String.format("TownApply.%s", key.toString())), townName)) {
                 applyList.add(key.toString());
             }
         }

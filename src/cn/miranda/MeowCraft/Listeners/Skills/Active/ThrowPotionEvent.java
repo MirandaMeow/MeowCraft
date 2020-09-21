@@ -31,8 +31,8 @@ public class ThrowPotionEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Voodoo_ThrowPotion", playerName)) == null) {
                 return;
             }
-            if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l魔药喷洒§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName))));
+            if (cache.get(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName)) != null) {
+                MessageManager.ActionBarMessage(player, String.format("§c§l魔药喷洒§r§e冷却尚未结束  §e剩余 §b%s §e秒", cache.getInt(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName))));
                 return;
             }
             Material material = player.getInventory().getItemInMainHand().getType();
@@ -47,7 +47,7 @@ public class ThrowPotionEvent implements Listener {
             }
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Voodoo_ThrowPotion.cooldown", 240);
-            temp.set(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName), coolDown);
+            cache.set(String.format("OccSkillCoolDown.%s.Voodoo_ThrowPotion", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_ThrowPotion");
             ConfigManager.saveConfigs();
         }

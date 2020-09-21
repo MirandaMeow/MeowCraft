@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class OccSkillsCoolDownTask {
@@ -18,14 +18,14 @@ public class OccSkillsCoolDownTask {
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
             @Override
             public void run() {
-                if (temp.get(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) == null) {
+                if (cache.get(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) == null) {
                     task.cancel();
                     return;
                 }
-                int timeLeft = temp.getInt(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) - 1;
-                temp.set(String.format("OccSkillCoolDown.%s.%s", playerName, skill), timeLeft);
-                if (temp.getInt(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) <= 0) {
-                    temp.set(String.format("OccSkillCoolDown.%s.%s", playerName, skill), null);
+                int timeLeft = cache.getInt(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) - 1;
+                cache.set(String.format("OccSkillCoolDown.%s.%s", playerName, skill), timeLeft);
+                if (cache.getInt(String.format("OccSkillCoolDown.%s.%s", playerName, skill)) <= 0) {
+                    cache.set(String.format("OccSkillCoolDown.%s.%s", playerName, skill), null);
                     String skillChineseName = skills.getString(String.format("%s.name", skill));
                     MessageManager.ActionBarMessage(player, String.format("§c§l%s§r§e已经准备就绪", skillChineseName));
                     ConfigManager.saveConfigs();

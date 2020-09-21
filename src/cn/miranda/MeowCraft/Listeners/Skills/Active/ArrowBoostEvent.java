@@ -32,8 +32,8 @@ public class ArrowBoostEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Ranger_ArrowBoost", playerName)) == null) {
                 return;
             }
-            if (temp.get(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName))));
+            if (cache.get(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName)) != null) {
+                MessageManager.ActionBarMessage(player, String.format("§c§l箭矢爆发§r§e冷却尚未结束  §e剩余 §b%s §e秒", cache.getInt(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.ARROW, skills.getInt("Ranger_ArrowBoost.cost", 25))) {
@@ -44,7 +44,7 @@ public class ArrowBoostEvent implements Listener {
             SkillLib.ArrowBoost(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Ranger_ArrowBoost.cooldown", 30);
-            temp.set(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName), coolDown);
+            cache.set(String.format("OccSkillCoolDown.%s.Ranger_ArrowBoost", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Ranger_ArrowBoost");
             ConfigManager.saveConfigs();
         }

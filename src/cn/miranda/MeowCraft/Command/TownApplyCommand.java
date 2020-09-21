@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class TownApplyCommand implements TabExecutor {
     @Override
@@ -38,11 +38,11 @@ public class TownApplyCommand implements TabExecutor {
             MessageManager.Message(player, String.format("§e你已经加入了 §b%s", TownChinese));
             return true;
         }
-        if (temp.get(String.format("TownApply.%s", playerName)) != null) {
+        if (cache.get(String.format("TownApply.%s", playerName)) != null) {
             MessageManager.Message(player, "§c请勿重复加入");
             return true;
         }
-        temp.set(String.format("TownApply.%s", playerName), args[0]);
+        cache.set(String.format("TownApply.%s", playerName), args[0]);
         ConfigManager.saveConfigs();
         MessageManager.Message(player, String.format("§e已经申请加入 §b%s§e, 请等待镇长回应", args[0]));
         return true;

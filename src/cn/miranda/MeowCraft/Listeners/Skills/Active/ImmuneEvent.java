@@ -31,8 +31,8 @@ public class ImmuneEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.All_Immune", playerName)) == null) {
                 return;
             }
-            if (temp.get(String.format("OccSkillCoolDown.%s.All_Immune", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l神圣护甲§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_Immune", playerName))));
+            if (cache.get(String.format("OccSkillCoolDown.%s.All_Immune", playerName)) != null) {
+                MessageManager.ActionBarMessage(player, String.format("§c§l神圣护甲§r§e冷却尚未结束  §e剩余 §b%s §e秒", cache.getInt(String.format("OccSkillCoolDown.%s.All_Immune", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.DIAMOND, skills.getInt("All_Immune.cost", 25))) {
@@ -43,7 +43,7 @@ public class ImmuneEvent implements Listener {
             SkillLib.Immune(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_Immune.cooldown", 30);
-            temp.set(String.format("OccSkillCoolDown.%s.All_Immune", playerName), coolDown);
+            cache.set(String.format("OccSkillCoolDown.%s.All_Immune", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_Immune");
             ConfigManager.saveConfigs();
         }

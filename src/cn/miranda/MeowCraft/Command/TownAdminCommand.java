@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class TownAdminCommand implements TabExecutor {
     @Override
@@ -38,6 +38,14 @@ public class TownAdminCommand implements TabExecutor {
         String playerTown = Town.getPlayerTownChinese(player);
         switch (args[0]) {
             case "apply":
+                if (args.length != 2) {
+                    MessageManager.Message(player, "§c必须填写玩家名称");
+                    return true;
+                }
+                if (cache.get("TownApply") == null) {
+                    MessageManager.Message(player, "§c列表中没有此玩家");
+                    return true;
+                }
                 String targetNameApply = args[1];
                 if (!Town.getApplyList(playerTown).contains(targetNameApply)) {
                     MessageManager.Message(player, "§c列表中没有此玩家");
@@ -47,17 +55,25 @@ public class TownAdminCommand implements TabExecutor {
                 pexUser.addGroup(Town.getTownPermissionGroup(playerTown));
                 Occ.reversePlayerGroup(targetNameApply);
                 MessageManager.Message(player, String.format("§e成功接纳玩家 §b%s", targetNameApply));
-                temp.set(String.format("TownApply.%s", targetNameApply), null);
+                cache.set(String.format("TownApply.%s", targetNameApply), null);
                 ConfigManager.saveConfigs();
                 return true;
             case "deny":
+                if (args.length != 2) {
+                    MessageManager.Message(player, "§c必须填写玩家名称");
+                    return true;
+                }
+                if (cache.get("TownApply") == null) {
+                    MessageManager.Message(player, "§c列表中没有此玩家");
+                    return true;
+                }
                 String targetNameDeny = args[1];
                 if (!Town.getApplyList(playerTown).contains(targetNameDeny)) {
                     MessageManager.Message(player, "§c列表中没有此玩家");
                     return true;
                 }
                 MessageManager.Message(player, String.format("§e拒绝接纳玩家 §b%s", targetNameDeny));
-                temp.set(String.format("TownApply.%s", targetNameDeny), null);
+                cache.set(String.format("TownApply.%s", targetNameDeny), null);
                 ConfigManager.saveConfigs();
                 return true;
             case "list":

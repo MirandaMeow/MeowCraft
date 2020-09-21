@@ -25,7 +25,7 @@ public class ArrowBoostShootTask {
         int settings_per_wave_amount = skills.getInt("Ranger_ArrowBoost.per_wave_amount", 5);
         int settings_wave = skills.getInt("Ranger_ArrowBoost.wave", 5);
         long settings_inverval = skills.getLong("Ranger_ArrowBoost.interval", 5);
-        List<Integer> arrowTargetEntityIDs = new ArrayList();
+        List<Integer> arrowTargetEntityIDs = new ArrayList<>();
         final int[] wave_count = {0};
         String playerName = player.getName();
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
@@ -48,14 +48,13 @@ public class ArrowBoostShootTask {
                     double theta = Math.acos(z);
                     Vector v = a.clone().multiply(Math.cos(det)).add(b.clone().multiply(Math.sin(det))).multiply(Math.sin(theta)).add(loc.clone().multiply(Math.cos(theta)));
                     Projectile projectile = player.launchProjectile(org.bukkit.entity.Arrow.class, v.normalize().multiply(2));
-                    new RemoveEntityTask().RemoveEntity((Entity) projectile, 100, false);
+                    new RemoveEntityTask().RemoveEntity(projectile, 100, false);
                     arrowTargetEntityIDs.add(projectile.getEntityId());
                 }
                 wave_count[0] += 1;
                 if (wave_count[0] == settings_wave) {
                     task.cancel();
                 }
-                return;
             }
         }, 0, settings_inverval);
         return arrowTargetEntityIDs;

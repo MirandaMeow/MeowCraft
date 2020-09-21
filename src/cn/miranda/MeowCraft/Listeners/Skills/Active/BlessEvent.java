@@ -31,8 +31,8 @@ public class BlessEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.Voodoo_Bless", playerName)) == null) {
                 return;
             }
-            if (temp.get(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l巫神祝福§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
+            if (cache.get(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName)) != null) {
+                MessageManager.ActionBarMessage(player, String.format("§c§l巫神祝福§r§e冷却尚未结束  §e剩余 §b%s §e秒", cache.getInt(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName))));
                 return;
             }
             Player target = Occ.getTarget(player);
@@ -48,7 +48,7 @@ public class BlessEvent implements Listener {
             SkillLib.Bless(target);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Voodoo_Bless.cooldown", 30);
-            temp.set(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName), coolDown);
+            cache.set(String.format("OccSkillCoolDown.%s.Voodoo_Bless", playerName), coolDown);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "Voodoo_Bless");
             ConfigManager.saveConfigs();
         }

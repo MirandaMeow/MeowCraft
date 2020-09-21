@@ -1,7 +1,6 @@
 package cn.miranda.MeowCraft;
 
 import cn.miranda.MeowCraft.Manager.*;
-import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,7 +40,6 @@ public class MeowCraft extends JavaPlugin {
 
     public void onDisable() {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e正在禁用");
-        Misc.disableTabPing();
         HandlerList.unregisterAll(this);
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e清除监听器");
         getScheduler().cancelTasks(this);

@@ -210,9 +210,7 @@ public class Occ {
         for (Object key : skillsList.getValues(false).keySet()) {
             list.add(key.toString());
         }
-        if (list.contains("occCoolDown")) {
-            list.remove("occCoolDown");
-        }
+        list.remove("occCoolDown");
         return list;
     }
 

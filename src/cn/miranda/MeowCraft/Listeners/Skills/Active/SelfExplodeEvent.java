@@ -31,8 +31,8 @@ public class SelfExplodeEvent implements Listener {
             if (playerData.get(String.format("%s.occConfig.occSkills.All_SelfExplode", playerName)) == null) {
                 return;
             }
-            if (temp.get(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName)) != null) {
-                MessageManager.ActionBarMessage(player, String.format("§c§l自爆§r§e冷却尚未结束  §e剩余 §b%s §e秒", temp.getInt(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName))));
+            if (cache.get(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName)) != null) {
+                MessageManager.ActionBarMessage(player, String.format("§c§l自爆§r§e冷却尚未结束  §e剩余 §b%s §e秒", cache.getInt(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName))));
                 return;
             }
             if (!Occ.requireItem(player, Material.GUNPOWDER, skills.getInt("All_SelfExplode.cost", 64))) {
@@ -43,10 +43,10 @@ public class SelfExplodeEvent implements Listener {
             SkillLib.SelfExplode(player);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("All_SelfExplode.cooldown", 300);
-            temp.set(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName), coolDown);
+            cache.set(String.format("OccSkillCoolDown.%s.All_SelfExplode", playerName), coolDown);
             int delay = skills.getInt("All_SelfExplode.delay", 10);
-            temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), delay);
-            temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), false);
+            cache.set(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName), delay);
+            cache.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), false);
             new OccSkillsCoolDownTask().OccSkillsCoolDown(player, "All_SelfExplode");
             ConfigManager.saveConfigs();
             event.setCancelled(true);

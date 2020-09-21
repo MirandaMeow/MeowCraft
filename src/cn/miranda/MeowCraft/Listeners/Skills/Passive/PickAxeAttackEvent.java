@@ -51,7 +51,7 @@ public class PickAxeAttackEvent implements Listener {
         if (currentProbability > chance) {
             return;
         }
-        int plusDamage = 0;
+        int plusDamage;
         switch (playerHold) {
             case DIAMOND_PICKAXE:
                 plusDamage = 8;

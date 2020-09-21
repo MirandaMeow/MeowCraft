@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import java.util.*;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class OccSkillCommand implements TabExecutor {
     @Override
@@ -52,7 +52,7 @@ public class OccSkillCommand implements TabExecutor {
                 return true;
             }
             if (args.length == 1) {
-                temp.set(String.format("OccSkillCoolDown.%s", playerName), null);
+                cache.set(String.format("OccSkillCoolDown.%s", playerName), null);
                 ConfigManager.saveConfigs();
                 MessageManager.Message(player, "§e成功冷却所有职业技能");
                 return true;
@@ -63,7 +63,7 @@ public class OccSkillCommand implements TabExecutor {
                 return true;
             }
             String targetName = target.getName();
-            temp.set(String.format("OccSkillCoolDown.%s", targetName), null);
+            cache.set(String.format("OccSkillCoolDown.%s", targetName), null);
             ConfigManager.saveConfigs();
             MessageManager.Message(player, String.format("§e成功冷却玩家 §b%s §e的所有职业技能", targetName));
             MessageManager.Message(target, "§e你的所有职业技能已冷却");

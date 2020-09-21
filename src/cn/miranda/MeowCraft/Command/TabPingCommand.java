@@ -11,7 +11,7 @@ import org.bukkit.command.TabExecutor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class TabPingCommand implements TabExecutor {
     @Override
@@ -24,15 +24,15 @@ public class TabPingCommand implements TabExecutor {
             MessageManager.Message(sender, "§e用法: §6/tabping");
             return true;
         }
-        boolean state = config.getBoolean("TabPing.enabled", true);
+        boolean state = cache.getBoolean("TabPing.enabled", true);
         if (!state) {
             new TabPingTask().TabPing();
-            config.set("TabPing.enabled", true);
+            cache.set("TabPing.enabled", true);
             MessageManager.Message(sender, "§e延迟显示§c已启用");
             ConfigManager.saveConfigs();
             return true;
         }
-        config.set("TabPing.enabled", false);
+        cache.set("TabPing.enabled", false);
         MessageManager.Message(sender, "§e延迟显示§c已禁用");
         ConfigManager.saveConfigs();
         return true;

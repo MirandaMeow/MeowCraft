@@ -6,15 +6,15 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.temp;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class SelfExplodeCancelByPlayerDeathEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void SelfExplodeCancelByPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         String playerName = player.getName();
-        if (temp.get(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName)) != null && !temp.getBoolean(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName))) {
-            temp.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), true);
+        if (cache.get(String.format("OccSkillCoolDown.%s.temp.selfExplode", playerName)) != null && !cache.getBoolean(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName))) {
+            cache.set(String.format("OccSkillCoolDown.%s.temp.selfExplodeCancel", playerName), true);
         }
     }
 }

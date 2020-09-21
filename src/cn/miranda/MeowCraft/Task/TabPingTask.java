@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.bukkit.Bukkit.getScheduler;
-import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class TabPingTask {
     private volatile BukkitTask task = null;
@@ -44,7 +44,7 @@ public class TabPingTask {
                         objective.getScore(i.getKey()).setScore(i.getValue());
                     player.setScoreboard(scoreboard);
                 }
-                if (!config.getBoolean("TabPing.enabled")) {
+                if (!cache.getBoolean("TabPing.enabled")) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (player.getScoreboard().getObjective("PingTab") == null) {
                             continue;

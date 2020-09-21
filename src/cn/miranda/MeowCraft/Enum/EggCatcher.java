@@ -62,8 +62,8 @@ public enum EggCatcher {
     WOLF("狼", EntityType.WOLF, config.getBoolean("EggCatcher.mobs.WOLF")),
     ZOMBIE("僵尸", EntityType.ZOMBIE, config.getBoolean("EggCatcher.mobs.ZOMBIE"));
 
-    private String name;
-    private EntityType entityType;
+    private final String name;
+    private final EntityType entityType;
     private boolean available;
 
     EggCatcher(String name, EntityType entityType, boolean available) {
@@ -105,13 +105,13 @@ public enum EggCatcher {
                 EntityType.TRADER_LLAMA,
                 EntityType.WOLF,
                 EntityType.ZOMBIE_HORSE};
-        ArrayList<EntityType> list = new ArrayList<EntityType>();
+        ArrayList<EntityType> list = new ArrayList<>();
         Collections.addAll(list, types);
         return list;
     }
 
     public static List<EntityType> getAvailableList() {
-        List<EntityType> list = new ArrayList<EntityType>();
+        List<EntityType> list = new ArrayList<>();
         for (EggCatcher i : EggCatcher.values()) {
             if (i.getAvailable()) {
                 list.add(i.getEntityType());

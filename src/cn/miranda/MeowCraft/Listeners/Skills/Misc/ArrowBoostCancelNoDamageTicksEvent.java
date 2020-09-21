@@ -1,6 +1,5 @@
 package cn.miranda.MeowCraft.Listeners.Skills.Misc;
 
-import cn.miranda.MeowCraft.Listeners.Skills.Active.ArrowBoostEvent;
 import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;

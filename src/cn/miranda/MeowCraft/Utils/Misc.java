@@ -17,7 +17,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
@@ -26,7 +25,6 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static org.bukkit.Bukkit.getOnlinePlayers;
 
@@ -164,10 +162,6 @@ public class Misc {
             }
         }
         return Math.round(playerMaxHealth / Op2 / (Op1 + 1) - Op0);
-    }
-
-    public static void disableTabPing() {
-        config.set("TabPing.enabled", false);
     }
 
     public static int getTempleVisitAmount(Player player) {

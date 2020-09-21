@@ -1,9 +1,6 @@
 Settings:
   prefix: true
 
-TabPing:
-  enabled: false
-
 DeadCost:
   ratio: 10
 

@@ -3,8 +3,8 @@ package cn.miranda.MeowCraft.Manager;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
@@ -14,8 +14,8 @@ public class ConfigManager {
     public static YamlConfiguration playerData;
     public static YamlConfiguration temples;
     public static YamlConfiguration towns;
-    public static YamlConfiguration temp;
-    public static List<List> configList;
+    public static YamlConfiguration cache;
+    public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
     public static YamlConfiguration loadFile(String fileName) {
@@ -24,30 +24,25 @@ public class ConfigManager {
             plugin.saveResource(fileName, false);
         }
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-        List CurrentConfig = new ArrayList();
-        CurrentConfig.add(config);
-        CurrentConfig.add(configFile);
-        configList.add(CurrentConfig);
+        configList.put(config, configFile);
         return config;
     }
 
     public static void loadConfigs() {
-        configList = new ArrayList();
+        configList = new HashMap<>();
         config = loadFile("config.yml");
         skills = loadFile("skills.yml");
         playerData = loadFile("playerData.yml");
         temples = loadFile("temples.yml");
         towns = loadFile("towns.yml");
-        temp = loadFile("temp.yml");
+        cache = loadFile("cache.yml");
     }
 
     public static void saveConfigs() {
         try {
-            int length = configList.size();
-            for (int i = 0; i < length; i++) {
-                List current = configList.get(i);
-                YamlConfiguration currentYaml = (YamlConfiguration) current.get(0);
-                File currentFile = (File) current.get(1);
+            for (Map.Entry<YamlConfiguration, File> current : configList.entrySet()) {
+                YamlConfiguration currentYaml = current.getKey();
+                File currentFile = current.getValue();
                 currentYaml.save(currentFile);
             }
         } catch (Exception e) {
@@ -56,7 +51,7 @@ public class ConfigManager {
     }
 
     public static void removeAllFlags() {
-        temp.set(String.format("OccSkillCoolDown"), null);
+        cache.set("OccSkillCoolDown", null);
         saveConfigs();
     }
 }

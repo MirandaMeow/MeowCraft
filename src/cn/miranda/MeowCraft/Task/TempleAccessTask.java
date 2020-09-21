@@ -1,6 +1,5 @@
 package cn.miranda.MeowCraft.Task;
 
-import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.MeowCraft;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -9,7 +8,6 @@ import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.temples;
 import static org.bukkit.Bukkit.getScheduler;
 
