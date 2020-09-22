@@ -21,6 +21,7 @@ public class MeowCraft extends JavaPlugin {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e正在启用");
         ConfigManager.loadConfigs();
         ConfigManager.removeAllFlags();
+        ConfigManager.enableTabPing();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e载入配置文件");
         ListenersManager.registerAllEvents();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册监听器");
@@ -39,6 +40,7 @@ public class MeowCraft extends JavaPlugin {
     }
 
     public void onDisable() {
+        ConfigManager.disableTabPing();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e正在禁用");
         HandlerList.unregisterAll(this);
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e清除监听器");

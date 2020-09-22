@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Manager;
 
+import cn.miranda.MeowCraft.Task.TabPingTask;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -48,6 +49,17 @@ public class ConfigManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void enableTabPing() {
+        new TabPingTask().TabPing();
+        cache.set("TabPing.enabled", true);
+        ConfigManager.saveConfigs();
+    }
+
+    public static void disableTabPing() {
+        cache.set("TabPing.enabled", false);
+        ConfigManager.saveConfigs();
     }
 
     public static void removeAllFlags() {

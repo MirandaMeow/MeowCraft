@@ -33,6 +33,7 @@ public class CommandManager {
         map.put("townapply", new TownApplyCommand());
         map.put("townadmin", new TownAdminCommand());
         map.put("playerstatus", new PlayerStatusCommand());
+        map.put("strike", new StrikeCommand());
         for (Map.Entry<String, CommandExecutor> entry : map.entrySet()) {
             register(entry.getKey(), entry.getValue());
         }

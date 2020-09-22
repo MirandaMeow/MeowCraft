@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.3.8
+version: 0.3.9
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [Vault, mcMMO, PermissionsEx]
@@ -68,3 +68,7 @@ commands:
     description: 存储或取出玩家的状态
     usage: /playerstatus <setdefault|setrestore>
     permissions: playerstatus.admin
+  strike:
+    description: 用闪电移除所有攻击性生物
+    usage: /strike [radius]
+    permissions: strike.admin

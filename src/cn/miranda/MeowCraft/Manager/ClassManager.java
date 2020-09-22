@@ -67,6 +67,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.MeowCraftCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.TownAdminCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.TownBankCommand");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.StrikeCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.ConfigManager");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.PluginLoadManager");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.PlayerStatusManager");
