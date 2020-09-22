@@ -51,7 +51,7 @@ public class EggCatcherEvent implements Listener {
             MessageManager.Message(player, String.format("§b%s §c不可被捕捉", eggCatcher.getName()));
             return;
         }
-        if (EggCatcher.getCanTamedEntity().contains(targetType)) {
+        if (target instanceof Tameable) {
             Tameable t = (Tameable) target;
             if (t.isTamed()) {
                 MessageManager.Message(player, "§c无法捕捉已被驯服的动物");

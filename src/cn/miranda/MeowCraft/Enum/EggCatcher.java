@@ -93,23 +93,6 @@ public enum EggCatcher {
         return new ItemStack(material);
     }
 
-    public static List<EntityType> getCanTamedEntity() {
-        EntityType[] types = {
-                EntityType.CAT,
-                EntityType.DONKEY,
-                EntityType.HORSE,
-                EntityType.LLAMA,
-                EntityType.MULE,
-                EntityType.PARROT,
-                EntityType.SKELETON_HORSE,
-                EntityType.TRADER_LLAMA,
-                EntityType.WOLF,
-                EntityType.ZOMBIE_HORSE};
-        ArrayList<EntityType> list = new ArrayList<>();
-        Collections.addAll(list, types);
-        return list;
-    }
-
     public static List<EntityType> getAvailableList() {
         List<EntityType> list = new ArrayList<>();
         for (EggCatcher i : EggCatcher.values()) {

@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import ru.tehkode.permissions.PermissionGroup;
@@ -31,8 +32,18 @@ public class PlayerStatusManager implements Serializable {
     public final boolean isFlying;
     public final List<String> groups;
     public final List<String> permissions;
+    public final Collection<PotionEffect> potionEffects;
 
-    public PlayerStatusManager(GameMode gameMode, ItemStack[] inventory, float exp, int level, int food, boolean isFlying, List<String> groups, List<String> permissions) {
+    public PlayerStatusManager(GameMode gameMode,
+                               ItemStack[] inventory,
+                               float exp,
+                               int level,
+                               int food,
+                               boolean isFlying,
+                               List<String> groups,
+                               List<String> permissions,
+                               Collection<PotionEffect> potionEffects
+    ) {
         this.gameMode = gameMode;
         this.inventory = inventory;
         this.exp = exp;
@@ -41,6 +52,7 @@ public class PlayerStatusManager implements Serializable {
         this.isFlying = isFlying;
         this.groups = groups;
         this.permissions = permissions;
+        this.potionEffects = potionEffects;
     }
 
     public static void setDefault(Player player) {
@@ -56,7 +68,8 @@ public class PlayerStatusManager implements Serializable {
                 player.getFoodLevel(),
                 player.getAllowFlight(),
                 getPlayerPermissionGroups(player),
-                getPlayerPermissions(player)
+                getPlayerPermissions(player),
+                player.getActivePotionEffects()
         );
         playerStatus.put(player, playerStatusManager);
         player.setGameMode(GameMode.SURVIVAL);
@@ -66,6 +79,7 @@ public class PlayerStatusManager implements Serializable {
         player.setMaxHealth(20);
         player.setFoodLevel(20);
         player.setFlying(false);
+        removeAllPotionEffect(player);
         try {
             cache.set("PlayerStatus", encodePlayerStatus());
         } catch (IOException e) {
@@ -92,6 +106,7 @@ public class PlayerStatusManager implements Serializable {
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         restorePlayerPermissionGroups(player, playerStatusManager.groups);
         restorePlayerPermissions(player, playerStatusManager.permissions);
+        player.addPotionEffects(playerStatusManager.potionEffects);
         playerStatus.remove(player);
         try {
             cache.set("PlayerStatus", encodePlayerStatus());
@@ -140,6 +155,12 @@ public class PlayerStatusManager implements Serializable {
     private static void restorePlayerPermissions(Player player, List<String> permissions) {
         PermissionUser pexUser = PermissionsEx.getUser(player);
         pexUser.setPermissions(permissions);
+    }
+
+    private static void removeAllPotionEffect(Player player) {
+        for (PotionEffect potionEffect : player.getActivePotionEffects()) {
+            player.removePotionEffect(potionEffect.getType());
+        }
     }
 
     private static String encodePlayerStatus() throws IOException {
