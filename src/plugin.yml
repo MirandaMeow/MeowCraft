@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.4.1
+version: 0.4.2
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [Vault, mcMMO, PermissionsEx]
@@ -72,3 +72,7 @@ commands:
     description: 用闪电移除所有攻击性生物
     usage: /strike [radius]
     permissions: strike.admin
+  incomeaccount:
+    description: 修改小镇公共账户
+    usage: /incomeaccount <town> <check|give|take|set> [value]
+    permissions: incomeaccount.admin

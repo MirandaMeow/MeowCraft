@@ -7,7 +7,8 @@ public enum Notify {
     No_Player("§c指定玩家不在线"),
     No_Occ("§c你没有职业"),
     Invalid_Input("§c参数不正确"),
-    Invalid_Input_Length("参数长度不正确");
+    Invalid_Input_Length("§c参数长度不正确"),
+    No_Town("§c小镇不存在");
     private final String string;
 
     Notify(String string) {

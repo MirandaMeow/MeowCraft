@@ -191,4 +191,9 @@ public class Misc {
         }
         return list;
     }
+
+    public static boolean canDouble(String string) {
+        Pattern pattern = Pattern.compile("[0-9]*|[0-9]*\\.[0-9]*");
+        return pattern.matcher(string).matches();
+    }
 }

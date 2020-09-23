@@ -30,7 +30,7 @@ public class TownApplyCommand implements TabExecutor {
             return true;
         }
         if (!Town.getTownList().contains(args[0])) {
-            MessageManager.Message(player, "§c小镇不存在");
+            MessageManager.Message(player, Notify.No_Town.getString());
             return true;
         }
         String TownChinese = Town.getPlayerTownChinese(player);
