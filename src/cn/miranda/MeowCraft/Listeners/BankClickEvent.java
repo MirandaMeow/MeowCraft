@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Listeners;
 
-import cn.miranda.MeowCraft.Manager.ChestManager;
+import cn.miranda.MeowCraft.Manager.BankManager;
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Misc;
@@ -49,10 +49,10 @@ public class BankClickEvent implements Listener {
         String itemName = itemMeta.getDisplayName();
         switch (itemName) {
             case "§6存款服务":
-                player.openInventory(ChestManager.DepositORWithdrawPanel(true, player));
+                player.openInventory(BankManager.DepositORWithdrawPanel(true, player));
                 return;
             case "§6取款服务":
-                player.openInventory(ChestManager.DepositORWithdrawPanel(false, player));
+                player.openInventory(BankManager.DepositORWithdrawPanel(false, player));
                 return;
             case "§6数值调整 1":
                 if (type == ClickType.LEFT) {
@@ -92,74 +92,73 @@ public class BankClickEvent implements Listener {
             case "§c§l重置数值":
                 setValue(player, inv, 0, true, invName);
                 return;
-            case "§e§l确认":
-                player.closeInventory();
-                player.openInventory(ChestManager.mainPanel(player));
-                return;
+            case "§e§l确认并返回":
+                player.updateInventory();
+                player.openInventory(BankManager.mainPanel(player));
             case "§e返回":
-                player.openInventory(ChestManager.mainPanel(player));
+                player.openInventory(BankManager.mainPanel(player));
                 return;
-            case "§6小镇税收账户":
+            case "§6小镇收入账户":
                 if (!player.hasPermission("town.admin")) {
-                    MessageManager.Message(player, "§c只有镇长才可以提取税收账户");
+                    MessageManager.Message(player, "§c只有镇长才可以使用");
                     return;
                 }
                 String playerTownChinese = Town.getPlayerTownChinese(player);
-                double townAccount = towns.getDouble(String.format("%s.publicAccount", playerTownChinese), 0.0);
+                double townAccount = towns.getDouble(String.format("%s.incomeAccount", playerTownChinese), 0.0);
                 if (townAccount == 0) {
-                    MessageManager.Message(player, "§c税收账户金额为零");
+                    MessageManager.Message(player, "§c收入账户金额为零");
                     return;
                 }
                 econ.depositPlayer(player, townAccount);
-                towns.set(String.format("%s.publicAccount", playerTownChinese), 0);
+                towns.set(String.format("%s.incomeAccount", playerTownChinese), 0);
                 ConfigManager.saveConfigs();
                 player.closeInventory();
-                MessageManager.Message(player, String.format("§e你提取了税收账户的全部金额 §b%s", Misc.stringFormat(townAccount)));
+                MessageManager.Message(player, String.format("§e你提取了收入账户的全部金额 §b%s", Misc.stringFormat(townAccount)));
                 return;
-            case "§6小镇税率调整":
+            case "§6小镇银行服务费率调整":
                 if (!player.hasPermission("town.admin")) {
-                    MessageManager.Message(player, "§c只有镇长才可以调整税率");
+                    MessageManager.Message(player, "§c只有镇长才可以使用");
                     return;
                 }
-                player.openInventory(ChestManager.rateSettingPanel());
+                player.openInventory(BankManager.rateSettingPanel());
                 return;
-            case "§e将税率设为 §b0.1%":
+            case "§e将服务费率设为 §b0.1%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 0.1);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b0.3%":
+            case "§e将服务费率设为 §b0.3%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 0.3);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b0.5%":
+            case "§e将服务费率设为 §b0.5%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 0.5);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b1.0%":
+            case "§e将服务费率设为 §b1.0%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 1.0);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b1.5%":
+            case "§e将服务费率设为 §b1.5%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 1.5);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b2.0%":
+            case "§e将服务费率设为 §b2.0%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 2.0);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b2.5%":
+            case "§e将服务费率设为 §b2.5%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 2.5);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b5.0%":
+            case "§e将服务费率设为 §b5.0%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 5.0);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b10.0%":
+            case "§e将服务费率设为 §b10.0%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 10.0);
                 ConfigManager.saveConfigs();
                 return;
-            case "§e将税率设为 §b50.0%":
+            case "§e将服务费率设为 §b50.0%":
                 towns.set(String.format("%s.rate", Town.getPlayerTownChinese(player)), 50.0);
                 ConfigManager.saveConfigs();
                 return;
@@ -208,7 +207,7 @@ public class BankClickEvent implements Listener {
                     return;
                 }
             }
-            loreList.set(1, String.format("§e手续费: §b%s", commission_String));
+            loreList.set(1, String.format("§e服务费: §b%s", commission_String));
             itemMeta.setLore(loreList);
             item.setItemMeta(itemMeta);
             inv.setItem(39, item);
@@ -219,7 +218,7 @@ public class BankClickEvent implements Listener {
         } else {
             loreList.set(0, String.format("§e取出金额: §b%d", 0));
         }
-        loreList.set(1, "§e手续费: §b0.00");
+        loreList.set(1, "§e服务费: §b0.00");
         itemMeta.setLore(loreList);
         item.setItemMeta(itemMeta);
         inv.setItem(39, item);

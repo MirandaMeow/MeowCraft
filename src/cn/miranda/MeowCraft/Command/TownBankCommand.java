@@ -1,7 +1,7 @@
 package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Enum.Notify;
-import cn.miranda.MeowCraft.Manager.ChestManager;
+import cn.miranda.MeowCraft.Manager.BankManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.Town;
 import org.bukkit.command.Command;
@@ -36,7 +36,7 @@ public class TownBankCommand implements TabExecutor {
             MessageManager.Message(player, "§e用法: §6/bank");
             return true;
         }
-        player.openInventory(ChestManager.mainPanel(player));
+        player.openInventory(BankManager.mainPanel(player));
         return true;
     }
 

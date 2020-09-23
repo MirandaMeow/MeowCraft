@@ -46,11 +46,11 @@ public class BankCloseEvent implements Listener {
             String playerMoney = Misc.stringFormat(econ.getBalance(player));
             int playerBank = playerData.getInt(String.format("%s.bank", playerName)) + money;
             playerData.set(String.format("%s.bank", playerName), playerBank);
-            double TownPublic = towns.getDouble(String.format("%s.publicAccount", playerTown), 0.0);
+            double TownPublic = towns.getDouble(String.format("%s.incomeAccount", playerTown), 0.0);
             TownPublic += rate;
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
-            towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
-            MessageManager.Message(player, String.format("§e存入了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
+            towns.set(String.format("%s.incomeAccount", playerTown), TownPublic_formatted);
+            MessageManager.Message(player, String.format("§e存入了 §b%d§e, 服务费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
             ConfigManager.saveConfigs();
             return;
         }
@@ -67,11 +67,11 @@ public class BankCloseEvent implements Listener {
             String playerMoney = Misc.stringFormat(econ.getBalance(player));
             int playerBank = playerData.getInt(String.format("%s.bank", playerName)) - money;
             playerData.set(String.format("%s.bank", playerName), playerBank);
-            double TownPublic = towns.getDouble(String.format("%s.publicAccount", playerTown), 0.0);
+            double TownPublic = towns.getDouble(String.format("%s.incomeAccount", playerTown), 0.0);
             TownPublic += rate;
             double TownPublic_formatted = Misc.doubleFixed(TownPublic);
-            towns.set(String.format("%s.publicAccount", playerTown), TownPublic_formatted);
-            MessageManager.Message(player, String.format("§e取出了 §b%d§e, 手续费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
+            towns.set(String.format("%s.incomeAccount", playerTown), TownPublic_formatted);
+            MessageManager.Message(player, String.format("§e取出了 §b%d§e, 服务费 §b%s§e, 当前有 §b%s§e, 银行存款 §b%s", money, rateString, playerMoney, playerBank));
             ConfigManager.saveConfigs();
         }
     }

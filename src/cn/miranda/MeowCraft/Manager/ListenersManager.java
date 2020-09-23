@@ -1,7 +1,6 @@
 package cn.miranda.MeowCraft.Manager;
 
 import cn.miranda.MeowCraft.Listeners.*;
-import cn.miranda.MeowCraft.Listeners.BankClickEvent;
 import cn.miranda.MeowCraft.Listeners.Skills.Active.*;
 import cn.miranda.MeowCraft.Listeners.Skills.Misc.*;
 import cn.miranda.MeowCraft.Listeners.Skills.Passive.ConcentrateEvent;

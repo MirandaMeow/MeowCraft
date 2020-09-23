@@ -1,7 +1,6 @@
 package cn.miranda.MeowCraft.Task;
 
 import cn.miranda.MeowCraft.MeowCraft;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.scheduler.BukkitTask;
@@ -24,10 +23,9 @@ public class ArrowBoostShootTask {
         int settings_range = skills.getInt("Ranger_ArrowBoost.range", 25);
         int settings_per_wave_amount = skills.getInt("Ranger_ArrowBoost.per_wave_amount", 5);
         int settings_wave = skills.getInt("Ranger_ArrowBoost.wave", 5);
-        long settings_inverval = skills.getLong("Ranger_ArrowBoost.interval", 5);
+        long settings_interval = skills.getLong("Ranger_ArrowBoost.interval", 5);
         List<Integer> arrowTargetEntityIDs = new ArrayList<>();
         final int[] wave_count = {0};
-        String playerName = player.getName();
         task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
             @Override
             public void run() {
@@ -56,7 +54,7 @@ public class ArrowBoostShootTask {
                     task.cancel();
                 }
             }
-        }, 0, settings_inverval);
+        }, 0, settings_interval);
         return arrowTargetEntityIDs;
     }
 }

@@ -5,7 +5,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
