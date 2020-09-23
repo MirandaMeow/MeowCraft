@@ -54,7 +54,7 @@ public class IncomeAccountCommand implements TabExecutor {
             case "give":
                 setValue = Misc.doubleFixed(townValue + value);
                 setTownIncomeAccountValue(town, setValue);
-                MessageManager.Message(sender, String.format("§e小镇§b%s§e收入账户已添加 §b%s", town, value_string));
+                MessageManager.Message(sender, String.format("§e小镇§b%s§e的收入账户已添加 §b%s", town, value_string));
                 return true;
             case "take":
                 if (value > townValue) {
@@ -63,11 +63,11 @@ public class IncomeAccountCommand implements TabExecutor {
                 }
                 setValue = Misc.doubleFixed(townValue - value);
                 setTownIncomeAccountValue(town, setValue);
-                MessageManager.Message(sender, String.format("§e小镇§b%s§e收入账户已扣除 §b%s", town, value_string));
+                MessageManager.Message(sender, String.format("§e小镇§b%s§e的收入账户已扣除 §b%s", town, value_string));
                 return true;
             case "set":
                 setTownIncomeAccountValue(town, value);
-                MessageManager.Message(sender, String.format("§e小镇§b%s§e收入账户被设置为 §b%s", town, value_string));
+                MessageManager.Message(sender, String.format("§e小镇§b%s§e的收入账户被设置为 §b%s", town, value_string));
                 return true;
             default:
                 MessageManager.Message(sender, "§e用法: §6/incomeaccount §b<town> <check|give|take|set> [value]");
