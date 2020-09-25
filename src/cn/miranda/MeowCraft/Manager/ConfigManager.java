@@ -1,12 +1,16 @@
 package cn.miranda.MeowCraft.Manager;
 
 import cn.miranda.MeowCraft.Task.TabPingTask;
+import cn.miranda.MeowCraft.Utils.IO;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cn.miranda.MeowCraft.Manager.PlayerStatusManager.playerStatus;
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
 public class ConfigManager {
@@ -65,5 +69,18 @@ public class ConfigManager {
     public static void removeAllFlags() {
         cache.set("OccSkillCoolDown", null);
         saveConfigs();
+    }
+
+    public static void loadPlayerStatusData() {
+        try {
+            Object getObject = IO.decodePlayerStatus(cache.getString("PlayerStatus"));
+            if (getObject == null) {
+                playerStatus = new HashMap<>();
+            } else {
+                playerStatus = (HashMap<Player, PlayerStatusManager>) getObject;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

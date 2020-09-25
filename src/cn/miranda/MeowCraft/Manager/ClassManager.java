@@ -79,6 +79,8 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.CommandManager");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Enum.EggCatcher");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.MeowCraft");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Utils.IO");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.TradeManager");
         } catch (Exception e) {
             e.printStackTrace();
             MessageManager.ConsoleMessage("出错了");

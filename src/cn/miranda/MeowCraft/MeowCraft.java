@@ -1,11 +1,16 @@
 package cn.miranda.MeowCraft;
 
 import cn.miranda.MeowCraft.Manager.*;
+import cn.miranda.MeowCraft.Utils.IO;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.HashMap;
 
+import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
+import static cn.miranda.MeowCraft.Manager.PlayerStatusManager.playerStatus;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class MeowCraft extends JavaPlugin {
@@ -30,11 +35,7 @@ public class MeowCraft extends JavaPlugin {
         CommandManager.registerCommands();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册命令");
         TempleManager.refreshTempleLists();
-        try {
-            PlayerStatusManager.decodePlayerStatus();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        ConfigManager.loadPlayerStatusData();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e载入玩家数据");
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e启用成功");
     }

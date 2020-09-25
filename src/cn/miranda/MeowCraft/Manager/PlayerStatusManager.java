@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Manager;
 
+import cn.miranda.MeowCraft.Utils.IO;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
@@ -7,15 +8,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.io.BukkitObjectInputStream;
-import org.bukkit.util.io.BukkitObjectOutputStream;
 import ru.tehkode.permissions.PermissionGroup;
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -81,7 +79,7 @@ public class PlayerStatusManager implements Serializable {
         player.setFlying(false);
         removeAllPotionEffect(player);
         try {
-            cache.set("PlayerStatus", encodePlayerStatus());
+            cache.set("PlayerStatus", IO.encodeData(playerStatus));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +107,7 @@ public class PlayerStatusManager implements Serializable {
         player.addPotionEffects(playerStatusManager.potionEffects);
         playerStatus.remove(player);
         try {
-            cache.set("PlayerStatus", encodePlayerStatus());
+            cache.set("PlayerStatus", IO.encodeData(playerStatus));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,24 +159,5 @@ public class PlayerStatusManager implements Serializable {
         for (PotionEffect potionEffect : player.getActivePotionEffects()) {
             player.removePotionEffect(potionEffect.getType());
         }
-    }
-
-    private static String encodePlayerStatus() throws IOException {
-        BASE64Encoder encoder = new BASE64Encoder();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        BukkitObjectOutputStream objectOutputStream = new BukkitObjectOutputStream(outputStream);
-        objectOutputStream.writeObject(playerStatus);
-        return encoder.encode(outputStream.toByteArray());
-    }
-
-    public static void decodePlayerStatus() throws IOException, ClassNotFoundException {
-        BASE64Decoder decoder = new BASE64Decoder();
-        String json = cache.getString("PlayerStatus");
-        if (json == null) {
-            return;
-        }
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(decoder.decodeBuffer(json));
-        BukkitObjectInputStream objectInputStream = new BukkitObjectInputStream(inputStream);
-        playerStatus = (HashMap<Player, PlayerStatusManager>) objectInputStream.readObject();
     }
 }
