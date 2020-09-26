@@ -14,6 +14,7 @@ public class PluginLoadManager {
         loadVault();
         loadPermissionsEx();
         loadmcMMO();
+        loadCitizens();
     }
 
     private static boolean setupEconomy() {
@@ -54,6 +55,14 @@ public class PluginLoadManager {
         } else{
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 mcMMO，焊接成功");
         }
+    }
 
+    public static void loadCitizens() {
+        if (getServer().getPluginManager().getPlugin("Citizens") == null) {
+            MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e未找到 Citizens, 组件即将禁用");
+            Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
+        } else{
+            MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 Citizens，焊接成功");
+        }
     }
 }

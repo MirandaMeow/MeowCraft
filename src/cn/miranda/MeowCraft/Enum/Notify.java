@@ -8,7 +8,8 @@ public enum Notify {
     No_Occ("§c你没有职业"),
     Invalid_Input("§c参数不正确"),
     Invalid_Input_Length("§c参数长度不正确"),
-    No_Town("§c小镇不存在");
+    No_Town("§c小镇不存在"),
+    No_TradePanel("§c交易面板不存在");
     private final String string;
 
     Notify(String string) {

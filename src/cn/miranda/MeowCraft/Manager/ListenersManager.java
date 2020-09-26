@@ -49,6 +49,9 @@ public class ListenersManager implements Listener {
         list.add(new EggCatcherEvent());
         list.add(new PickAxeAttackEvent());
         list.add(new ThrowPotionEvent());
+        list.add(new TradePanelOpenEvent());
+        list.add(new TradePanelSaveEvent());
+        list.add(new TradePanelAccessEvent());
         for (Listener i : list) {
             register(i);
         }

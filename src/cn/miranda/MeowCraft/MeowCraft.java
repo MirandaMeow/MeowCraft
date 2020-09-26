@@ -36,6 +36,7 @@ public class MeowCraft extends JavaPlugin {
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e注册命令");
         TempleManager.refreshTempleLists();
         ConfigManager.loadPlayerStatusData();
+        ConfigManager.loadTradePanelData();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e载入玩家数据");
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e启用成功");
     }

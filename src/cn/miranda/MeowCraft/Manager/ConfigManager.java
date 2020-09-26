@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static cn.miranda.MeowCraft.Manager.PlayerStatusManager.playerStatus;
+import static cn.miranda.MeowCraft.Manager.TradeManager.trade;
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
 public class ConfigManager {
@@ -20,6 +21,7 @@ public class ConfigManager {
     public static YamlConfiguration temples;
     public static YamlConfiguration towns;
     public static YamlConfiguration cache;
+    public static YamlConfiguration trades;
     public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
@@ -41,6 +43,7 @@ public class ConfigManager {
         temples = loadFile("temples.yml");
         towns = loadFile("towns.yml");
         cache = loadFile("cache.yml");
+        trades = loadFile("trades.yml");
     }
 
     public static void saveConfigs() {
@@ -78,6 +81,18 @@ public class ConfigManager {
                 playerStatus = new HashMap<>();
             } else {
                 playerStatus = (HashMap<Player, PlayerStatusManager>) getObject;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadTradePanelData() {
+        try {
+            Object getObject = IO.decodePlayerStatus(trades.getString("trade"));
+            if (getObject == null) {
+                trade = new HashMap<>();
+            } else {
+                trade = (HashMap<Integer, TradeManager>) getObject;
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

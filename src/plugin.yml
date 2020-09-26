@@ -1,9 +1,9 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.4.3
+version: 0.4.4
 author: Miranda
 description: 猫子的魔法插件
-softdepend: [Vault, mcMMO, PermissionsEx]
+softdepend: [Vault, mcMMO, PermissionsEx, Citizens]
 load: POSTWORLD
 api-version: 1.15
 
@@ -76,3 +76,7 @@ commands:
     description: 修改小镇公共账户
     usage: /incomeaccount <town> <check|give|take|set> [value]
     permissions: incomeaccount.admin
+  trade:
+    description: NPC 交易面板设置
+    usage: /trade <NpcID> <create|delete|set> <slot> <price>
+    permissions: trade.admin
