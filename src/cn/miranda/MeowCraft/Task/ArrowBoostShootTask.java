@@ -26,33 +26,30 @@ public class ArrowBoostShootTask {
         long settings_interval = skills.getLong("Ranger_ArrowBoost.interval", 5);
         List<Integer> arrowTargetEntityIDs = new ArrayList<>();
         final int[] wave_count = {0};
-        task = getScheduler().runTaskTimer(MeowCraft.plugin, new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < settings_per_wave_amount; i++) {
-                    Vector a, b, loc = player.getEyeLocation().getDirection();
-                    double range = Math.abs(settings_range) % 360;
-                    double phi = (range / 180) * Math.PI;
-                    Vector ax1 = loc.getCrossProduct(z_axis);
-                    if (ax1.length() < 0.01) {
-                        a = x_axis.clone();
-                        b = y_axis.clone();
-                    } else {
-                        a = ax1.normalize();
-                        b = loc.getCrossProduct(a).normalize();
-                    }
-                    double z = (range == 0) ? 1.0D : ThreadLocalRandom.current().nextDouble(Math.cos(phi), 1.0D);
-                    double det = ThreadLocalRandom.current().nextDouble(0.0D, Math.PI * 2);
-                    double theta = Math.acos(z);
-                    Vector v = a.clone().multiply(Math.cos(det)).add(b.clone().multiply(Math.sin(det))).multiply(Math.sin(theta)).add(loc.clone().multiply(Math.cos(theta)));
-                    Projectile projectile = player.launchProjectile(org.bukkit.entity.Arrow.class, v.normalize().multiply(2));
-                    new RemoveEntityTask().RemoveEntity(projectile, 100, false);
-                    arrowTargetEntityIDs.add(projectile.getEntityId());
+        task = getScheduler().runTaskTimer(MeowCraft.plugin, () -> {
+            for (int i = 0; i < settings_per_wave_amount; i++) {
+                Vector a, b, loc = player.getEyeLocation().getDirection();
+                double range = Math.abs(settings_range) % 360;
+                double phi = (range / 180) * Math.PI;
+                Vector ax1 = loc.getCrossProduct(z_axis);
+                if (ax1.length() < 0.01) {
+                    a = x_axis.clone();
+                    b = y_axis.clone();
+                } else {
+                    a = ax1.normalize();
+                    b = loc.getCrossProduct(a).normalize();
                 }
-                wave_count[0] += 1;
-                if (wave_count[0] == settings_wave) {
-                    task.cancel();
-                }
+                double z = (range == 0) ? 1.0D : ThreadLocalRandom.current().nextDouble(Math.cos(phi), 1.0D);
+                double det = ThreadLocalRandom.current().nextDouble(0.0D, Math.PI * 2);
+                double theta = Math.acos(z);
+                Vector v = a.clone().multiply(Math.cos(det)).add(b.clone().multiply(Math.sin(det))).multiply(Math.sin(theta)).add(loc.clone().multiply(Math.cos(theta)));
+                Projectile projectile = player.launchProjectile(org.bukkit.entity.Arrow.class, v.normalize().multiply(2));
+                new RemoveEntityTask().RemoveEntity(projectile, 100, false);
+                arrowTargetEntityIDs.add(projectile.getEntityId());
+            }
+            wave_count[0] += 1;
+            if (wave_count[0] == settings_wave) {
+                task.cancel();
             }
         }, 0, settings_interval);
         return arrowTargetEntityIDs;

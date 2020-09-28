@@ -15,10 +15,13 @@ import ru.tehkode.permissions.PermissionGroup;
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class Occ {
     public static void addGroup(Player player, String group) {

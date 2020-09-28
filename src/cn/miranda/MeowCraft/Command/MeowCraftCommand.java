@@ -2,13 +2,19 @@ package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Enum.Notify;
-import cn.miranda.MeowCraft.Manager.*;
+import cn.miranda.MeowCraft.Manager.ClassManager;
+import cn.miranda.MeowCraft.Manager.ConfigManager;
+import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 

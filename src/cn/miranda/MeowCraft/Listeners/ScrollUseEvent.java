@@ -17,8 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 import java.util.Objects;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class ScrollUseEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)

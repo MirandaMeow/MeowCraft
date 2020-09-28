@@ -1,16 +1,9 @@
 package cn.miranda.MeowCraft;
 
 import cn.miranda.MeowCraft.Manager.*;
-import cn.miranda.MeowCraft.Utils.IO;
-import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-import java.util.HashMap;
-
-import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
-import static cn.miranda.MeowCraft.Manager.PlayerStatusManager.playerStatus;
 import static org.bukkit.Bukkit.getScheduler;
 
 public class MeowCraft extends JavaPlugin {

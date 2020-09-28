@@ -7,14 +7,11 @@ import static org.bukkit.Bukkit.getScheduler;
 
 public class RemoveEntityTask {
     public void RemoveEntity(Entity entity, long delay, boolean thunder) {
-        getScheduler().runTaskLater(MeowCraft.plugin, new Runnable() {
-            @Override
-            public void run() {
-                if (thunder) {
-                    entity.getWorld().strikeLightning(entity.getLocation());
-                }
-                entity.remove();
+        getScheduler().runTaskLater(MeowCraft.plugin, () -> {
+            if (thunder) {
+                entity.getWorld().strikeLightning(entity.getLocation());
             }
+            entity.remove();
         }, delay);
     }
 }

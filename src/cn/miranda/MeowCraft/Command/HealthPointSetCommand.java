@@ -2,11 +2,11 @@ package cn.miranda.MeowCraft.Command;
 
 import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import cn.miranda.MeowCraft.Utils.Misc;
 
 import java.util.ArrayList;
 import java.util.List;

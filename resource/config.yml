@@ -4,6 +4,9 @@ Settings:
 DeadCost:
   ratio: 10
 
+AnvilLore:
+  cost: 5
+
 EggCatcher:
   cost: 100
   chance: 30

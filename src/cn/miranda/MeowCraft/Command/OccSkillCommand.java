@@ -12,8 +12,8 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class OccSkillCommand implements TabExecutor {
     @Override

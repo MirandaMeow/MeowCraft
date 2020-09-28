@@ -16,7 +16,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
-
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class EggCatcherEvent implements Listener {

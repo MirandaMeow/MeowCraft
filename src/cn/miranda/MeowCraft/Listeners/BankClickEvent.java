@@ -17,8 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class BankClickEvent implements Listener {

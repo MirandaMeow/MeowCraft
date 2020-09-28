@@ -16,8 +16,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Manager.ConfigManager.towns;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public class BankManager {
