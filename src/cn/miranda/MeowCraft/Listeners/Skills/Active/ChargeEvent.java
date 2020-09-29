@@ -45,7 +45,8 @@ public class ChargeEvent implements Listener {
                 return;
             }
             MessageManager.ActionBarMessage(player, "§c§l无畏冲锋§r§e发动!");
-            SkillLib.Charge(player);
+            int ratio = skills.getInt("Swordsman_Charge.ratio", 4);
+            SkillLib.Charge(player, ratio);
             Effect.activeSkillEffect(player);
             int coolDown = skills.getInt("Swordsman_Charge.cooldown", 30);
             cache.set(String.format("OccSkillCoolDown.%s.Swordsman_Charge", playerName), coolDown);

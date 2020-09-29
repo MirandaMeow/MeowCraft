@@ -36,9 +36,9 @@ public class SkillLib {
         MessageManager.Message(player, "§e你被祝福了, 快上!");
     }
 
-    public static void Charge(Player player) {
+    public static void Charge(Player player, int ratio) {
         int settings_duration = skills.getInt("Swordsman_Charge.duration", 20);
-        Misc.moveForward(player, 4);
+        Misc.moveForward(player, ratio);
         player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, settings_duration * 20, 0));
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, settings_duration * 20, 3));
     }
