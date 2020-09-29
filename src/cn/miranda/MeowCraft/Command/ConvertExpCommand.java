@@ -16,6 +16,34 @@ import java.util.Objects;
 import static cn.miranda.MeowCraft.Manager.PluginLoadManager.econ;
 
 public final class ConvertExpCommand implements TabExecutor {
+    private static int getExpAtLevel(Player player) {
+        return getExpAtLevel(player.getLevel());
+    }
+
+    public static int getExpAtLevel(int level) {
+        if (level <= 15) {
+            return 2 * level + 7;
+        }
+        if (level <= 30) {
+            return 5 * level - 38;
+        }
+        return 9 * level - 158;
+    }
+
+    public static int getTotalExperience(Player player) {
+        int exp = Math.round(getExpAtLevel(player) * player.getExp());
+        int currentLevel = player.getLevel();
+
+        while (currentLevel > 0) {
+            currentLevel--;
+            exp += getExpAtLevel(currentLevel);
+        }
+        if (exp < 0) {
+            exp = Integer.MAX_VALUE;
+        }
+        return exp;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -42,7 +70,7 @@ public final class ConvertExpCommand implements TabExecutor {
             return true;
         }
         String playerName = player.getName();
-        int playerExp = player.getTotalExperience();
+        double playerExp = getTotalExperience(player);
         double playerMoney = econ.getBalance(playerName);
         if (Objects.equals(args[0], "tomoney")) {
             if (playerExp < setValue1) {
@@ -52,7 +80,8 @@ public final class ConvertExpCommand implements TabExecutor {
             double playerSetExp = playerExp - setValue1;
             player.setExp(0);
             player.setLevel(0);
-            player.setTotalExperience((int) playerSetExp);
+            player.setTotalExperience(0);
+            player.giveExp((int) playerSetExp);
             econ.depositPlayer(playerName, setValue2);
             double nowMoney = econ.getBalance(playerName);
             MessageManager.Message(sender, String.format("§e用 §b%d §e经验值换到了 §b%d §e金钱", setValue1, setValue2));
@@ -67,7 +96,7 @@ public final class ConvertExpCommand implements TabExecutor {
             }
             econ.withdrawPlayer(playerName, setValue1);
             player.giveExp(setValue2);
-            double nowExp = player.getTotalExperience();
+            double nowExp = getTotalExperience(player);
             double nowMoney = econ.getBalance(playerName);
             MessageManager.Message(sender, String.format("§e用 §b%d §e金钱换到了 §b%d §e经验值", setValue1, setValue2));
             MessageManager.Message(sender, String.format("§e当前经验值 §b%s", Misc.stringFormat(nowExp)));

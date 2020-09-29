@@ -206,4 +206,23 @@ public class Misc {
         }
         return out;
     }
+
+    public static boolean deductItem(Player player, ItemStack itemStack, int amount) {
+        Inventory inventory = player.getInventory();
+        for (int i = 0; i < 36; i++) {
+            ItemStack current = inventory.getItem(i);
+            if (current == null) {
+                continue;
+            }
+            if (current.getType() != itemStack.getType()) {
+                continue;
+            }
+            if (current.getAmount() < amount) {
+                continue;
+            }
+            current.setAmount(current.getAmount() - amount);
+            return true;
+        }
+        return false;
+    }
 }

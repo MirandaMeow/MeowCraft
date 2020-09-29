@@ -63,12 +63,12 @@ public class TradePanelAccessEvent implements Listener {
                 return;
             case "sell":
                 ItemStack targetItem = itemStacks[slot];
-                Inventory playerInventory = player.getInventory();
-                if (playerInventory.first(targetItem) == -1) {
+                int amount = targetItem.getAmount();
+                targetItem.setAmount(1);
+                if (!Misc.deductItem(player, targetItem, amount)) {
                     MessageManager.Message(player, "§c无法出售, 你没有指定物品");
                     return;
                 }
-                playerInventory.clear(playerInventory.first(targetItem));
                 econ.depositPlayer(player, price);
                 nowMoney = Misc.stringFormat(econ.getBalance(player));
                 MessageManager.Message(player, String.format("§e出售成功, 获得了 §b%d§e, 现有金钱: §b%s", price, nowMoney));
