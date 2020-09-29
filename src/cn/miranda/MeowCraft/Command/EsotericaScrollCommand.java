@@ -18,7 +18,7 @@ import java.util.List;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class EsotericaScrollCommand implements TabExecutor {
-    private static void getEsotericaScroll(Player player, String type, List<?> lore) {
+    private static void getEsotericaScroll(Player player, String type, List<String> lore) {
         ItemStack esotericaScroll = new ItemStack(Material.PAPER, 1);
         ItemMeta scrollMeta = esotericaScroll.getItemMeta();
         assert scrollMeta != null;
@@ -26,9 +26,7 @@ public class EsotericaScrollCommand implements TabExecutor {
         ArrayList<String> loreList = new ArrayList<>();
         loreList.add(String.format("§3可习得技能 §c%s", skills.getString(String.format("%s.name", type))));
         loreList.add("");
-        for (Object s : lore) {
-            loreList.add(s.toString());
-        }
+        loreList.addAll(lore);
         scrollMeta.setLore(loreList);
         esotericaScroll.setItemMeta(scrollMeta);
         player.getInventory().addItem(esotericaScroll);
@@ -59,7 +57,8 @@ public class EsotericaScrollCommand implements TabExecutor {
             MessageManager.Message(sender, "§c你的背包满了");
             return true;
         }
-        getEsotericaScroll(target, Occ.getSkillID(skillChineseName), Occ.getSkillLore(skillChineseName));
+        String skillID  = Occ.getSkillID(skillChineseName);
+        getEsotericaScroll(target, skillID, Occ.getSkillLore(skillID));
         return true;
     }
 
