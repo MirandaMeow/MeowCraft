@@ -7,9 +7,12 @@ import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +60,8 @@ public final class MeowCraftCommand implements TabExecutor {
         }
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
+            Player player = (Player) sender;
+            SkillLib.summonMob(player, EntityType.ZOMBIE, 2, 50, 3000);
             MessageManager.Message(sender, "§e测试完成");
             return true;
         }
@@ -67,7 +72,7 @@ public final class MeowCraftCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("help", "reload", "save", "debug")), strings[0]);
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("help", "reload", "save", "debug", "test")), strings[0]);
         }
         return new ArrayList<>();
     }

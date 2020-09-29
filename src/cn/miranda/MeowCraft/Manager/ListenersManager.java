@@ -2,10 +2,7 @@ package cn.miranda.MeowCraft.Manager;
 
 import cn.miranda.MeowCraft.Listeners.*;
 import cn.miranda.MeowCraft.Listeners.Skills.Active.*;
-import cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostCancelNoDamageTicksEvent;
-import cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostIncreaseDamageEvent;
-import cn.miranda.MeowCraft.Listeners.Skills.Misc.ImmuneInterruptEvent;
-import cn.miranda.MeowCraft.Listeners.Skills.Misc.SelfExplodeCancelByPlayerDeathEvent;
+import cn.miranda.MeowCraft.Listeners.Skills.Misc.*;
 import cn.miranda.MeowCraft.Listeners.Skills.Passive.ConcentrateEvent;
 import cn.miranda.MeowCraft.Listeners.Skills.Passive.PickAxeAttackEvent;
 import cn.miranda.MeowCraft.MeowCraft;
@@ -56,6 +53,10 @@ public class ListenersManager implements Listener {
         list.add(new TradePanelSaveEvent());
         list.add(new TradePanelAccessEvent());
         list.add(new BookToItemEvent());
+        list.add(new SummonsNotAttackPlayersAndTamedEntityEvent());
+        list.add(new SummonDeadEvent());
+        list.add(new PlayerUnavailableEvent());
+        list.add(new SummonsNoFireEvent());
         for (Listener i : list) {
             register(i);
         }

@@ -57,7 +57,11 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostCancelNoDamageTicksEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostIncreaseDamageEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.ImmuneInterruptEvent");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.PlayerUnavailableEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.SelfExplodeCancelByPlayerDeathEvent");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.SummonDeadEvent");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.SummonsNoFireEvent");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.SummonsNotAttackPlayersAndTamedEntityEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Passive.ConcentrateEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Passive.PickAxeAttackEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Manager.BankManager");
@@ -79,6 +83,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.TempleAccessTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.ImmuneTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.SelfExplodeTask");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.SummonTimeLeftTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Utils.Effect");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Utils.IO");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Utils.Occ");

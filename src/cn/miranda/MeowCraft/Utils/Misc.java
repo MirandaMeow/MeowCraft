@@ -12,6 +12,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
@@ -26,6 +27,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
+import static cn.miranda.MeowCraft.Utils.SkillLib.summons;
 import static org.bukkit.Bukkit.getOnlinePlayers;
 
 public class Misc {
@@ -195,5 +197,13 @@ public class Misc {
     public static boolean canDouble(String string) {
         Pattern pattern = Pattern.compile("[0-9]*|[0-9]*\\.[0-9]*");
         return pattern.matcher(string).matches();
+    }
+
+    public static List<Entity> getAllSummons() {
+        List<Entity> out = new ArrayList<>();
+        for (Map.Entry<Player, List<Entity>> entry : summons.entrySet()) {
+            out.addAll(entry.getValue());
+        }
+        return out;
     }
 }

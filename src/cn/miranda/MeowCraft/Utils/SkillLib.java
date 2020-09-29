@@ -4,22 +4,26 @@ import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.ArrowBoostShootTask;
 import cn.miranda.MeowCraft.Task.ImmuneTask;
 import cn.miranda.MeowCraft.Task.SelfExplodeTask;
+import cn.miranda.MeowCraft.Task.SummonTimeLeftTask;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.ThrownPotion;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class SkillLib {
     public static List<Integer> arrowIDs = null;
+    public static HashMap<Player, List<Entity>> summons = new HashMap<>();
 
     public static void ArrowBoost(Player player) {
         arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player);
@@ -98,6 +102,26 @@ public class SkillLib {
             itemStack_throw.setItemMeta(itemStack.getItemMeta());
             ThrownPotion thrownPotion = player.launchProjectile(ThrownPotion.class);
             thrownPotion.setItem(itemStack_throw);
+        }
+    }
+
+    public static void summonMob(Player player, EntityType type, int amount, int hp, long timeLeft) {
+        for (int i = 0; i < amount; i++) {
+            Entity summon = player.getWorld().spawnEntity(player.getLocation(), type);
+            if (hp != 0) {
+                LivingEntity summon_Living = (LivingEntity) summon;
+                summon_Living.setMaxHealth(hp);
+                summon_Living.setHealth(summon_Living.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+            }
+            summon.setGlowing(true);
+            new SummonTimeLeftTask().SummonTimeLeft(summon, timeLeft);
+            if (summons.get(player) == null) {
+                List<Entity> summonList = new CopyOnWriteArrayList<>();
+                summonList.add(summon);
+                summons.put(player, summonList);
+            } else {
+                summons.get(player).add(summon);
+            }
         }
     }
 }
