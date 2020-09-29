@@ -57,7 +57,7 @@ public class EsotericaScrollCommand implements TabExecutor {
             MessageManager.Message(sender, "§c你的背包满了");
             return true;
         }
-        String skillID  = Occ.getSkillID(skillChineseName);
+        String skillID = Occ.getSkillID(skillChineseName);
         getEsotericaScroll(target, skillID, Occ.getSkillLore(skillID));
         return true;
     }

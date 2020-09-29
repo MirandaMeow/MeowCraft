@@ -94,10 +94,10 @@ public class SkillLib {
             if (!materialList.contains(material)) {
                 continue;
             }
-            ItemStack itemStack_splash = new ItemStack(potionType);
-            itemStack_splash.setItemMeta(itemStack.getItemMeta());
+            ItemStack itemStack_throw = new ItemStack(potionType);
+            itemStack_throw.setItemMeta(itemStack.getItemMeta());
             ThrownPotion thrownPotion = player.launchProjectile(ThrownPotion.class);
-            thrownPotion.setItem(itemStack_splash);
+            thrownPotion.setItem(itemStack_throw);
         }
     }
 }
