@@ -18,7 +18,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.*;
 
 public class ArrowBoostEvent implements Listener {
-
     @EventHandler(priority = EventPriority.NORMAL)
     private void ArrowBoost(PlayerInteractEvent event) {
         Player player = event.getPlayer();
