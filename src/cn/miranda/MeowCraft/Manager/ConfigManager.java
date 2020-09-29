@@ -86,6 +86,7 @@ public class ConfigManager {
             e.printStackTrace();
         }
     }
+
     public static void loadTradePanelData() {
         try {
             Object getObject = IO.decodePlayerStatus(trades.getString("trade"));

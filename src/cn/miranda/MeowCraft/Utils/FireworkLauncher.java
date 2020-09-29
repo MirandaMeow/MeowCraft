@@ -16,7 +16,7 @@ public class FireworkLauncher {
     public Color[] fade;
     public Firework firework;
     public int power;
-    
+
     public FireworkLauncher(Location location, boolean trail, boolean flicker, FireworkEffect.Type type, Color[] color, Color[] fade, int power) {
         this.trail = trail;
         this.flicker = flicker;

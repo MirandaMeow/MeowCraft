@@ -22,22 +22,6 @@ public class TradeManager implements Serializable {
         this.invName = invName;
     }
 
-    public void setTradeMap(HashMap<Integer, TradeObjectManager> tradeMap) {
-        this.tradeMap = tradeMap;
-    }
-
-    public String getInvName() {
-        return this.invName;
-    }
-
-    public ItemStack[] getInventory() {
-        return this.inventory;
-    }
-
-    public void setInventory(ItemStack[] inventory) {
-        this.inventory = inventory;
-    }
-
     public static void saveTrade() {
         try {
             trades.set("trade", IO.encodeData(trade));
@@ -62,10 +46,6 @@ public class TradeManager implements Serializable {
             }
         }
         return -1;
-    }
-
-    public HashMap<Integer, TradeObjectManager> getTradeMap() {
-        return this.tradeMap;
     }
 
     public static boolean existPanel(int id) {
@@ -94,5 +74,25 @@ public class TradeManager implements Serializable {
             out.add(String.valueOf(i));
         }
         return out;
+    }
+
+    public String getInvName() {
+        return this.invName;
+    }
+
+    public ItemStack[] getInventory() {
+        return this.inventory;
+    }
+
+    public void setInventory(ItemStack[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public HashMap<Integer, TradeObjectManager> getTradeMap() {
+        return this.tradeMap;
+    }
+
+    public void setTradeMap(HashMap<Integer, TradeObjectManager> tradeMap) {
+        this.tradeMap = tradeMap;
     }
 }

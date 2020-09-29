@@ -17,6 +17,32 @@ import java.util.List;
 
 
 public class StrikeCommand implements TabExecutor {
+    private static void strike(World world, CommandSender sender, int radius) {
+        int count = 0;
+        if (radius == -1) {
+            for (Entity e : world.getLivingEntities()) {
+                if (!(e instanceof Monster)) {
+                    continue;
+                }
+                count += 1;
+                world.strikeLightningEffect(e.getLocation());
+                e.remove();
+            }
+            MessageManager.Message(sender, String.format("§e在世界 §b%s §e清除了 §b%d §e个怪物", world.getName(), count));
+            return;
+        }
+        Player player = (Player) sender;
+        for (Entity e : world.getNearbyEntities(player.getLocation(), radius, 255, radius)) {
+            if (!(e instanceof Monster)) {
+                continue;
+            }
+            count += 1;
+            world.strikeLightningEffect(e.getLocation());
+            e.remove();
+        }
+        MessageManager.Message(player, String.format("§e在范围 §b%d §e内清除了 §b%d §e个怪物", radius, count));
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!sender.hasPermission("strike.admin")) {
@@ -57,32 +83,6 @@ public class StrikeCommand implements TabExecutor {
             default:
                 return true;
         }
-    }
-
-    private static void strike(World world, CommandSender sender, int radius) {
-        int count = 0;
-        if (radius == -1) {
-            for (Entity e : world.getLivingEntities()) {
-                if (!(e instanceof Monster)) {
-                    continue;
-                }
-                count += 1;
-                world.strikeLightningEffect(e.getLocation());
-                e.remove();
-            }
-            MessageManager.Message(sender, String.format("§e在世界 §b%s §e清除了 §b%d §e个怪物", world.getName(), count));
-            return;
-        }
-        Player player = (Player) sender;
-        for (Entity e : world.getNearbyEntities(player.getLocation(), radius, 255, radius)) {
-            if (!(e instanceof Monster)) {
-                continue;
-            }
-            count += 1;
-            world.strikeLightningEffect(e.getLocation());
-            e.remove();
-        }
-        MessageManager.Message(player, String.format("§e在范围 §b%d §e内清除了 §b%d §e个怪物", radius, count));
     }
 
     @Override

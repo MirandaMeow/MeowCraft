@@ -81,7 +81,7 @@ public class IncomeAccountCommand implements TabExecutor {
             return Misc.returnSelectList(Town.getTownList(), strings[0]);
         }
         if (strings.length == 2) {
-            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("check", "give", "take", "set")), strings[1  ]);
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("check", "give", "take", "set")), strings[1]);
         }
         return new ArrayList<>();
     }

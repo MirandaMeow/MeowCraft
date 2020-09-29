@@ -16,6 +16,18 @@ import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class OccSkillCommand implements TabExecutor {
+    public static void showSkills(Player player, List<String> skillList) {
+        if (skillList.size() == 0) {
+            MessageManager.Message(player, "§e        无");
+        } else {
+            for (Object i : skillList) {
+                String currentSkill = Occ.getSkillChineseById(i.toString());
+                List<String> hoverLore = Occ.getSkillDescribe(i.toString());
+                MessageManager.HoverMessage(player, String.format("§c        %s", currentSkill), hoverLore);
+            }
+        }
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!(sender instanceof Player)) {
@@ -89,18 +101,6 @@ public class OccSkillCommand implements TabExecutor {
         MessageManager.Message(player, "§e    被动技能:");
         showSkills(player, passive);
         return true;
-    }
-
-    public static void showSkills(Player player, List<String> skillList) {
-        if (skillList.size() == 0) {
-            MessageManager.Message(player, "§e        无");
-        } else {
-            for (Object i : skillList) {
-                String currentSkill = Occ.getSkillChineseById(i.toString());
-                List<String> hoverLore = Occ.getSkillDescribe(i.toString());
-                MessageManager.HoverMessage(player, String.format("§c        %s", currentSkill), hoverLore);
-            }
-        }
     }
 
     @Override

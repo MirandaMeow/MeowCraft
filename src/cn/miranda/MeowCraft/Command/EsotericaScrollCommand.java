@@ -18,6 +18,22 @@ import java.util.List;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.skills;
 
 public class EsotericaScrollCommand implements TabExecutor {
+    private static void getEsotericaScroll(Player player, String type, List<?> lore) {
+        ItemStack esotericaScroll = new ItemStack(Material.PAPER, 1);
+        ItemMeta scrollMeta = esotericaScroll.getItemMeta();
+        assert scrollMeta != null;
+        scrollMeta.setDisplayName("§9秘传之书");
+        ArrayList<String> loreList = new ArrayList<>();
+        loreList.add(String.format("§3可习得技能 §c%s", skills.getString(String.format("%s.name", type))));
+        loreList.add("");
+        for (Object s : lore) {
+            loreList.add(s.toString());
+        }
+        scrollMeta.setLore(loreList);
+        esotericaScroll.setItemMeta(scrollMeta);
+        player.getInventory().addItem(esotericaScroll);
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("esotericascroll.admin")) {
@@ -45,22 +61,6 @@ public class EsotericaScrollCommand implements TabExecutor {
         }
         getEsotericaScroll(target, Occ.getSkillID(skillChineseName), Occ.getSkillLore(skillChineseName));
         return true;
-    }
-
-    private static void getEsotericaScroll(Player player, String type, List<?> lore) {
-        ItemStack esotericaScroll = new ItemStack(Material.PAPER, 1);
-        ItemMeta scrollMeta = esotericaScroll.getItemMeta();
-        assert scrollMeta != null;
-        scrollMeta.setDisplayName("§9秘传之书");
-        ArrayList<String> loreList = new ArrayList<>();
-        loreList.add(String.format("§3可习得技能 §c%s", skills.getString(String.format("%s.name", type))));
-        loreList.add("");
-        for (Object s : lore) {
-            loreList.add(s.toString());
-        }
-        scrollMeta.setLore(loreList);
-        esotericaScroll.setItemMeta(scrollMeta);
-        player.getInventory().addItem(esotericaScroll);
     }
 
     @Override

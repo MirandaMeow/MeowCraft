@@ -222,7 +222,7 @@ public class Occ {
         String hoverLore = getHoverLore(skill);
         String[] args = hoverLore.split(",");
         List<String> SkillLore = Occ.getSkillLore(skill);
-        for (String s: args) {
+        for (String s : args) {
             out.add(SkillLore.get(Integer.parseInt(s)));
         }
         return out;

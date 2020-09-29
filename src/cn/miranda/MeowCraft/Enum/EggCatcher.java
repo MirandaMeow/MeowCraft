@@ -71,6 +71,22 @@ public enum EggCatcher {
         this.available = available;
     }
 
+    public static List<EntityType> getAvailableList() {
+        List<EntityType> list = new ArrayList<>();
+        for (EggCatcher i : EggCatcher.values()) {
+            if (i.getAvailable()) {
+                list.add(i.getEntityType());
+            }
+        }
+        return list;
+    }
+
+    public static void flushAvailable() {
+        for (EggCatcher i : EggCatcher.values()) {
+            i.setAvailable(config.getBoolean(String.format("EggCatcher.mobs.%s", i.getEntityType().toString())));
+        }
+    }
+
     public String getName() {
         return this.name;
     }
@@ -83,6 +99,10 @@ public enum EggCatcher {
         return this.available;
     }
 
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
     public String getPermission() {
         return "eggcatcher." + this.entityType.toString().toLowerCase();
     }
@@ -90,25 +110,5 @@ public enum EggCatcher {
     public ItemStack getItemStack() {
         Material material = Material.valueOf(this.getEntityType().toString().toUpperCase() + "_SPAWN_EGG");
         return new ItemStack(material);
-    }
-
-    public static List<EntityType> getAvailableList() {
-        List<EntityType> list = new ArrayList<>();
-        for (EggCatcher i : EggCatcher.values()) {
-            if (i.getAvailable()) {
-                list.add(i.getEntityType());
-            }
-        }
-        return list;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public static void flushAvailable() {
-        for (EggCatcher i : EggCatcher.values()) {
-            i.setAvailable(config.getBoolean(String.format("EggCatcher.mobs.%s", i.getEntityType().toString())));
-        }
     }
 }

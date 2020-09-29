@@ -62,7 +62,7 @@ public class ScrollUseEvent implements Listener {
                         return;
                     }
                 } else {
-                    List<String>  noSkillChinese = Occ.playerNoSkillsChinese(player, requirePreposeSkillChinese);
+                    List<String> noSkillChinese = Occ.playerNoSkillsChinese(player, requirePreposeSkillChinese);
                     if (noSkillChinese.size() != 0) {
                         MessageManager.Message(player, String.format("§e需要前置技能: §c§l%s§r", Occ.getSkillChineseStringFromList(noSkillChinese)));
                         return;

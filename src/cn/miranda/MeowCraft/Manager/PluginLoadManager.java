@@ -33,7 +33,7 @@ public class PluginLoadManager {
         if (!PluginLoadManager.setupEconomy()) {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e未找到 Vault 或没有 Economy 管理插件, 组件即将禁用");
             Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
-        }else{
+        } else {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 Vault，焊接成功");
         }
     }
@@ -52,7 +52,7 @@ public class PluginLoadManager {
         if (getServer().getPluginManager().getPlugin("mcMMO") == null) {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e未找到 mcMMO, 组件即将禁用");
             Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
-        } else{
+        } else {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 mcMMO，焊接成功");
         }
     }
@@ -61,7 +61,7 @@ public class PluginLoadManager {
         if (getServer().getPluginManager().getPlugin("Citizens") == null) {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e未找到 Citizens, 组件即将禁用");
             Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
-        } else{
+        } else {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 Citizens，焊接成功");
         }
     }

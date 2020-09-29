@@ -61,6 +61,7 @@ public final class DeadCostCommand implements TabExecutor {
         ConfigManager.saveConfigs();
         return true;
     }
+
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         return new ArrayList<>();

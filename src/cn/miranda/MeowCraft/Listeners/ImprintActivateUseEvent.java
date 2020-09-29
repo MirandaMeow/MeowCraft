@@ -36,7 +36,7 @@ public class ImprintActivateUseEvent implements Listener {
                 float Pitch = Float.parseFloat(locData.get(5).split(": ")[1]);
                 Location Location = new Location(World, X, Y, Z, Yaw, Pitch);
                 player.teleport(Location);
-                World.playEffect(Location.add(0,1,0), Effect.ENDER_SIGNAL, null);
+                World.playEffect(Location.add(0, 1, 0), Effect.ENDER_SIGNAL, null);
                 World.playSound(Location, Sound.BLOCK_PORTAL_TRAVEL, 10, 10);
                 player.sendTitle("§l§c烙 印 归 还", "", 10, 70, 20);
             }

@@ -26,7 +26,7 @@ public final class OccCommand implements TabExecutor {
         Player player = (Player) sender;
         String playerName = player.getName();
         if (!player.hasPermission("occ.use")) {
-            MessageManager.Message(player,  Notify.No_Permission.getString());
+            MessageManager.Message(player, Notify.No_Permission.getString());
             return true;
         }
         if (args.length != 1) {

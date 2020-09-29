@@ -21,6 +21,17 @@ import java.util.List;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 
 public class BookToItemEvent implements Listener {
+    private static int getCount(AnvilInventory inventory) {
+        int count = 0;
+        if (inventory.getItem(0) != null) {
+            count += 1;
+        }
+        if (inventory.getItem(1) != null) {
+            count += 1;
+        }
+        return count;
+    }
+
     @EventHandler(priority = EventPriority.NORMAL)
     private void BookToItem(PrepareAnvilEvent event) {
         AnvilInventory anvilInventory = event.getInventory();
@@ -63,17 +74,6 @@ public class BookToItemEvent implements Listener {
                 }
             }
         });
-    }
-
-    private static int getCount(AnvilInventory inventory) {
-        int count = 0;
-        if (inventory.getItem(0) != null) {
-            count += 1;
-        }
-        if (inventory.getItem(1) != null) {
-            count += 1;
-        }
-        return count;
     }
 }
 
