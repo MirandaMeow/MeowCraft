@@ -182,7 +182,7 @@ public class Occ {
         return out.toString();
     }
 
-    public static boolean isPlayerhasSkillOnce(Player player, String[] list) {
+    public static boolean isPlayerHasSkillOnce(Player player, String[] list) {
         String playerName = player.getName();
         for (String i : list) {
             if (playerData.getBoolean(String.format("%s.occConfig.occSkills.%s", playerName, getSkillID(i)))) {

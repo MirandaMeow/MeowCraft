@@ -56,7 +56,7 @@ public class ScrollUseEvent implements Listener {
                 String[] requirePreposeSkillChinese = playerItemMeta.getLore().get(isRequiredPreposeSkill + 1).substring(2).split(" ");
                 int once = playerItemMeta.getLore().indexOf("§3其中之一");
                 if (once != -1) {
-                    boolean pass = Occ.isPlayerhasSkillOnce(player, requirePreposeSkillChinese);
+                    boolean pass = Occ.isPlayerHasSkillOnce(player, requirePreposeSkillChinese);
                     if (!pass) {
                         MessageManager.Message(player, String.format("§e需要前置技能: §c§l%s§r§e其中之一", Occ.getSkillChineseString(requirePreposeSkillChinese)));
                         return;
