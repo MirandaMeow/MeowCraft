@@ -57,6 +57,7 @@ public class ListenersManager implements Listener {
         list.add(new SummonDeadEvent());
         list.add(new PlayerUnavailableEvent());
         list.add(new SummonsNoFireEvent());
+        list.add(new SummonSkeletonEvent());
         for (Listener i : list) {
             register(i);
         }

@@ -32,10 +32,11 @@ public class PickAxeAttackEvent implements Listener {
         }
         player = (Player) entity;
         String playerName = player.getName();
-        if (!Occ.isFitOcc(player, "Artisan_PickAxeAttack") || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
+        String skillName = "Artisan_PickAxeAttack";
+        if (!Occ.isFitOcc(player, skillName) || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
             return;
         }
-        if (playerData.get(String.format("%s.occConfig.occSkills.Artisan_PickAxeAttack", playerName)) == null) {
+        if (playerData.get(String.format("%s.occConfig.occSkills.%s", playerName, skillName)) == null) {
             return;
         }
         Material playerHold = player.getInventory().getItemInMainHand().getType();
@@ -46,7 +47,7 @@ public class PickAxeAttackEvent implements Listener {
             return;
         }
         success = false;
-        int chance = skills.getInt("Artisan_PickAxeAttack.chance", 40);
+        int chance = skills.getInt(String.format("%s.chance", skillName), 40);
         int currentProbability = Misc.randomNum(0, 100);
         if (currentProbability > chance) {
             return;

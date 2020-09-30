@@ -69,7 +69,7 @@ public class NPCTradeCommand implements TabExecutor {
                 Inventory inventory = Bukkit.createInventory(null, 54, "§e设置_§9" + invNameInTrade);
                 inventory.setContents(trade.get(npcId_int).inventory);
                 player.openInventory(inventory);
-                MessageManager.Message(player, String.format("§e打开 §b%s §e的设置面板", invNameInTrade));
+                MessageManager.Message(player, String.format("§e打开编号为 §b%s §e的 NPC 的设置面板", npcId));
                 return true;
             case "set":
                 if (trade.get(npcId_int) == null) {
@@ -96,7 +96,7 @@ public class NPCTradeCommand implements TabExecutor {
                     return true;
                 }
                 if (trade.get(npcId_int).inventory[slot] == null) {
-                    MessageManager.Message(player, String.format("§c不存在序号为 §b%d §c的物品", slot));
+                    MessageManager.Message(player, String.format("§c不存在序号为 §b%d §c的交易项", slot));
                     return true;
                 }
                 if (!TradeManager.existPanel(npcId_int)) {
@@ -134,10 +134,9 @@ public class NPCTradeCommand implements TabExecutor {
                     MessageManager.Message(player, "§c交易项不存在");
                     return true;
                 }
-                invNameInTrade = trade.get(npcId_int).getInvName();
                 tradeMap.remove(slot);
                 TradeManager.saveTrade();
-                MessageManager.Message(player, String.format("§e移除了面板 §b%s §e中序号为 §b%d §e的交易项", invNameInTrade, slot));
+                MessageManager.Message(player, String.format("§e移除了序号为 §b%d §e的交易项", slot));
                 return true;
             default:
                 MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|remove|set|delete> [slot] [value]");

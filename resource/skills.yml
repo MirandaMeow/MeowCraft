@@ -23,7 +23,7 @@ Ranger_ArrowBoost:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7
+  hoverLore: 0,1,2,3,4,5,6
 
 Voodoo_Bless:
   name: 巫神祝福
@@ -49,7 +49,7 @@ Voodoo_Bless:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7
+  hoverLore: 0,1,2,3,4,5,6
 
 Artisan_Detect:
   name: 地质勘测
@@ -71,7 +71,7 @@ Artisan_Detect:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7
+  hoverLore: 0,1,2,3,4,5,6
 
 Swordsman_Charge:
   name: 无畏冲锋
@@ -95,7 +95,7 @@ Swordsman_Charge:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7
+  hoverLore: 0,1,2,3,4,5,6
 
 Thug_ThorAxe:
   name: 雷神战斧
@@ -119,7 +119,7 @@ Thug_ThorAxe:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7
+  hoverLore: 0,1,2,3,4,5,6
 
 All_Immune:
   name: 神圣护甲
@@ -150,7 +150,7 @@ All_Immune:
     - ''
     - §7秘传之书上记载着一项绝学
     - §7只有对自己前进方向有一定认知的人才能习得
-  hoverLore: 0,1,2,3,4,5,10,11
+  hoverLore: 0,1,2,3,4,5,10
 
 All_SelfExplode:
   name: 自爆
@@ -182,7 +182,7 @@ All_SelfExplode:
     - ''
     - §7秘传之书上记载着一项绝学
     - §7只有对自己前进方向有一定认知的人才能习得
-  hoverLore: 0,1,2,3,4,5,10,11
+  hoverLore: 0,1,2,3,4,5,10
 
 All_Concentrate:
   name: 全神贯注
@@ -208,7 +208,7 @@ All_Concentrate:
     - ''
     - §7秘传之书上记载着一项绝学
     - §7只有常年沉浸在战场的修罗才能习得
-  hoverLore: 0,1,2,3,8,9
+  hoverLore: 0,1,2,3,8
 
 Artisan_PickAxeAttack:
   name: 矿镐专精
@@ -232,7 +232,7 @@ Artisan_PickAxeAttack:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,9,10
+  hoverLore: 0,1,2,3,4,5,9
 
 Voodoo_ThrowPotion:
   name: 魔药喷洒
@@ -240,6 +240,8 @@ Voodoo_ThrowPotion:
   group:
     - D
   cooldown: 240
+  cost1: 10
+  cost2: 1
   notFitMessage: §e你似乎看不懂这些文字
   lore:
     - §3源自巫毒一派的禁忌巫术
@@ -255,4 +257,30 @@ Voodoo_ThrowPotion:
     - ''
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
-  hoverLore: 0,1,2,3,4,5,6,7,8,9
+  hoverLore: 0,1,2,3,4,5,6,7,8
+
+Voodoo_SummonSkeleton:
+  name: 骸骨复苏
+  isPassive: false
+  group:
+    - D
+  cooldown: 600
+  cost: 40
+  amount: 2
+  maxHealth: 60
+  timeLeft: 60
+  notFitMessage: §e你似乎看不懂这些文字
+  lore:
+    - §3巫毒使用秘法将骨头变形并拼合成
+    - §3忠心的仆从, 跟随主人战斗
+    - §3召唤 §62 §3只具有 §660 §3生命, 存在 §660 §3秒的骷髅
+    - §3消耗 §640 §3个§6骨头
+    - §3冷却时间 §6600 §3秒
+    - §d主动技能
+    - ''
+    - §3拿着§6骨头 §3shift + 右击触发
+    - §c巫毒§3专用
+    - ''
+    - §7秘传之书上记载着一些艰难晦涩的文字
+    - §7只有相应职业的传人可以看懂
+  hoverLore: 0,1,2,3,4,5,6,7

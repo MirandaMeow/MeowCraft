@@ -25,8 +25,8 @@ public class SkillLib {
     public static List<Integer> arrowIDs = null;
     public static HashMap<Player, List<Entity>> summons = new HashMap<>();
 
-    public static void ArrowBoost(Player player) {
-        arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player);
+    public static void ArrowBoost(Player player, int settings_range,int settings_per_wave_amount ,int settings_wave,long settings_interval) {
+        arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player,settings_range,settings_per_wave_amount,settings_wave,settings_interval);
     }
 
     public static void Bless(Player player) {

@@ -52,6 +52,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.BlessEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.ImmuneEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.ThrowPotionEvent");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.SummonSkeletonEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.ChargeEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Active.SelfExplodeEvent");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.Skills.Misc.ArrowBoostCancelNoDamageTicksEvent");

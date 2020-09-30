@@ -23,18 +23,19 @@ public class ConcentrateEvent implements Listener {
         }
         Player player = (Player) entity;
         String playerName = player.getName();
-        if (!Occ.isFitOcc(player, "All_Concentrate") || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
+        String skillName = "All_Concentrate";
+        if (!Occ.isFitOcc(player, skillName) || !playerData.getBoolean(String.format("%s.occConfig.enabled", playerName), true)) {
             return;
         }
-        if (playerData.get(String.format("%s.occConfig.occSkills.All_Concentrate", playerName)) == null) {
+        if (playerData.get(String.format("%s.occConfig.occSkills.%s", playerName,skillName)) == null) {
             return;
         }
-        int chance = skills.getInt("All_Concentrate.chance", 20);
+        int chance = skills.getInt(String.format("%s.chance", skillName), 20);
         int currentProbability = Misc.randomNum(0, 100);
         if (currentProbability > chance) {
             return;
         }
-        int reduce = skills.getInt("All_Concentrate.reduce", 30);
+        int reduce = skills.getInt(String.format("%s.reduce", skillName), 30);
         Effect.activeSkillEffect(player);
         event.setDamage(event.getDamage() * (1 - reduce / 100));
         MessageManager.ActionBarMessage(player, "§e受到的伤害减轻了");
