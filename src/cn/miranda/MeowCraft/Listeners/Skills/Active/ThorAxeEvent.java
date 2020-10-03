@@ -2,7 +2,7 @@ package cn.miranda.MeowCraft.Listeners.Skills.Active;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
-import cn.miranda.MeowCraft.Task.OccSkillsCoolDownTask;
+import cn.miranda.MeowCraft.Task.Skill.OccSkillsCoolDownTask;
 import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Occ;
 import cn.miranda.MeowCraft.Utils.SkillLib;

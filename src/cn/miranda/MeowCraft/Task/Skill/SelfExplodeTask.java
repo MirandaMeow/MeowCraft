@@ -1,4 +1,4 @@
-package cn.miranda.MeowCraft.Task;
+package cn.miranda.MeowCraft.Task.Skill;
 
 import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;

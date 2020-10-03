@@ -1,6 +1,6 @@
 package cn.miranda.MeowCraft.Utils;
 
-import cn.miranda.MeowCraft.Task.RemoveEntityTask;
+import cn.miranda.MeowCraft.Task.Skill.RemoveEntityTask;
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.User;
 import com.sun.istack.internal.NotNull;

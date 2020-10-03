@@ -1,10 +1,10 @@
 package cn.miranda.MeowCraft.Utils;
 
 import cn.miranda.MeowCraft.Manager.MessageManager;
-import cn.miranda.MeowCraft.Task.ArrowBoostShootTask;
-import cn.miranda.MeowCraft.Task.ImmuneTask;
-import cn.miranda.MeowCraft.Task.SelfExplodeTask;
-import cn.miranda.MeowCraft.Task.SummonTimeLeftTask;
+import cn.miranda.MeowCraft.Task.Skill.ArrowBoostShootTask;
+import cn.miranda.MeowCraft.Task.Skill.ImmuneTask;
+import cn.miranda.MeowCraft.Task.Skill.SelfExplodeTask;
+import cn.miranda.MeowCraft.Task.Skill.SummonTimeLeftTask;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
