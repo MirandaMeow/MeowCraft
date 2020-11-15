@@ -59,7 +59,8 @@ public enum EggCatcher {
     WITCH("女巫", EntityType.WITCH, config.getBoolean("EggCatcher.mobs.WITCH")),
     WITHER("凋灵", EntityType.WITHER, config.getBoolean("EggCatcher.mobs.WITHER")),
     WOLF("狼", EntityType.WOLF, config.getBoolean("EggCatcher.mobs.WOLF")),
-    ZOMBIE("僵尸", EntityType.ZOMBIE, config.getBoolean("EggCatcher.mobs.ZOMBIE"));
+    ZOMBIE("僵尸", EntityType.ZOMBIE, config.getBoolean("EggCatcher.mobs.ZOMBIE")),
+    ZOMBIE_VILLAGER("僵尸村民", EntityType.ZOMBIE_VILLAGER, config.getBoolean("EggCatcher.mobs.ZOMBIE_VILLAGER"));
 
     private final String name;
     private final EntityType entityType;
@@ -79,6 +80,15 @@ public enum EggCatcher {
             }
         }
         return list;
+    }
+
+    public static EntityType getEntityType(String name) {
+        for (EggCatcher i :EggCatcher.values()) {
+            if (i.getName().equals(name)) {
+                return i.getEntityType();
+            }
+        }
+        return null;
     }
 
     public static void flushAvailable() {

@@ -1,9 +1,13 @@
 package cn.miranda.MeowCraft.Utils;
 
+import cn.miranda.MeowCraft.Task.MonsterCardTimeTask;
 import cn.miranda.MeowCraft.Task.Skill.RemoveEntityTask;
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.User;
 import com.sun.istack.internal.NotNull;
+import me.libraryaddict.disguise.DisguiseAPI;
+import me.libraryaddict.disguise.disguisetypes.DisguiseType;
+import me.libraryaddict.disguise.disguisetypes.MobDisguise;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,6 +23,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import java.lang.reflect.Field;
@@ -26,6 +32,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static cn.miranda.MeowCraft.Manager.ConfigManager.monsterCard;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 import static cn.miranda.MeowCraft.Utils.SkillLib.summons;
 import static org.bukkit.Bukkit.getOnlinePlayers;
@@ -224,5 +231,27 @@ public class Misc {
             return true;
         }
         return false;
+    }
+
+    public static List<EntityType> getMonsterCardTypes() {
+        List<EntityType> list = new ArrayList<>();
+        for (Object key : monsterCard.getValues(false).keySet()) {
+            list.add(EntityType.valueOf(key.toString()));
+        }
+        return list;
+    }
+
+    public static void disguisePlayer(Player player, EntityType entityType) {
+        DisguiseAPI.disguiseEntity(player, new MobDisguise(DisguiseType.valueOf(entityType.name())));
+    }
+
+    public static void setMonsterCard(Player player, String entityType, int duration) {
+        for (String current : monsterCard.getConfigurationSection(String.format("%s.effects", entityType)).getValues(false).keySet()) {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(current), duration * 20, monsterCard.getInt(String.format("%s.effects.%s", entityType, current))));
+        }
+        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+        playerData.set(String.format("%s.monsterCard.duration", player.getName()), duration);
+        playerData.set(String.format("%s.monsterCard.type", player.getName()), entityType);
+        new MonsterCardTimeTask().MonsterCardTime(player);
     }
 }

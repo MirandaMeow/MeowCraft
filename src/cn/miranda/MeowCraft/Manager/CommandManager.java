@@ -36,6 +36,7 @@ public class CommandManager {
         map.put("strike", new StrikeCommand());
         map.put("incomeaccount", new IncomeAccountCommand());
         map.put("trade", new NPCTradeCommand());
+        map.put("monstercard", new MonsterCardCommand());
         for (Map.Entry<String, CommandExecutor> entry : map.entrySet()) {
             register(entry.getKey(), entry.getValue());
         }

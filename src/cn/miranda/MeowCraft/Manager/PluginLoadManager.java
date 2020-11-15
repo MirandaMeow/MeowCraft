@@ -15,6 +15,7 @@ public class PluginLoadManager {
         loadPermissionsEx();
         loadmcMMO();
         loadCitizens();
+        loadLibsDisguises();
     }
 
     private static boolean setupEconomy() {
@@ -63,6 +64,15 @@ public class PluginLoadManager {
             Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
         } else {
             MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 Citizens，焊接成功");
+        }
+    }
+
+    public static void loadLibsDisguises() {
+        if (getServer().getPluginManager().getPlugin("LibsDisguises") == null) {
+            MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e未找到 LibsDisguises, 组件即将禁用");
+            Bukkit.getServer().getPluginManager().disablePlugin(MeowCraft.plugin);
+        } else {
+            MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e发现 LibsDisguises，焊接成功");
         }
     }
 }

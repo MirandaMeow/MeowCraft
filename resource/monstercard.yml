@@ -1,0 +1,13 @@
+CREEPER:
+  maxCount: 5
+  duration: 50
+  effects:
+    fire_resistance: 0
+    health_boost: 0
+
+ZOMBIE:
+  maxCount: 15
+  duration: 1500
+  effects:
+    health_boost: 1
+    saturation: 0

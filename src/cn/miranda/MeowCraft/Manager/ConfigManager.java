@@ -22,6 +22,7 @@ public class ConfigManager {
     public static YamlConfiguration towns;
     public static YamlConfiguration cache;
     public static YamlConfiguration trades;
+    public static YamlConfiguration monsterCard;
     public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
@@ -44,6 +45,7 @@ public class ConfigManager {
         towns = loadFile("towns.yml");
         cache = loadFile("cache.yml");
         trades = loadFile("trades.yml");
+        monsterCard = loadFile("monstercard.yml");
     }
 
     public static void saveConfigs() {
