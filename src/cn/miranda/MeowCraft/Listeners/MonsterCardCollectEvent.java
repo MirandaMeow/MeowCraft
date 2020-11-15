@@ -51,6 +51,7 @@ public class MonsterCardCollectEvent implements Listener {
                 loreList.addAll(1, monsterSetting);
                 playerItemMeta.setLore(loreList);
                 giveCard(player, entity, playerItemMeta);
+                return;
             } else if (playerItemMeta.getLore().get(0).equals("§3已拓印的怪物卡片")) {
                 String cardMonsterType = playerItemMeta.getLore().get(2).split(" ")[1];
                 if (EggCatcher.getEntityType(cardMonsterType) != entity.getType()) {
