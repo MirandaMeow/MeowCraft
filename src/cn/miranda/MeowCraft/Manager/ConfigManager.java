@@ -45,7 +45,7 @@ public class ConfigManager {
         towns = loadFile("towns.yml");
         cache = loadFile("cache.yml");
         trades = loadFile("trades.yml");
-        monsterCard = loadFile("monstercard.yml");
+        monsterCard = loadFile("monsterCard.yml");
     }
 
     public static void saveConfigs() {
