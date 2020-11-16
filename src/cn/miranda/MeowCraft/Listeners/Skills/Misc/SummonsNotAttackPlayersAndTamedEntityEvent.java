@@ -37,7 +37,10 @@ public class SummonsNotAttackPlayersAndTamedEntityEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void SummonsNotAttackPlayersAndTamedEntity(EntityTargetLivingEntityEvent event) {
         Entity entity = event.getEntity();
-        Entity player = entity;
+        Entity player = event.getTarget();
+        if (player == null) {
+            return;
+        }
         if (!Misc.getAllSummons().contains(entity)) {
             return;
         }

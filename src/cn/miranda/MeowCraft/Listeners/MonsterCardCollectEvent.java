@@ -51,6 +51,7 @@ public class MonsterCardCollectEvent implements Listener {
                 loreList.addAll(1, monsterSetting);
                 playerItemMeta.setLore(loreList);
                 giveCard(player, entity, playerItemMeta);
+                MessageManager.Message(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
                 return;
             } else if (playerItemMeta.getLore().get(0).equals("§3已拓印的怪物卡片")) {
                 String cardMonsterType = playerItemMeta.getLore().get(2).split(" ")[1];
@@ -63,7 +64,7 @@ public class MonsterCardCollectEvent implements Listener {
             } else {
                 return;
             }
-            MessageManager.Message(player, "§e拓印成功");
+            MessageManager.Message(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
             if (getCharCount(player.getInventory().getItemInMainHand().getItemMeta().getLore().get(3), "□") != 0) {
                 return;
             }

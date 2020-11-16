@@ -17,7 +17,7 @@ public enum EggCatcher {
     CHICKEN("鸡", EntityType.CHICKEN, config.getBoolean("EggCatcher.mobs.CHICKEN")),
     COD("鳕鱼", EntityType.COD, config.getBoolean("EggCatcher.mobs.COD")),
     COW("牛", EntityType.COW, config.getBoolean("EggCatcher.mobs.COW")),
-    CREEPER("苦力怕", EntityType.CREEPER, config.getBoolean("EggCatcher.mobs.CREEPER")),
+    CREEPER("爬行者", EntityType.CREEPER, config.getBoolean("EggCatcher.mobs.CREEPER")),
     DOLPHIN("海豚", EntityType.DOLPHIN, config.getBoolean("EggCatcher.mobs.DOLPHIN")),
     DONKEY("驴", EntityType.DONKEY, config.getBoolean("EggCatcher.mobs.DONKEY")),
     DROWNED("溺尸", EntityType.DROWNED, config.getBoolean("EggCatcher.mobs.DROWNED")),
