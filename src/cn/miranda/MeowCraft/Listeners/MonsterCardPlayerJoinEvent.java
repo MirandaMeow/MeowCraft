@@ -20,7 +20,7 @@ public class MonsterCardPlayerJoinEvent implements Listener {
         }
         int duration = playerData.getInt(String.format("%s.monsterCard.duration", playerName));
         String typeName = playerData.getString(String.format("%s.monsterCard.type", playerName));
-        Misc.setMonsterCard(player, typeName, duration);
+        Misc.activeMonsterCard(player, typeName, duration);
         Misc.disguisePlayer(player, EntityType.valueOf(typeName));
     }
 }

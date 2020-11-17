@@ -1,7 +1,9 @@
 package cn.miranda.MeowCraft.Listeners;
 
 import cn.miranda.MeowCraft.Enum.EggCatcher;
+import cn.miranda.MeowCraft.Enum.PotionEffect;
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Utils.Effect;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -35,54 +37,74 @@ public class MonsterCardCollectEvent implements Listener {
                 return;
             }
             if (entity.getCustomName() != null) {
-                return;
+                if (entity.getCustomName().contains("已被拓印的")) {
+                    MessageManager.ActionBarMessage(player, "§e已被拓印的怪物不能再次被拓印");
+                    return;
+                }
             }
             if (!Misc.getMonsterCardTypes().contains(entity.getType())) {
-                MessageManager.Message(player, String.format("§e怪物 §b%s §e不能被拓印", EggCatcher.valueOf(entityTypeName).getName()));
+                MessageManager.ActionBarMessage(player, String.format("§e怪物 §b%s §e不能被拓印", EggCatcher.valueOf(entityTypeName).getName()));
                 return;
             }
             if (playerItemMeta.getLore().get(0).equals("§3空白的怪物卡片")) {
                 List<String> loreList = playerItemMeta.getLore();
-                loreList.set(0, "§3已拓印的怪物卡片");
+                loreList.set(0, "§3正在拓印的怪物卡片");
                 List<String> monsterSetting = new ArrayList<>();
                 monsterSetting.add("");
                 monsterSetting.add(String.format("§a怪物类型: %s", EggCatcher.valueOf(entityTypeName).getName()));
                 monsterSetting.add(String.format("§a灵魂数量: %s%s", String.join("", Collections.nCopies(1, "■")), String.join("", Collections.nCopies(monsterCard.getInt(String.format("%s.maxCount", entityTypeName.toUpperCase())) - 1, "□"))));
+                monsterSetting.add("");
+                monsterSetting.add("§a卡片效果: ");
+                for (String current : monsterCard.getConfigurationSection(String.format("%s.effects", entityTypeName.toUpperCase())).getValues(false).keySet()) {
+                    monsterSetting.add(String.format("§a    %s - 等级: %d", PotionEffect.valueOf(current).getName(), monsterCard.getInt(String.format("%s.effects.%s", entityTypeName.toUpperCase(), current)) + 1));
+                }
+                monsterSetting.add("");
+                monsterSetting.add(String.format("§a持续时间: %d 秒", monsterCard.getInt(String.format("%s.duration", entityTypeName.toUpperCase()))));
                 loreList.addAll(1, monsterSetting);
                 playerItemMeta.setLore(loreList);
-                giveCard(player, entity, playerItemMeta);
-                MessageManager.Message(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
+                giveCard(player, playerItemMeta);
+                entity.setCustomName("已被拓印的 " + EggCatcher.valueOf(entity.getType().toString()).getName());
+                MessageManager.ActionBarMessage(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
+                Effect.collectMonster(entity);
                 return;
-            } else if (playerItemMeta.getLore().get(0).equals("§3已拓印的怪物卡片")) {
+            } else if (playerItemMeta.getLore().get(0).equals("§3正在拓印的怪物卡片")) {
                 String cardMonsterType = playerItemMeta.getLore().get(2).split(" ")[1];
                 if (EggCatcher.getEntityType(cardMonsterType) != entity.getType()) {
-                    MessageManager.Message(player, "§e必须拓印同种类型的怪物");
+                    MessageManager.ActionBarMessage(player, "§e必须拓印同种类型的怪物");
                     return;
                 }
                 countPlus(playerItemMeta);
-                giveCard(player, entity, playerItemMeta);
+                MessageManager.ActionBarMessage(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
+                if (getCharCount(playerItemMeta.getLore().get(3), "□") != 0) {
+                    giveCard(player, playerItemMeta);
+                    entity.setCustomName("已被拓印的 " + EggCatcher.valueOf(entity.getType().toString()).getName());
+                    return;
+                }
+                List<String> newLore = playerItemMeta.getLore();
+                newLore.set(0, "§3已完成拓印的怪物卡片");
+                for (int line = 0; line < newLore.size(); line++) {
+                    if (newLore.get(line).contains("shift")) {
+                        newLore.set(line, "§6拿着卡片右击以使用怪物卡片");
+                        break;
+                    }
+                }
+                playerItemMeta.setLore(newLore);
+                giveCard(player, playerItemMeta);
+                Effect.collectMonster(entity);
             } else {
                 return;
             }
-            MessageManager.Message(player, String.format("§e拓印 §b%s §e成功", EggCatcher.valueOf(entityTypeName).getName()));
-            if (getCharCount(player.getInventory().getItemInMainHand().getItemMeta().getLore().get(3), "□") != 0) {
-                return;
-            }
-            ItemMeta newItemMeta = player.getInventory().getItemInMainHand().getItemMeta();
-            List<String> newLore = newItemMeta.getLore();
-            newLore.set(0, "§3已完成拓印的怪物卡片");
-            newLore.set(5, "§6拿着卡片右击以使用怪物卡片");
-            newItemMeta.setLore(newLore);
-            player.getInventory().getItemInMainHand().setItemMeta(newItemMeta);
+
+            Effect.finishedCollect(player);
+            MessageManager.ActionBarMessage(player, "§e怪物卡片已经拓印到了足够的怪物灵魂");
         }
     }
 
-    private void giveCard(Player player, Entity entity, ItemMeta playerItemMeta) {
+    private void giveCard(Player player, ItemMeta playerItemMeta) {
         ItemStack monsterCardItem = new ItemStack(Material.PAPER, 1);
         player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
         monsterCardItem.setItemMeta(playerItemMeta);
         player.getInventory().addItem(monsterCardItem);
-        entity.setCustomName("已被拓印的 " + EggCatcher.valueOf(entity.getType().toString()).getName());
     }
 
     private void countPlus(ItemMeta itemMeta) {

@@ -71,7 +71,7 @@ public final class MonsterCardCommand implements TabExecutor {
         loreList.add("§7这张卡片可以拓印某些怪物的灵魂");
         loreList.add("§7集齐一定数量的怪物灵魂后");
         loreList.add("§7再次使用卡片可以让你在一定时间内");
-        loreList.add("§7变成该怪物, 并获得一些它的能力");
+        loreList.add("§7变成该怪物, 并获得一些它的能力。");
         scrollMeta.setLore(loreList);
         scroll.setItemMeta(scrollMeta);
         target.getInventory().addItem(scroll);

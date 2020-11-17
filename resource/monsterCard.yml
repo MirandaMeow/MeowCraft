@@ -10,4 +10,4 @@ ZOMBIE:
   duration: 1200
   effects:
     health_boost: 1
-    saturation: 0
+    hunger: 0

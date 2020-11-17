@@ -245,7 +245,7 @@ public class Misc {
         DisguiseAPI.disguiseEntity(player, new MobDisguise(DisguiseType.valueOf(entityType.name())));
     }
 
-    public static void setMonsterCard(Player player, String entityType, int duration) {
+    public static void activeMonsterCard(Player player, String entityType, int duration) {
         for (String current : monsterCard.getConfigurationSection(String.format("%s.effects", entityType)).getValues(false).keySet()) {
             player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(current), duration * 20, monsterCard.getInt(String.format("%s.effects.%s", entityType, current))));
         }
