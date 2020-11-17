@@ -26,7 +26,6 @@ public class Effect {
         targetWorld.playSound(targetLocation, Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, 10, 10);
     }
 
-    //TODO: 增加怪物卡片效果
     public static void collectMonster(Entity target) {
         World targetWorld = target.getWorld();
         Location targetLocation = target.getLocation();
