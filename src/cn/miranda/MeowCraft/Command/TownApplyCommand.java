@@ -29,7 +29,7 @@ public class TownApplyCommand implements TabExecutor {
             MessageManager.Message(player, "§e用法: §6/townapply §b<town>");
             return true;
         }
-        if (!Town.getTownList().contains(args[0])) {
+        if (!(Town.getTownList().contains(args[0]))) {
             MessageManager.Message(player, Notify.No_Town.getString());
             return true;
         }
