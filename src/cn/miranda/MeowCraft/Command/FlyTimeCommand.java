@@ -40,7 +40,7 @@ public final class FlyTimeCommand implements TabExecutor {
                 }
                 String targetName = target.getName();
                 if (playerData.get(String.format("%s.flytime", targetName)) != null) {
-                    MessageManager.Message(sender, "§e已经开启限时飞行");
+                    MessageManager.Message(sender, String.format("§b%s §e已经开启限时飞行", targetName));
                     return true;
                 }
                 if (!Misc.isInt(args[2])) {
