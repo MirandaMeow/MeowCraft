@@ -78,7 +78,7 @@ public class ConfigManager {
 
     public static void loadPlayerStatusData() {
         try {
-            Object getObject = IO.decodePlayerStatus(cache.getString("PlayerStatus"));
+            Object getObject = IO.decodeData(cache.getString("PlayerStatus"));
             if (getObject == null) {
                 playerStatus = new HashMap<>();
             } else {
@@ -91,7 +91,7 @@ public class ConfigManager {
 
     public static void loadTradePanelData() {
         try {
-            Object getObject = IO.decodePlayerStatus(trades.getString("trade"));
+            Object getObject = IO.decodeData(trades.getString("trade"));
             if (getObject == null) {
                 trade = new HashMap<>();
             } else {

@@ -18,7 +18,7 @@ public class IO {
         return encoder.encode(outputStream.toByteArray());
     }
 
-    public static Object decodePlayerStatus(String cacheData) throws IOException, ClassNotFoundException {
+    public static Object decodeData(String cacheData) throws IOException, ClassNotFoundException {
         BASE64Decoder decoder = new BASE64Decoder();
         if (cacheData == null) {
             return null;
