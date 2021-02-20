@@ -1,10 +1,12 @@
 package cn.miranda.MeowCraft.Utils;
 
 import cn.miranda.MeowCraft.Manager.MessageManager;
+import cn.miranda.MeowCraft.Task.PlayNoteTask;
 import cn.miranda.MeowCraft.Task.Skill.ArrowBoostShootTask;
 import cn.miranda.MeowCraft.Task.Skill.ImmuneTask;
 import cn.miranda.MeowCraft.Task.Skill.SelfExplodeTask;
 import cn.miranda.MeowCraft.Task.Skill.SummonTimeLeftTask;
+import org.bukkit.Instrument;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -25,8 +27,8 @@ public class SkillLib {
     public static List<Integer> arrowIDs = null;
     public static HashMap<Player, List<Entity>> summons = new HashMap<>();
 
-    public static void ArrowBoost(Player player, int settings_range,int settings_per_wave_amount ,int settings_wave,long settings_interval) {
-        arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player,settings_range,settings_per_wave_amount,settings_wave,settings_interval);
+    public static void ArrowBoost(Player player, int settings_range, int settings_per_wave_amount, int settings_wave, long settings_interval) {
+        arrowIDs = new ArrowBoostShootTask().ArrowBoostShoot(player, settings_range, settings_per_wave_amount, settings_wave, settings_interval);
     }
 
     public static void Bless(Player player) {
@@ -122,6 +124,18 @@ public class SkillLib {
             } else {
                 summons.get(player).add(summon);
             }
+        }
+    }
+
+    public static void playNote(Player player) {
+        ArrayList<NoteWithTime> notes = Misc.readPlayerNote(player);
+        if (notes == null) {
+            return;
+        }
+        int offset = 12;
+        for (NoteWithTime note : notes) {
+            new PlayNoteTask().PlayNote(player, offset, note, Instrument.PIANO);
+            offset += Long.parseLong(String.valueOf(12 / note.getTime()));
         }
     }
 }

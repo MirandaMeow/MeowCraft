@@ -66,6 +66,7 @@ public class ListenersManager implements Listener {
         list.add(new MonsterCardPlayerJoinEvent());
         list.add(new MonsterCardNoAttackSimilarEvent());
         list.add(new MonsterCardPlayerMilkEvent());
+        list.add(new PlayNoteEvent());
         for (Listener i : list) {
             register(i);
         }

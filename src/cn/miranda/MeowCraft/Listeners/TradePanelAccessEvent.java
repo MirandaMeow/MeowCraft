@@ -5,6 +5,7 @@ import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TradeManager;
 import cn.miranda.MeowCraft.Manager.TradeObjectManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -59,6 +60,7 @@ public class TradePanelAccessEvent implements Listener {
                 econ.withdrawPlayer(player, price);
                 String nowMoney = Misc.stringFormat(econ.getBalance(player));
                 MessageManager.Message(player, String.format("§e购买成功, 花费了 §b%d§e, 现有金钱: §b%s", price, nowMoney));
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 10);
                 return;
             case "sell":
                 ItemStack targetItem = itemStacks[slot];
@@ -71,6 +73,7 @@ public class TradePanelAccessEvent implements Listener {
                 econ.depositPlayer(player, price);
                 nowMoney = Misc.stringFormat(econ.getBalance(player));
                 MessageManager.Message(player, String.format("§e出售成功, 获得了 §b%d§e, 现有金钱: §b%s", price, nowMoney));
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 10);
         }
     }
 }

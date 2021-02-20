@@ -284,3 +284,26 @@ Voodoo_SummonSkeleton:
     - §7秘传之书上记载着一些艰难晦涩的文字
     - §7只有相应职业的传人可以看懂
   hoverLore: 0,1,2,3,4,5,6,7
+
+All_PlayNote:
+  name: 演奏
+  isPassive: false
+  group:
+    - A
+    - B
+    - C
+    - D
+    - E
+  cooldown: 10
+  notFitMessage: §e你似乎看不懂这些文字
+  lore:
+    - §3演奏指定的乐谱
+    - §3冷却时间 §610 §3秒
+    - §d主动技能
+    - ''
+    - §3拿着§6乐谱 §3shift + 左击触发
+    - §c所有职业§3均可使用
+    - ''
+    - §7秘传之书上记载着演奏钢琴的技巧
+    - §7只有对音乐有悟性的人才能习得
+  hoverLore: 0,1,2,3,4,5

@@ -33,7 +33,7 @@ public class OccChooseEvent implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
     private void OccChoose(PlayerInteractEvent event) {
-        if (event.getAction() != Action.RIGHT_CLICK_BLOCK || event.getHand() != EquipmentSlot.HAND) {
+        if ((event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.LEFT_CLICK_BLOCK) || event.getHand() != EquipmentSlot.HAND) {
             return;
         }
         if (!event.hasBlock()) {

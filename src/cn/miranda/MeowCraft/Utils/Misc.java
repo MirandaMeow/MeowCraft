@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Utils;
 
+import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.MonsterCardTimeTask;
 import cn.miranda.MeowCraft.Task.Skill.RemoveEntityTask;
 import com.earth2me.essentials.Essentials;
@@ -22,6 +23,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -30,6 +32,7 @@ import org.bukkit.util.Vector;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.monsterCard;
@@ -126,7 +129,7 @@ public class Misc {
 
     public static int getPing(@NotNull Player player) throws Exception {
         // TODO 日后升级这里需要改版本号
-        Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer");
+        Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer");
         Object converted = craftPlayer.cast(player);
         Method handle = converted.getClass().getMethod("getHandle");
         Object entityPlayer = handle.invoke(converted);
@@ -253,5 +256,167 @@ public class Misc {
         playerData.set(String.format("%s.monsterCard.duration", player.getName()), duration);
         playerData.set(String.format("%s.monsterCard.type", player.getName()), entityType);
         new MonsterCardTimeTask().MonsterCardTime(player);
+    }
+
+    public static ArrayList<NoteWithTime> readPlayerNote(Player player) {
+        ArrayList<NoteWithTime> noteAll = new ArrayList<>();
+        if (!player.getInventory().getItemInMainHand().getType().equals(Material.WRITABLE_BOOK)) {
+            return null;
+        }
+        ItemStack book = player.getInventory().getItemInMainHand();
+        BookMeta bookMeta = (BookMeta) book.getItemMeta();
+        assert bookMeta != null;
+        StringBuilder outString = new StringBuilder();
+        for (String s : bookMeta.getPages()) {
+            outString.append(s);
+        }
+        String notes = outString.toString();
+        String tonality = notes.split(" ")[0];
+        ArrayList<String> valid = new ArrayList<>(Arrays.asList("C", "D", "E", "F", "G", "A", "B"));
+        if (!valid.contains(tonality.toUpperCase())) {
+            return null;
+        }
+        StringBuilder stringBuilder = new StringBuilder(notes);
+        stringBuilder.deleteCharAt(0);
+        stringBuilder.deleteCharAt(0);
+        notes = stringBuilder.toString();
+        Pattern pattern1 = Pattern.compile("(\\(.+?\\))");
+        Matcher matcher1 = pattern1.matcher(notes);
+        notes = matcher1.replaceAll("$1,");
+        Pattern pattern2 = Pattern.compile("(?<=\\d| )(\\()");
+        Matcher matcher2 = pattern2.matcher(notes);
+        String[] notesWithDot = matcher2.replaceAll(",$1").split(",");
+        ArrayList<String> noteString = new ArrayList<>(Arrays.asList(notesWithDot));
+        for (String string : noteString) {
+            try {
+                ArrayList<NoteWithTime> temp = convert(string, tonality);
+                noteAll.addAll(temp);
+            } catch (Exception e) {
+                MessageManager.Message(player, "§c乐谱有误");
+                return null;
+            }
+        }
+        return noteAll;
+    }
+
+    public static ArrayList<NoteWithTime> convert(String string, String tonality) {
+        ArrayList<NoteWithTime> out = new ArrayList<>();
+        boolean series = false;
+        if (string.contains("(")) {
+            series = true;
+        }
+        string = string.replace("(", "").replace(")", "");
+        Pattern pattern = Pattern.compile("(\\d)");
+        Matcher matcher = pattern.matcher(string);
+        string = matcher.replaceAll("$1,");
+        string = string.replace(" ", " ,");
+        string = string.replace("\n", "");
+        String[] strings = string.split(",");
+        ArrayList<String> temp = new ArrayList<>(Arrays.asList(strings));
+        int count = temp.size();
+        if (!series) {
+            count = 1;
+        }
+        for (String s : temp) {
+            int pitch;
+            if (s.contains("b") && s.contains("+")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, 1);
+                    out.add(new NoteWithTime(note.getNote(-1), count));
+                    continue;
+                }
+            }
+            if (s.contains("b") && s.contains("-")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, -1);
+                    out.add(new NoteWithTime(note.getNote(-1), count));
+                    continue;
+                }
+            }
+            if (s.contains("#") && s.contains("+")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, 1);
+                    out.add(new NoteWithTime(note.getNote(1), count));
+                    continue;
+                }
+            }
+            if (s.contains("#") && s.contains("-")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, -1);
+                    out.add(new NoteWithTime(note.getNote(1), count));
+                    continue;
+                }
+            }
+            if (s.contains("b")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, 0);
+                    out.add(new NoteWithTime(note.getNote(-1), count));
+                    continue;
+                }
+            }
+            if (s.contains("#")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, 0);
+                    out.add(new NoteWithTime(note.getNote(1), count));
+                    continue;
+                }
+            }
+            if (s.contains("+")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, 1);
+                    out.add(new NoteWithTime(note.getNote(0), count));
+                    continue;
+                }
+            }
+            if (s.contains("-")) {
+                Pattern pattern1 = Pattern.compile("(\\d)");
+                Matcher matcher1 = pattern1.matcher(s);
+                if (matcher1.find()) {
+                    pitch = Integer.parseInt(matcher1.group(1));
+                    Note note = new Note(pitch, tonality, -1);
+                    out.add(new NoteWithTime(note.getNote(0), count));
+                    continue;
+                }
+            }
+            if (s.contains(" ")) {
+                out.add(new NoteWithTime(null, count));
+                continue;
+
+            }
+            Note note = new Note(Integer.parseInt(s), tonality, 0);
+            out.add(new NoteWithTime(note.getNote(0), count));
+        }
+        return out;
+    }
+
+    public static void main(String[] args) {
+        String s = "(1) 2 3";
+        Pattern pattern1 = Pattern.compile("(\\(.+?\\))");
+        Matcher matcher1 = pattern1.matcher(s);
+        s = matcher1.replaceAll("$1,");
+        Pattern pattern2 = Pattern.compile("(?<=\\d| )(\\()");
+        Matcher matcher2 = pattern2.matcher(s);
+        System.out.print(s);
     }
 }

@@ -7,6 +7,7 @@ import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Manager.TempleManager;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.SkillLib;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -59,6 +60,7 @@ public final class MeowCraftCommand implements TabExecutor {
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
             Player player = (Player) sender;
+            SkillLib.playNote(player);
             MessageManager.Message(sender, "§e测试完成");
             return true;
         }

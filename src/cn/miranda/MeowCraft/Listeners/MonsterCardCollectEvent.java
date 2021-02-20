@@ -110,8 +110,8 @@ public class MonsterCardCollectEvent implements Listener {
     private void countPlus(ItemMeta itemMeta) {
         List<String> loreList = itemMeta.getLore();
         int collected = getCharCount(loreList.get(3), "■") + 1;
-        int notCollectend = getCharCount(loreList.get(3), "□") - 1;
-        loreList.set(3, String.format("§a灵魂数量: %s%s", String.join("", Collections.nCopies(collected, "■")), String.join("", Collections.nCopies(notCollectend, "□"))));
+        int notCollected = getCharCount(loreList.get(3), "□") - 1;
+        loreList.set(3, String.format("§a灵魂数量: %s%s", String.join("", Collections.nCopies(collected, "■")), String.join("", Collections.nCopies(notCollected, "□"))));
         itemMeta.setLore(loreList);
     }
 

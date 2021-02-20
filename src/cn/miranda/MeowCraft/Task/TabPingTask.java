@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.HashMap;
@@ -36,7 +37,8 @@ public class TabPingTask {
                 }
                 Objective objective = scoreboard.getObjective("PingTab");
                 if (objective == null) {
-                    scoreboard.registerNewObjective("PingTab", "dummy", "").setDisplaySlot(DisplaySlot.PLAYER_LIST);
+                    Objective obj = scoreboard.registerNewObjective("PingTab", "dummy", "PingTab", RenderType.INTEGER);
+                    obj.setDisplaySlot(DisplaySlot.PLAYER_LIST);
                     objective = scoreboard.getObjective("PingTab");
                 }
                 for (Map.Entry<String, Integer> i : pings.entrySet())
