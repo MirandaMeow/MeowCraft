@@ -17,11 +17,11 @@ public class TradePanelSaveEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void TradePanelSave(InventoryCloseEvent event) {
         String settingInvName = event.getView().getTitle();
-        String[] invName_string = settingInvName.split("_");
+        String[] invName_string = settingInvName.split(" §4-- §9");
         if (invName_string.length == 1) {
             return;
         }
-        String invName = invName_string[1].substring(2);
+        String invName = invName_string[1];
         if (!TradeManager.getTradeInvNames().contains(invName)) {
             return;
         }

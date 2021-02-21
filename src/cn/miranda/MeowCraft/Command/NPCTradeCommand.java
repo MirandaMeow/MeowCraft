@@ -29,7 +29,7 @@ public class NPCTradeCommand implements TabExecutor {
             return true;
         }
         if (args.length < 2) {
-            MessageManager.Message(player, Notify.Invalid_Input_Length.getString());
+            MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|delete|edit|set|remove> [slot] [value]");
             return true;
         }
         String npcId = args[0];
@@ -38,7 +38,6 @@ public class NPCTradeCommand implements TabExecutor {
             return true;
         }
         int npcId_int = Integer.parseInt(npcId);
-
         String option = args[1];
         switch (option) {
             case "create":
@@ -66,7 +65,7 @@ public class NPCTradeCommand implements TabExecutor {
                     return true;
                 }
                 String invNameInTrade = trade.get(npcId_int).getInvName();
-                Inventory inventory = Bukkit.createInventory(null, 54, "§e设置_§9" + invNameInTrade);
+                Inventory inventory = Bukkit.createInventory(null, 54, "§e设置 §4-- §9" + invNameInTrade);
                 inventory.setContents(trade.get(npcId_int).inventory);
                 player.openInventory(inventory);
                 MessageManager.Message(player, String.format("§e打开编号为 §b%s §e的 NPC 的设置面板", npcId));
@@ -139,7 +138,7 @@ public class NPCTradeCommand implements TabExecutor {
                 MessageManager.Message(player, String.format("§e移除了序号为 §b%d §e的交易项", slot));
                 return true;
             default:
-                MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|remove|set|delete> [slot] [value]");
+                MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|delete|edit|set|remove> [slot] [value]");
                 return true;
         }
     }

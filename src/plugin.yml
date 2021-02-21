@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.6.7
+version: 0.6.8
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [ Vault, mcMMO, PermissionsEx, Citizens, LibsDisguises ]
@@ -86,5 +86,5 @@ commands:
     permissions: monstercard.admin
   entitydrop:
     description: 怪物掉落设置
-    usage: /entitydrop <entityType> <add|remove|list> <chance>
+    usage: /entitydrop <entityType> <add|remove|list> [chance]
     permissions: entitydrop.admin

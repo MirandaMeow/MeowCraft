@@ -79,7 +79,7 @@ public class EntityDropCommand implements TabExecutor {
             player.openInventory(getView(entityDrop, false));
             return true;
         }
-        MessageManager.Message(player, Notify.Invalid_Input.getString());
+        MessageManager.Message(player, "§e用法: §6/entitydrop §b<entityType> <add|remove|list> [chance]");
         return true;
     }
 
