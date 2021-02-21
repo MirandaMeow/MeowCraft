@@ -15,6 +15,7 @@ EggCatcher:
     BEE: true
     BLAZE: true
     CAT: true
+    CAVE_SPIDER: true
     CHICKEN: true
     COD: true
     COW: true
@@ -22,25 +23,29 @@ EggCatcher:
     DOLPHIN: true
     DONKEY: true
     DROWNED: true
+    ELDER_GUARDIAN: true
     ENDERMAN: true
     ENDERMITE: true
     EVOKER: true
     FOX: true
     GHAST: true
-    GIANT: true
     GUARDIAN: true
+    HOGLIN: true
     HORSE: true
     HUSK: true
-    ILLUSIONER: true
     LLAMA: true
+    MAGMA_CUBE: true
     MULE: true
+    MUSHROOM: true
     OCELOT: true
     PANDA: true
     PARROT: true
     PHANTOM: true
     PIG: true
+    PIGLIN: true
+    PIGLIN_BRUTE: true
     PILLAGER: true
-    PLAYER: true
+    POLAR_BEAR: true
     PUFFERFISH: true
     RABBIT: true
     RAVAGER: true
@@ -49,16 +54,24 @@ EggCatcher:
     SHULKER: true
     SILVERFISH: true
     SKELETON: true
+    SKELETON_HORSE: true
     SLIME: true
-    SNOWMAN: true
     SPIDER: true
     SQUID: true
     STRAY: true
+    STRIDER: true
+    TRADER_LLAMA: true
+    TROPICAL_FISH: true
     TURTLE: true
     VEX: true
     VILLAGER: true
     VINDICATOR: true
+    WANDERING_TRADER: true
     WITCH: true
-    WITHER: true
+    WITHER_SKELETON: true
     WOLF: true
+    ZOGLIN: true
     ZOMBIE: true
+    ZOMBIE_HORSE: true
+    ZOMBIE_VILLAGER: true
+    ZOMBIFIED_PIGLIN: true

@@ -3,8 +3,6 @@ package cn.miranda.MeowCraft.Utils;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Task.MonsterCardTimeTask;
 import cn.miranda.MeowCraft.Task.Skill.RemoveEntityTask;
-import com.earth2me.essentials.Essentials;
-import com.earth2me.essentials.User;
 import com.sun.istack.internal.NotNull;
 import me.libraryaddict.disguise.DisguiseAPI;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
@@ -31,6 +29,7 @@ import org.bukkit.util.Vector;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,6 +66,11 @@ public class Misc {
             }
         }
         return count == 0;
+    }
+
+    public static String div(int a, int b) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format((float) a / b);
     }
 
     public static World World(@NotNull String worldName) {
@@ -182,13 +186,6 @@ public class Misc {
             return 0;
         }
         return configurationSection.getValues(false).keySet().size();
-    }
-
-    @Deprecated
-    public static String test(Player player) {
-        Essentials ess = (Essentials) Bukkit.getServer().getPluginManager().getPlugin("Essentials");
-        User user = ess.getUserMap().getUser(player.getName());
-        return user.getNick(true);
     }
 
     public static List<String> returnSelectList(List<String> list, String select) {
@@ -408,15 +405,5 @@ public class Misc {
             out.add(new NoteWithTime(note.getNote(0), count));
         }
         return out;
-    }
-
-    public static void main(String[] args) {
-        String s = "(1) 2 3";
-        Pattern pattern1 = Pattern.compile("(\\(.+?\\))");
-        Matcher matcher1 = pattern1.matcher(s);
-        s = matcher1.replaceAll("$1,");
-        Pattern pattern2 = Pattern.compile("(?<=\\d| )(\\()");
-        Matcher matcher2 = pattern2.matcher(s);
-        System.out.print(s);
     }
 }

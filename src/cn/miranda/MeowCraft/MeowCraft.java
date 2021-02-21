@@ -8,7 +8,7 @@ import static org.bukkit.Bukkit.getScheduler;
 
 public class MeowCraft extends JavaPlugin {
     public static MeowCraft plugin;
-    public String Version;
+    public final String Version;
 
     public MeowCraft() {
         plugin = this;

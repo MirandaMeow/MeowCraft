@@ -8,14 +8,14 @@ import org.bukkit.entity.Firework;
 import org.bukkit.inventory.meta.FireworkMeta;
 
 public class FireworkLauncher {
-    public boolean trail;
-    public boolean flicker;
-    public Location location;
-    public FireworkEffect.Type type;
-    public Color[] color;
-    public Color[] fade;
-    public Firework firework;
-    public int power;
+    public final boolean trail;
+    public final boolean flicker;
+    public final Location location;
+    public final FireworkEffect.Type type;
+    public final Color[] color;
+    public final Color[] fade;
+    public final Firework firework;
+    public final int power;
 
     public FireworkLauncher(Location location, boolean trail, boolean flicker, FireworkEffect.Type type, Color[] color, Color[] fade, int power) {
         this.trail = trail;

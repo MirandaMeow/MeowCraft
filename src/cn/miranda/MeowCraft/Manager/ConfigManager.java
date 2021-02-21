@@ -1,7 +1,9 @@
 package cn.miranda.MeowCraft.Manager;
 
+import cn.miranda.MeowCraft.Enum.EntityDrop;
 import cn.miranda.MeowCraft.Task.TabPingTask;
 import cn.miranda.MeowCraft.Utils.IO;
+import cn.miranda.MeowCraft.Utils.ItemDropTable;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -23,6 +25,7 @@ public class ConfigManager {
     public static YamlConfiguration cache;
     public static YamlConfiguration trades;
     public static YamlConfiguration monsterCard;
+    public static YamlConfiguration entityDrop;
     public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
@@ -46,6 +49,7 @@ public class ConfigManager {
         cache = loadFile("cache.yml");
         trades = loadFile("trades.yml");
         monsterCard = loadFile("monsterCard.yml");
+        entityDrop = loadFile("entityDrop.yml");
     }
 
     public static void saveConfigs() {
@@ -99,6 +103,26 @@ public class ConfigManager {
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void saveDropTable() {
+        for (EntityDrop ed : EntityDrop.values()) {
+            try {
+                entityDrop.set(ed.name(), IO.encodeData(ed.getItemDropTable()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void loadDropTable() {
+        for (EntityDrop ed : EntityDrop.values()) {
+            try {
+                ed.setData((ItemDropTable) IO.decodeData(entityDrop.getString(ed.name())));
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

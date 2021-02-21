@@ -14,7 +14,7 @@ public class TradeManager implements Serializable {
     public static HashMap<Integer, TradeManager> trade = new HashMap<>();
     public HashMap<Integer, TradeObjectManager> tradeMap;
     public ItemStack[] inventory;
-    public String invName;
+    public final String invName;
 
     public TradeManager(HashMap<Integer, TradeObjectManager> tradeMap, ItemStack[] inventory, String invName) {
         this.tradeMap = tradeMap;

@@ -22,14 +22,14 @@ import java.util.List;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.playerData;
 
 public class OccChooseEvent implements Listener {
-    public HashMap<String, String> occList = new HashMap<String, String>() {{
+    public final HashMap<String, String> occList = new HashMap<String, String>() {{
         put("莽夫", "A");
         put("游侠", "B");
         put("剑使", "C");
         put("巫毒", "D");
         put("匠师", "E");
     }};
-    List<Material> signs = new ArrayList<>(Arrays.asList(Material.OAK_WALL_SIGN, Material.SPRUCE_WALL_SIGN, Material.BIRCH_WALL_SIGN, Material.ACACIA_WALL_SIGN, Material.JUNGLE_WALL_SIGN, Material.DARK_OAK_WALL_SIGN));
+    final List<Material> signs = new ArrayList<>(Arrays.asList(Material.OAK_WALL_SIGN, Material.SPRUCE_WALL_SIGN, Material.BIRCH_WALL_SIGN, Material.ACACIA_WALL_SIGN, Material.JUNGLE_WALL_SIGN, Material.DARK_OAK_WALL_SIGN));
 
     @EventHandler(priority = EventPriority.NORMAL)
     private void OccChoose(PlayerInteractEvent event) {
