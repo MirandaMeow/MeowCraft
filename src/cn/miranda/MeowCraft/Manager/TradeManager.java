@@ -11,6 +11,7 @@ import java.util.*;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.trades;
 
 public class TradeManager implements Serializable {
+    private static final long serialVersionUID = 6967720614064366257L;
     public static HashMap<Integer, TradeManager> trade = new HashMap<>();
     public HashMap<Integer, TradeObjectManager> tradeMap;
     public ItemStack[] inventory;
