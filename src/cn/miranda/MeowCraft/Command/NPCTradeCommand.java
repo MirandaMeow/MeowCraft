@@ -29,7 +29,7 @@ public class NPCTradeCommand implements TabExecutor {
             return true;
         }
         if (args.length < 2) {
-            MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|delete|edit|set|remove> [slot] [value]");
+            MessageManager.Message(player, "§e用法: §6/trade §b<NpcID> <create|delete|edit|set|remove> [slot]|[name] [value]");
             return true;
         }
         String npcId = args[0];

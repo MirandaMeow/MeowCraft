@@ -78,7 +78,7 @@ commands:
     permissions: incomeaccount.admin
   trade:
     description: NPC 交易面板设置
-    usage: /trade <NpcID> <create|delete|set> <slot> <price>
+    usage: /trade <NpcID> <create|delete|edit|set|remove> [slot]|[name] [value]
     permissions: trade.admin
   monstercard:
     description: 怪物卡片模块
