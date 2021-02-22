@@ -18,6 +18,7 @@ import java.util.*;
 import static cn.miranda.MeowCraft.Manager.ConfigManager.cache;
 
 public class PlayerStatusManager implements Serializable {
+    private static final long serialVersionUID = 2084331369854378451L;
     public static HashMap<Player, PlayerStatusManager> playerStatus = new HashMap<>();
     public final GameMode gameMode;
     public final ItemStack[] inventory;
