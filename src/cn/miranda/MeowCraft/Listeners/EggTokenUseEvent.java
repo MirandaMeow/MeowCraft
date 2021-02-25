@@ -38,7 +38,7 @@ public class EggTokenUseEvent implements Listener {
             assert eggCatcher != null;
             String permission = eggCatcher.getPermission();
             if (player.hasPermission(permission)) {
-                MessageManager.Message(player, String.format("§e你已经可以捕捉 §b%s, §e无需再次使用许可证", type));
+                MessageManager.Message(player, String.format("§e你已经可以捕捉 §b%s§e, 无需再次使用许可证", type));
                 return;
             }
             Occ.addPermission(player, permission);

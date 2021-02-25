@@ -24,7 +24,7 @@ public class MonsterCardPlayerMilkEvent implements Listener {
         if (event.getCause() != EntityPotionEffectEvent.Cause.MILK) {
             return;
         }
-        Player player = ((Player) entity);
+        Player player = (Player) entity;
         String playerName = player.getName();
         if (playerData.get(String.format("%s.monsterCard", playerName)) == null) {
             return;

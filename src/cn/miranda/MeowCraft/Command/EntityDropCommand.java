@@ -7,6 +7,7 @@ import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.ItemDropTable;
 import cn.miranda.MeowCraft.Utils.Misc;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -64,6 +65,10 @@ public class EntityDropCommand implements TabExecutor {
             }
             ItemDropTable itemDropTable = entityDrop.getItemDropTable();
             ItemStack itemStack = player.getInventory().getItemInMainHand().clone();
+            if (itemStack.getType().equals(Material.AIR)) {
+                MessageManager.Message(player, "§c物品不能为空");
+                return true;
+            }
             itemDropTable.add(itemStack, chance);
             entityDrop.setData(itemDropTable);
             ConfigManager.saveDropTable();
