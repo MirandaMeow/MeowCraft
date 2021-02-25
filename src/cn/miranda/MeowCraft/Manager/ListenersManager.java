@@ -69,6 +69,7 @@ public class ListenersManager implements Listener {
         list.add(new PlayNoteEvent());
         list.add(new EntityDropItemEvent());
         list.add(new EntityDropItemViewEvent());
+        list.add(new EggTokenUseEvent());
         for (Listener i : list) {
             register(i);
         }

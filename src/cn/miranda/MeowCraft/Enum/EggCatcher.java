@@ -5,7 +5,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 import static cn.miranda.MeowCraft.Manager.ConfigManager.config;
 
@@ -35,7 +35,7 @@ public enum EggCatcher {
     LLAMA("羊驼", EntityType.LLAMA, config.getBoolean("EggCatcher.mobs.LLAMA")),
     MAGMA_CUBE("岩浆怪", EntityType.MAGMA_CUBE, config.getBoolean("EggCatcher.mobs.MAGMA_CUBE")),
     MULE("骡", EntityType.MULE, config.getBoolean("EggCatcher.mobs.MULE")),
-    MUSHROOM("哞菇", EntityType.MUSHROOM_COW,config.getBoolean("EggCatcher.mobs.MUSHROOM")),
+    MUSHROOM("哞菇", EntityType.MUSHROOM_COW, config.getBoolean("EggCatcher.mobs.MUSHROOM")),
     OCELOT("豹猫", EntityType.OCELOT, config.getBoolean("EggCatcher.mobs.OCELOT")),
     PANDA("熊猫", EntityType.PANDA, config.getBoolean("EggCatcher.mobs.PANDA")),
     PARROT("鹦鹉", EntityType.PARROT, config.getBoolean("EggCatcher.mobs.PARROT")),
@@ -85,16 +85,6 @@ public enum EggCatcher {
         this.available = available;
     }
 
-    public static List<EntityType> getAvailableList() {
-        List<EntityType> list = new ArrayList<>();
-        for (EggCatcher i : EggCatcher.values()) {
-            if (i.getAvailable()) {
-                list.add(i.getEntityType());
-            }
-        }
-        return list;
-    }
-
     public static EntityType getEntityType(String name) {
         for (EggCatcher i : EggCatcher.values()) {
             if (i.getName().equals(name)) {
@@ -133,5 +123,22 @@ public enum EggCatcher {
     public ItemStack getItemStack() {
         Material material = Material.valueOf(this.getEntityType().toString().toUpperCase() + "_SPAWN_EGG");
         return new ItemStack(material);
+    }
+
+    public static EggCatcher getByName(String name) {
+        for (EggCatcher eggCatcher : EggCatcher.values()) {
+            if (Objects.equals(eggCatcher.getName(), name)) {
+                return eggCatcher;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getList() {
+        ArrayList<String> list = new ArrayList<>();
+        for (EggCatcher eggCatcher : EggCatcher.values()) {
+            list.add(eggCatcher.getName());
+        }
+        return list;
     }
 }

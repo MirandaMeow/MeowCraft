@@ -70,6 +70,11 @@ public class Occ {
         pexUser.removePermission(permission);
     }
 
+    public static void addPermission(Player player, String permission) {
+        PermissionUser pexUser = PermissionsEx.getUser(player);
+        pexUser.addPermission(permission);
+    }
+
     public static boolean inGroup(Player player, String group) {
         PermissionUser pexUser = PermissionsEx.getUser(player);
         return pexUser.inGroup(group);

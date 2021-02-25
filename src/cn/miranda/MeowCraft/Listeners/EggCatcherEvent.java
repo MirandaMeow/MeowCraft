@@ -46,7 +46,7 @@ public class EggCatcherEvent implements Listener {
             MessageManager.Message(player, "§c你没有权限捕捉§b" + eggCatcher.getName());
             return;
         }
-        if (!EggCatcher.getAvailableList().contains(targetType)) {
+        if (!eggCatcher.getAvailable()) {
             MessageManager.Message(player, String.format("§b%s §c不可被捕捉", eggCatcher.getName()));
             return;
         }
