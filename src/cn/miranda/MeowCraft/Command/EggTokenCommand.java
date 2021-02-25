@@ -36,21 +36,22 @@ public class EggTokenCommand implements TabExecutor {
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Message(sender, Notify.No_Player.getString());
+            MessageManager.Message(player, Notify.No_Player.getString());
             return true;
         }
         String type = args[1];
         EggCatcher eggCatcher = EggCatcher.getByName(type);
         if (eggCatcher == null) {
-            MessageManager.Message(sender, "§c该生物不存在");
+            MessageManager.Message(player, "§c该怪物不存在");
             return true;
         }
         HashMap<Integer, ItemStack> fail = player.getInventory().addItem(getItem(eggCatcher));
         if (fail.isEmpty()) {
-            MessageManager.Message(sender, String.format("§e将生物 §b%s §e的捕捉许可证发给了 §b%s", eggCatcher.getName(), target.getName()));
+            MessageManager.Message(player, String.format("§e将怪物 §b%s §e的捕捉许可证给了 §b%s", eggCatcher.getName(), target.getName()));
+            MessageManager.Message(target, String.format("§e收到了怪物 §b%s §e的捕捉许可证", eggCatcher.getName()));
             return true;
         } else {
-            MessageManager.Message(player, String.format("§e玩家 §b%s §e的背包满了", target.getName()));
+            MessageManager.Message(player, String.format("§c玩家 §b%s §c的背包满了", target.getName()));
         }
         return true;
     }
