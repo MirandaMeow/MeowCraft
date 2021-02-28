@@ -45,7 +45,7 @@ public class EggTokenCommand implements TabExecutor {
             MessageManager.Message(player, "§c该怪物不存在");
             return true;
         }
-        HashMap<Integer, ItemStack> fail = player.getInventory().addItem(getItem(eggCatcher));
+        HashMap<Integer, ItemStack> fail = target.getInventory().addItem(getItem(eggCatcher));
         if (fail.isEmpty()) {
             MessageManager.Message(player, String.format("§e将怪物 §b%s §e的捕捉许可证给了 §b%s", eggCatcher.getName(), target.getName()));
             MessageManager.Message(target, String.format("§e收到了怪物 §b%s §e的捕捉许可证", eggCatcher.getName()));
