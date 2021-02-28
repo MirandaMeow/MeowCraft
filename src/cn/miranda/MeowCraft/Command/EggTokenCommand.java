@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class EggTokenCommand implements TabExecutor {
         }
         Player player = (Player) sender;
         if (args.length != 2) {
-            MessageManager.Message(player, Notify.Invalid_Input_Length.getString());
+            MessageManager.Message(player, "§e用法: §6/eggtoken §b<player> <monName>");
             return true;
         }
         Player target = Misc.player(args[0]);

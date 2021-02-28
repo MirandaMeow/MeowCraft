@@ -34,7 +34,7 @@ public class EntityDropCommand implements TabExecutor {
         }
         Player player = (Player) sender;
         if (args.length < 2) {
-            MessageManager.Message(player, Notify.Invalid_Input_Length.getString());
+            MessageManager.Message(player, "§e用法: §6/entitydrop §b<entityType> <add|remove|list> [chance]");
             return true;
         }
         String type = args[0];
