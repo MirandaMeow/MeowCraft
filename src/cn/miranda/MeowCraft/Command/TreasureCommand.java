@@ -7,6 +7,7 @@ import cn.miranda.MeowCraft.Manager.ConfigManager;
 import cn.miranda.MeowCraft.Manager.MessageManager;
 import cn.miranda.MeowCraft.Utils.IO;
 import cn.miranda.MeowCraft.Utils.Misc;
+import cn.miranda.MeowCraft.Utils.Occ;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -22,7 +23,7 @@ public class TreasureCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (args.length < 2) {
-            MessageManager.Message(sender, "§e用法: §6/treasure §b<create|set|delete|show|reset> <displayName>");
+            MessageManager.Message(sender, "§e用法: §6/treasure §b<create|set|delete|show|reset|clear> <displayName>");
             return true;
         }
         String option = args[0];
@@ -35,7 +36,7 @@ public class TreasureCommand implements TabExecutor {
             e.printStackTrace();
             return true;
         }
-        ArrayList<String> adminList = new ArrayList<>(Arrays.asList("create", "set", "delete", "reset"));
+        ArrayList<String> adminList = new ArrayList<>(Arrays.asList("create", "set", "delete", "reset", "clear"));
         if (adminList.contains(option)) {
             if (!sender.hasPermission("treasure.admin")) {
                 MessageManager.Message(sender, Notify.No_Permission.getString());
@@ -71,17 +72,12 @@ public class TreasureCommand implements TabExecutor {
             }
             if (Objects.equals(option, "reset")) {
                 String playerName = args[1];
-                Player target = Misc.player(playerName);
-                if (target == null) {
-                    MessageManager.Message(sender, Notify.No_Player.getString());
-                    return true;
-                }
                 if (args.length != 3) {
                     MessageManager.Message(sender, "§c需要奖励箱名称");
                     return true;
                 }
                 String targetDisplayName = args[2];
-                ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", target.getName()));
+                ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", playerName));
                 if (targetConfig == null) {
                     MessageManager.Message(sender, String.format("§c没有玩家 §b%s §c打开奖励箱的记录", playerName));
                     return true;
@@ -99,7 +95,7 @@ public class TreasureCommand implements TabExecutor {
                 if (playerData.getConfigurationSection(String.format("%s.treasures", playerName)).getValues(false).isEmpty()) {
                     playerData.set(String.format("%s.treasures", playerName), null);
                 }
-                MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e的 §b%s §e奖励箱的记录", target.getName(), targetDisplayName));
+                MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e的 §b%s §e奖励箱的记录", playerName, targetDisplayName));
                 ConfigManager.saveConfigs();
                 return true;
             }
@@ -120,6 +116,31 @@ public class TreasureCommand implements TabExecutor {
                 }
                 setTreasure.show(player, true);
                 return true;
+            }
+            if (Objects.equals(option, "clear")) {
+                if (!sender.hasPermission("treasure.admin")) {
+                    MessageManager.Message(sender, Notify.No_Permission.getString());
+                    return true;
+                }
+                ArrayList<String> players = new ArrayList<>(playerData.getKeys(false));
+                if (!treasureSet.getList().contains(displayName)) {
+                    MessageManager.Message(sender, String.format("§c奖励箱 §b%s §c不存在", displayName));
+                    return true;
+                }
+                String removePerm = "-" + treasureSet.getTreasure(displayName).getPermission();
+                for (String player : players) {
+                    Occ.removePermissionFromPlayerName(player, removePerm);
+                    ConfigurationSection playerConfig = playerData.getConfigurationSection(String.format("%s.treasures", player));
+                    if (playerConfig == null) {
+                        continue;
+                    }
+                    playerConfig.set(displayName, null);
+                    if (playerConfig.getValues(false).isEmpty()) {
+                        playerData.set(String.format("%s.treasures", player), null);
+                    }
+                }
+                MessageManager.Message(sender, String.format("§e已经清除配置文件中所有的 §b%s §e奖励箱", displayName));
+                ConfigManager.saveConfigs();
             }
         }
         if (Objects.equals(option, "show")) {
@@ -157,10 +178,10 @@ public class TreasureCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("create", "set", "delete", "show", "reset")), strings[0]);
+            return Misc.returnSelectList(new ArrayList<>(Arrays.asList("create", "set", "delete", "show", "reset", "clear")), strings[0]);
         }
         if (strings.length == 2) {
-            ArrayList<String> list = new ArrayList<>(Arrays.asList("set", "delete", "show"));
+            ArrayList<String> list = new ArrayList<>(Arrays.asList("set", "delete", "show", "clear"));
             if (list.contains(strings[0])) {
                 try {
                     TreasureSet treasureSet = new TreasureSet();

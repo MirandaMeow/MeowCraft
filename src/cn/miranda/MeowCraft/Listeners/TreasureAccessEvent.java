@@ -45,6 +45,9 @@ public class TreasureAccessEvent implements Listener {
         if (inventory.isEmpty()) {
             ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", player.getName()));
             if (targetConfig == null) {
+                Occ.removePermission(player, treasure.getPermission());
+                Occ.addPermission(player, "-" + treasure.getPermission());
+                MessageManager.Message(player, "§e奖励箱内物品已经全部领取");
                 return;
             }
             playerData.set(String.format("%s.treasures.%s", player.getName(), treasure.getDisplayName()), null);
@@ -52,6 +55,7 @@ public class TreasureAccessEvent implements Listener {
                 playerData.set(String.format("%s.treasures", player.getName()), null);
             }
             Occ.removePermission(player, treasure.getPermission());
+            Occ.addPermission(player, "-" + treasure.getPermission());
             ConfigManager.saveConfigs();
             MessageManager.Message(player, "§e奖励箱内物品已经全部领取");
         } else {

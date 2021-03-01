@@ -70,6 +70,11 @@ public class Occ {
         pexUser.removePermission(permission);
     }
 
+    public static void removePermissionFromPlayerName(String playerName, String permission) {
+        PermissionUser pexUser = PermissionsEx.getUser(playerName);
+        pexUser.removePermission(permission);
+    }
+
     public static void addPermission(Player player, String permission) {
         PermissionUser pexUser = PermissionsEx.getUser(player);
         pexUser.addPermission(permission);
