@@ -39,6 +39,7 @@ public class CommandManager {
         map.put("monstercard", new MonsterCardCommand());
         map.put("entitydrop", new EntityDropCommand());
         map.put("eggtoken", new EggTokenCommand());
+        map.put("treasure", new TreasureCommand());
         for (Map.Entry<String, CommandExecutor> entry : map.entrySet()) {
             register(entry.getKey(), entry.getValue());
         }

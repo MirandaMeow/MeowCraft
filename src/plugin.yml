@@ -1,6 +1,6 @@
 name: MeowCraft
 main: cn.miranda.MeowCraft.MeowCraft
-version: 0.7.2
+version: 0.7.3
 author: Miranda
 description: 猫子的魔法插件
 softdepend: [ Vault, mcMMO, PermissionsEx, Citizens, LibsDisguises ]
@@ -92,3 +92,7 @@ commands:
     description: 怪物蛋捕捉许可证
     usage: /eggtoken <player> <monName>
     permissions: eggtoken.admin
+  treasure:
+    description: 奖励箱设置
+    usage: /treasure <create|set|delete|show|reset> <displayName>
+    permissions: treasure.admin

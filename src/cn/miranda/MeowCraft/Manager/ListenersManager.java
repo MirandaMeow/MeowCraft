@@ -70,6 +70,7 @@ public class ListenersManager implements Listener {
         list.add(new EntityDropItemEvent());
         list.add(new EntityDropItemViewEvent());
         list.add(new EggTokenUseEvent());
+        list.add(new TreasureAccessEvent());
         for (Listener i : list) {
             register(i);
         }

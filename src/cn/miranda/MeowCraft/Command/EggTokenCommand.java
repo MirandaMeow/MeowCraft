@@ -23,7 +23,6 @@ public class EggTokenCommand implements TabExecutor {
             MessageManager.Message(sender, Notify.No_Console.getString());
             return true;
         }
-
         if (!sender.hasPermission("eggtoken.admin")) {
             MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;

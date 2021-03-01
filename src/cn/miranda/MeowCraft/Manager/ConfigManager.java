@@ -26,6 +26,7 @@ public class ConfigManager {
     public static YamlConfiguration trades;
     public static YamlConfiguration monsterCard;
     public static YamlConfiguration entityDrop;
+    public static YamlConfiguration treasure;
     public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
@@ -50,6 +51,8 @@ public class ConfigManager {
         trades = loadFile("trades.yml");
         monsterCard = loadFile("monsterCard.yml");
         entityDrop = loadFile("entityDrop.yml");
+        entityDrop = loadFile("entityDrop.yml");
+        treasure = loadFile(("treasure.yml"));
     }
 
     public static void saveConfigs() {
