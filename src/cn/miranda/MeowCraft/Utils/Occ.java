@@ -75,6 +75,11 @@ public class Occ {
         pexUser.removePermission(permission);
     }
 
+    public static boolean checkPermission(String playerName, String permission) {
+        PermissionUser pexUser = PermissionsEx.getUser(playerName);
+        return pexUser.getAllPermissions().get(null).contains(permission);
+    }
+
     public static void addPermission(Player player, String permission) {
         PermissionUser pexUser = PermissionsEx.getUser(player);
         pexUser.addPermission(permission);

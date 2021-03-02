@@ -78,8 +78,10 @@ public class TreasureCommand implements TabExecutor {
                 }
                 String targetDisplayName = args[2];
                 String removePerm = "-" + treasureSet.getTreasure(targetDisplayName).getPermission();
-                Occ.removePermissionFromPlayerName(playerName, removePerm);
-                MessageManager.Message(sender, String.format("§e已清除玩家 §b%s §e禁止打开该箱子的权限", playerName));
+                if (Occ.checkPermission(playerName, removePerm)) {
+                    Occ.removePermissionFromPlayerName(playerName, removePerm);
+                    MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e禁止打开奖励箱 §b%s §e的权限", playerName, targetDisplayName));
+                }
                 ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", playerName));
                 if (targetConfig == null) {
                     MessageManager.Message(sender, String.format("§c没有玩家 §b%s §c打开奖励箱的记录", playerName));
