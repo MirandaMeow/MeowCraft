@@ -77,6 +77,9 @@ public class TreasureCommand implements TabExecutor {
                     return true;
                 }
                 String targetDisplayName = args[2];
+                String removePerm = "-" + treasureSet.getTreasure(targetDisplayName).getPermission();
+                Occ.removePermissionFromPlayerName(playerName, removePerm);
+                MessageManager.Message(sender, String.format("§e已清除玩家 §b%s §e禁止打开该箱子的权限", playerName));
                 ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", playerName));
                 if (targetConfig == null) {
                     MessageManager.Message(sender, String.format("§c没有玩家 §b%s §c打开奖励箱的记录", playerName));
@@ -96,8 +99,6 @@ public class TreasureCommand implements TabExecutor {
                     playerData.set(String.format("%s.treasures", playerName), null);
                 }
                 MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e的 §b%s §e奖励箱的记录", playerName, targetDisplayName));
-                String removePerm = "-" + treasureSet.getTreasure(targetDisplayName).getPermission();
-                Occ.removePermissionFromPlayerName(playerName, removePerm);
                 ConfigManager.saveConfigs();
                 return true;
             }
@@ -160,7 +161,8 @@ public class TreasureCommand implements TabExecutor {
                 }
                 String permission = showTreasure.getPermission();
                 if (!sender.hasPermission(permission)) {
-                    MessageManager.Message(sender, String.format("§c需要权限 §b%s §c来打开奖励箱", permission));
+                    ArrayList<String> list = new ArrayList<>(Collections.singletonList("§b" + permission));
+                    MessageManager.HoverMessage((Player) sender, "§c你无法打开此奖励箱", list);
                     return true;
                 }
                 showTreasure.show(showPlayer, false);
