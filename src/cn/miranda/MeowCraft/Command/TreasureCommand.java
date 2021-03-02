@@ -96,6 +96,8 @@ public class TreasureCommand implements TabExecutor {
                     playerData.set(String.format("%s.treasures", playerName), null);
                 }
                 MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e的 §b%s §e奖励箱的记录", playerName, targetDisplayName));
+                String removePerm = "-" + treasureSet.getTreasure(targetDisplayName).getPermission();
+                Occ.removePermissionFromPlayerName(playerName, removePerm);
                 ConfigManager.saveConfigs();
                 return true;
             }
