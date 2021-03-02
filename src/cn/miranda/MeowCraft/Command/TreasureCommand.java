@@ -134,7 +134,9 @@ public class TreasureCommand implements TabExecutor {
                 }
                 String removePerm = "-" + treasureSet.getTreasure(displayName).getPermission();
                 for (String player : players) {
-                    Occ.removePermissionFromPlayerName(player, removePerm);
+                    if (Occ.checkPermission(player, removePerm)) {
+                        Occ.removePermissionFromPlayerName(player, removePerm);
+                    }
                     ConfigurationSection playerConfig = playerData.getConfigurationSection(String.format("%s.treasures", player));
                     if (playerConfig == null) {
                         continue;
