@@ -20,6 +20,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Utils.ItemDropTable");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.MonsterCardPlayerRespawnLaterTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.TempleAccessTask");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.TaskExecuteTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.Skill.SelfExplodeTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.Skill.RemoveEntityTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.Skill.ArrowBoostShootTask");
@@ -30,6 +31,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.PlayNoteTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.TabPingTask");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Task.FlyTimeCoolDownTask");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Cores.Task");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Cores.TreasureSet");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Cores.Treasure");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Listeners.ScrollUseEvent");
@@ -89,6 +91,7 @@ public class ClassManager {
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.CommandMonitorCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.TownApplyCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.PlayerStatusCommand");
+            MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.TaskCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.DeadCostCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.EggTokenCommand");
             MeowCraft.plugin.getClass().getClassLoader().loadClass("cn.miranda.MeowCraft.Command.TownBankCommand");

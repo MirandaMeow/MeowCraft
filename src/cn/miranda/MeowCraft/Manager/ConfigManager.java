@@ -1,5 +1,7 @@
 package cn.miranda.MeowCraft.Manager;
 
+import cn.miranda.MeowCraft.Cores.Task;
+import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Enum.EntityDrop;
 import cn.miranda.MeowCraft.Task.TabPingTask;
 import cn.miranda.MeowCraft.Utils.IO;
@@ -27,6 +29,7 @@ public class ConfigManager {
     public static YamlConfiguration monsterCard;
     public static YamlConfiguration entityDrop;
     public static YamlConfiguration treasure;
+    public static YamlConfiguration task;
     public static HashMap<YamlConfiguration, File> configList = new HashMap<>();
     public static File configFile;
 
@@ -53,6 +56,10 @@ public class ConfigManager {
         entityDrop = loadFile("entityDrop.yml");
         entityDrop = loadFile("entityDrop.yml");
         treasure = loadFile(("treasure.yml"));
+        task = loadFile(("task.yml"));
+        TempleManager.refreshTempleLists();
+        EggCatcher.flushAvailable();
+        Task.loadAllTask();
     }
 
     public static void saveConfigs() {

@@ -54,7 +54,7 @@ public class MessageManager {
                 list.add(new TextComponent("\n"));
             }
         }
-        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, list.toArray(new BaseComponent[list.size()])));
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, list.toArray(new BaseComponent[0])));
         player.spigot().sendMessage(message);
     }
 }

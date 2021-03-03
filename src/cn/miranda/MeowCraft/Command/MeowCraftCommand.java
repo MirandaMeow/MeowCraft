@@ -1,5 +1,6 @@
 package cn.miranda.MeowCraft.Command;
 
+import cn.miranda.MeowCraft.Cores.Task;
 import cn.miranda.MeowCraft.Enum.EggCatcher;
 import cn.miranda.MeowCraft.Enum.Notify;
 import cn.miranda.MeowCraft.Manager.ClassManager;
@@ -12,15 +13,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static cn.miranda.MeowCraft.MeowCraft.plugin;
 
 public final class MeowCraftCommand implements TabExecutor {
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("meow.admin")) {
@@ -40,8 +37,6 @@ public final class MeowCraftCommand implements TabExecutor {
         }
         if (Objects.equals(args[0], "reload")) {
             ConfigManager.loadConfigs();
-            TempleManager.refreshTempleLists();
-            EggCatcher.flushAvailable();
             MessageManager.Message(sender, "§e成功重载配置文件");
             return true;
         }
@@ -58,7 +53,6 @@ public final class MeowCraftCommand implements TabExecutor {
         }
         //TODO 测试用命令，需要移除
         if (Objects.equals(args[0], "test")) {
-            Player player = (Player) sender;
             MessageManager.Message(sender, "§e测试完成");
             return true;
         }

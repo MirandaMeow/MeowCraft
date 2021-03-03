@@ -1,6 +1,7 @@
 package cn.miranda.MeowCraft;
 
 import cn.miranda.MeowCraft.Manager.*;
+import cn.miranda.MeowCraft.Task.TaskExecuteTask;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +31,7 @@ public class MeowCraft extends JavaPlugin {
         TempleManager.refreshTempleLists();
         ConfigManager.loadPlayerStatusData();
         ConfigManager.loadTradePanelData();
+        new TaskExecuteTask().TaskExecute();
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e载入玩家数据");
         MessageManager.ConsoleMessage("§b[§6猫子组件§b] §e启用成功");
     }

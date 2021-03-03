@@ -30,6 +30,8 @@ import org.bukkit.util.Vector;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -405,5 +407,32 @@ public class Misc {
             out.add(new NoteWithTime(note.getNote(0), count));
         }
         return out;
+    }
+
+    public static int getSecondTimestampFromDate(Date date) {
+        if (null == date) {
+            return 0;
+        }
+        String timestamp = String.valueOf(date.getTime());
+        int length = timestamp.length();
+        if (length > 3) {
+            return Integer.parseInt(timestamp.substring(0, length - 3));
+        } else {
+            return 0;
+        }
+    }
+
+    public static int stringToTimeStamp(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            return getSecondTimestampFromDate(dateFormat.parse(dateString));
+        } catch (ParseException e) {
+            return 0;
+        }
+    }
+    public static String showDate() {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(date);
     }
 }
