@@ -164,9 +164,13 @@ public class TreasureCommand implements TabExecutor {
                     return true;
                 }
                 String permission = showTreasure.getPermission();
+                if (Occ.checkPermission(sender.getName(), "-" + permission)) {
+                    MessageManager.Message(sender, String.format("§c你已经打开过 §b%s §c并领取了其中全部奖励", displayName));
+                    return true;
+                }
                 if (!sender.hasPermission(permission)) {
                     ArrayList<String> list = new ArrayList<>(Collections.singletonList("§b" + permission));
-                    MessageManager.HoverMessage((Player) sender, "§c你无法打开此奖励箱", list);
+                    MessageManager.HoverMessage((Player) sender, String.format("§c你没有打开奖励箱 §b%s §c的权限", displayName), list);
                     return true;
                 }
                 showTreasure.show(showPlayer, false);
