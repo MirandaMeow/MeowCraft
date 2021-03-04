@@ -14,14 +14,15 @@ public class TaskExecuteTask {
         getScheduler().runTaskTimer(MeowCraft.plugin, () -> {
             int timestamp = Misc.getSecondTimestampFromDate(new Date());
             for (Task newTask : Task.tasks) {
-                if (newTask.getTimestamp() == timestamp) {
-                    newTask.execute();
-                    if (newTask.getLoop()) {
-                        newTask.updateDate();
-                        continue;
-                    }
-                    newTask.remove();
+                if (newTask.getTimestamp() != timestamp) {
+                    continue;
                 }
+                newTask.execute();
+                if (newTask.getLoop()) {
+                    newTask.updateDate();
+                    continue;
+                }
+                newTask.remove();
             }
         }, 0L, 20L);
     }
