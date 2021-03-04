@@ -125,17 +125,17 @@ public class TaskCommand implements TabExecutor {
                 return true;
             }
             if (sender instanceof Player) {
-                MessageManager.Message(sender, "§b-- §e计划任务 §b--");
+                MessageManager.Message(sender, "§b---- §e计划任务 §b----");
                 for (Task task : Task.tasks) {
                     task.show(sender, false);
                 }
-                MessageManager.Message(sender, "§b---------------");
+                MessageManager.Message(sender, "§b-------------------");
             } else {
-                MessageManager.Message(sender, "§b-- §e计划任务 §b--");
+                MessageManager.Message(sender, "§b---- §e计划任务 §b----");
                 for (Task task : Task.tasks) {
                     task.show(sender, true);
                 }
-                MessageManager.Message(sender, "§b---------------");
+                MessageManager.Message(sender, "§b-------------------");
             }
             return true;
         }
