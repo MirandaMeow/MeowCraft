@@ -19,13 +19,13 @@ public class TaskCommand implements TabExecutor {
             return true;
         }
         if (args.length < 1) {
-            MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list> <taskName>");
+            MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list|execute> <taskName>");
             return true;
         }
         String option = args[0];
-        ArrayList<String> validOption = new ArrayList<>(Arrays.asList("create", "delete", "edit", "list"));
+        ArrayList<String> validOption = new ArrayList<>(Arrays.asList("create", "delete", "edit", "list", "execute"));
         if (!validOption.contains(option)) {
-            MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list> <taskName>");
+            MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list|execute> <taskName>");
             return true;
         }
         if (Objects.equals(option, "create") && args.length == 2) {
@@ -45,6 +45,16 @@ public class TaskCommand implements TabExecutor {
             task.remove();
             MessageManager.Message(sender, String.format("§e计划任务 §b%s §e已删除", taskName));
             return true;
+        }
+        if (Objects.equals(option, "execute") && args.length == 2) {
+            String taskName = args[1];
+            Task task = Task.getByConfig(taskName);
+            if (task == null) {
+                MessageManager.Message(sender, String.format("§c计划任务 §b%s §c不存在", taskName));
+                return true;
+            }
+            task.execute();
+            MessageManager.Message(sender, String.format("§e计划任务 §b%s §e已执行", taskName));
         }
         if (Objects.equals(option, "edit") && args.length >= 3) {
             String taskName = args[1];
@@ -139,7 +149,7 @@ public class TaskCommand implements TabExecutor {
             }
             return true;
         }
-        MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list> <taskName>");
+        MessageManager.Message(sender, "§e用法: §6/task §b<create|delete|edit|list|execute> <taskName>");
         return true;
     }
 
@@ -150,7 +160,8 @@ public class TaskCommand implements TabExecutor {
             return Misc.returnSelectList(validOption, strings[0]);
         }
         if (strings.length == 2) {
-            if (Objects.equals(strings[0], "delete") || Objects.equals(strings[0], "edit")) {
+            ArrayList<String> listable = new ArrayList<>(Arrays.asList("delete", "edit", "execute"));
+            if (listable.contains(strings[0])) {
                 return Misc.returnSelectList(Task.getTaskNames(), strings[1]);
             }
         }
