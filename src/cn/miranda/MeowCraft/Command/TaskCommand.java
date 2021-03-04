@@ -156,7 +156,7 @@ public class TaskCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 1) {
-            ArrayList<String> validOption = new ArrayList<>(Arrays.asList("create", "delete", "edit", "list"));
+            ArrayList<String> validOption = new ArrayList<>(Arrays.asList("create", "delete", "edit", "list", "execute"));
             return Misc.returnSelectList(validOption, strings[0]);
         }
         if (strings.length == 2) {
