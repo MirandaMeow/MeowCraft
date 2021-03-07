@@ -55,6 +55,7 @@ public class TaskCommand implements TabExecutor {
             }
             task.execute();
             MessageManager.Message(sender, String.format("§e计划任务 §b%s §e已执行", taskName));
+            return true;
         }
         if (Objects.equals(option, "edit") && args.length >= 3) {
             String taskName = args[1];
