@@ -184,6 +184,9 @@ public class TaskCommand implements TabExecutor {
                 return Misc.returnSelectList(task.getCommandIndexList(), strings[3]);
             }
         }
+        if (strings.length == 5 && Objects.equals(strings[0], "edit") && Objects.equals(strings[2], "time")) {
+            return Misc.returnSelectList(new ArrayList<>(Collections.singletonList("00:00:00")), strings[3]);
+        }
         return new ArrayList<>();
     }
 }
