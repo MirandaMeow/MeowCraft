@@ -19,37 +19,32 @@ import java.util.List;
 public class EggTokenCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            MessageManager.Message(sender, Notify.No_Console.getString());
-            return true;
-        }
         if (!sender.hasPermission("eggtoken.admin")) {
             MessageManager.Message(sender, Notify.No_Permission.getString());
             return true;
         }
-        Player player = (Player) sender;
         if (args.length != 2) {
-            MessageManager.Message(player, "§e用法: §6/eggtoken §b<player> <monName>");
+            MessageManager.Message(sender, "§e用法: §6/eggtoken §b<player> <monName>");
             return true;
         }
         Player target = Misc.player(args[0]);
         if (target == null) {
-            MessageManager.Message(player, Notify.No_Player.getString());
+            MessageManager.Message(sender, Notify.No_Player.getString());
             return true;
         }
         String type = args[1];
         EggCatcher eggCatcher = EggCatcher.getByName(type);
         if (eggCatcher == null) {
-            MessageManager.Message(player, "§c该怪物不存在");
+            MessageManager.Message(sender, "§c该怪物不存在");
             return true;
         }
         HashMap<Integer, ItemStack> fail = target.getInventory().addItem(getItem(eggCatcher));
         if (fail.isEmpty()) {
-            MessageManager.Message(player, String.format("§e将怪物 §b%s §e的捕捉许可证给了 §b%s", eggCatcher.getName(), target.getName()));
+            MessageManager.Message(sender, String.format("§e将怪物 §b%s §e的捕捉许可证给了 §b%s", eggCatcher.getName(), target.getName()));
             MessageManager.Message(target, String.format("§e收到了怪物 §b%s §e的捕捉许可证", eggCatcher.getName()));
             return true;
         } else {
-            MessageManager.Message(player, String.format("§c玩家 §b%s §c的背包满了", target.getName()));
+            MessageManager.Message(sender, String.format("§c玩家 §b%s §c的背包满了", target.getName()));
         }
         return true;
     }
