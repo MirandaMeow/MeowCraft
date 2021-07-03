@@ -31,7 +31,7 @@ public class EggTokenCheckCommand implements TabExecutor {
                 return true;
             }
         } else {
-            MessageManager.Message(sender, "§e用法: §6/eggtokencheck §b[<]player]");
+            MessageManager.Message(sender, "§e用法: §6/eggtokencheck §b[player]");
             return true;
         }
         permissions = Occ.getPermissionList(target.getName());
