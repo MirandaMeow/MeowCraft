@@ -80,6 +80,11 @@ public class Occ {
         return pexUser.getAllPermissions().get(null).contains(permission);
     }
 
+    public static List<String> getPermissionList(String playerName) {
+        PermissionUser pexUser = PermissionsEx.getUser(playerName);
+        return pexUser.getAllPermissions().get(null);
+    }
+
     public static void addPermission(Player player, String permission) {
         PermissionUser pexUser = PermissionsEx.getUser(player);
         pexUser.addPermission(permission);

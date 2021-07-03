@@ -41,6 +41,7 @@ public class CommandManager {
         map.put("eggtoken", new EggTokenCommand());
         map.put("treasure", new TreasureCommand());
         map.put("task", new TaskCommand());
+        map.put("eggtokencheck", new EggTokenCheckCommand());
         for (Map.Entry<String, CommandExecutor> entry : map.entrySet()) {
             register(entry.getKey(), entry.getValue());
         }
