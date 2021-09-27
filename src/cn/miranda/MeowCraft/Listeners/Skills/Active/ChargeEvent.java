@@ -32,7 +32,7 @@ public class ChargeEvent implements Listener {
                 return;
             }
         }
-        List<Material> swords = new ArrayList<>(Arrays.asList(Material.DIAMOND_SWORD, Material.GOLDEN_SWORD, Material.IRON_SWORD, Material.WOODEN_SWORD, Material.STONE_SWORD));
+        List<Material> swords = new ArrayList<>(Arrays.asList(Material.DIAMOND_SWORD, Material.GOLDEN_SWORD, Material.IRON_SWORD, Material.WOODEN_SWORD, Material.STONE_SWORD, Material.NETHERITE_SWORD));
         if (player.isSneaking() && (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && swords.contains(player.getInventory().getItemInMainHand().getType()) && event.getHand() == EquipmentSlot.HAND) {
             if (playerData.get(String.format("%s.occConfig.occSkills.%s", playerName, skillName)) == null) {
                 return;

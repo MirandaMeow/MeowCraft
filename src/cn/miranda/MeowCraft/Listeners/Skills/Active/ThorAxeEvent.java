@@ -32,7 +32,7 @@ public class ThorAxeEvent implements Listener {
                 return;
             }
         }
-        List<Material> axes = new ArrayList<>(Arrays.asList(Material.DIAMOND_AXE, Material.GOLDEN_AXE, Material.IRON_AXE, Material.WOODEN_AXE, Material.STONE_AXE));
+        List<Material> axes = new ArrayList<>(Arrays.asList(Material.DIAMOND_AXE, Material.GOLDEN_AXE, Material.IRON_AXE, Material.WOODEN_AXE, Material.STONE_AXE, Material.NETHERITE_AXE));
         if (player.isSneaking() && (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && axes.contains(player.getInventory().getItemInMainHand().getType()) && event.getHand() == EquipmentSlot.HAND) {
             if (playerData.get(String.format("%s.occConfig.occSkills.%s", playerName, skillName)) == null) {
                 return;
