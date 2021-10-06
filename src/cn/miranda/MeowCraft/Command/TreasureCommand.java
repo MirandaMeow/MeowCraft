@@ -86,6 +86,7 @@ public class TreasureCommand implements TabExecutor {
                 if (Occ.checkPermission(playerName, removePerm)) {
                     Occ.removePermissionFromPlayerName(playerName, removePerm);
                     MessageManager.Message(sender, String.format("§e清除了玩家 §b%s §e禁止打开奖励箱 §b%s §e的权限", playerName, targetDisplayName));
+                    return true;
                 }
                 ConfigurationSection targetConfig = playerData.getConfigurationSection(String.format("%s.treasures", playerName));
                 if (targetConfig == null) {

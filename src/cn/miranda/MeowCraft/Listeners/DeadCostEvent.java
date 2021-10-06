@@ -23,6 +23,8 @@ public class DeadCostEvent implements Listener {
         if (player.isOp()) {
             event.setKeepInventory(true);
             event.setKeepLevel(true);
+            event.getDrops().clear();
+            event.setDroppedExp(0);
             return;
         }
         if (player.hasPermission("deadcost.ban")) {
